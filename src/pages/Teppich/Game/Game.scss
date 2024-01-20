@@ -1,0 +1,29 @@
+.game-cockpit {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+
+  .count-text {
+    width: 32px;
+  }
+}
+
+.game-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin-top: 50px;
+}
+
+.char {
+  display: inline-block;
+  min-width: 20px;
+  text-align: center;
+}
+
+.koenig {
+  background-color: rgba(255, 234, 0, 0.3);
+}
