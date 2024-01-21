@@ -17,6 +17,8 @@ interface GameState {
   stopGame: () => void,
 
   setTimeInSeconds: (timeInMinutes: string) => void,
+  addMinute: () => void,
+  removeMinute: () => void,
   activateTimer: () => void,
   pauseTimer: () => void,
   decreaseTimerSecond: () => void,
@@ -69,6 +71,22 @@ export const useGameStore = create<GameState>((set) => ({
       ...state,
       timerSeconds: timeinSec,
       initialTimeInSeconds: timeinSec
+    }
+  }),
+  addMinute: () => set((state) => {
+    const newTime = state.initialTimeInSeconds + 60
+    return {
+      ...state,
+      timerSeconds: newTime,
+      initialTimeInSeconds: newTime,
+    }
+  }),
+  removeMinute: () => set((state) => {
+    const newTime = state.initialTimeInSeconds > 60 ? state.initialTimeInSeconds - 60 : state.initialTimeInSeconds
+    return {
+      ...state,
+      timerSeconds: newTime,
+      initialTimeInSeconds: newTime,
     }
   }),
   activateTimer: () => set((state) => {

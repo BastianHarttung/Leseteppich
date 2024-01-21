@@ -6,6 +6,8 @@ import { Game } from "./Game/Game.tsx";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
 import { useGameStore } from "../../store/game-store.ts";
 import LeseLogo from "../../assets/Leseteppich_Logo.svg";
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
 
 
 export default function Teppich() {
@@ -13,9 +15,14 @@ export default function Teppich() {
     useShallow((state) => (
       {isPlayGame: state.isPlayGame, startGame: state.startGame, stopGame: state.stopGame})),
   )
-  const {initialTimeInSeconds, setTimeInSeconds} = useGameStore(
+  const {initialTimeInSeconds, setTimeInSeconds, addMinute, removeMinute} = useGameStore(
     useShallow((state) => (
-      {initialTimeInSeconds: state.initialTimeInSeconds, setTimeInSeconds: state.setTimeInSeconds})),
+      {
+        initialTimeInSeconds: state.initialTimeInSeconds,
+        setTimeInSeconds: state.setTimeInSeconds,
+        addMinute: state.addMinute,
+        removeMinute: state.removeMinute
+      })),
   )
 
   const {id} = useParams()
@@ -59,12 +66,29 @@ export default function Teppich() {
                 {findTeppich?.chars.join(", ")}
               </Typography>
 
-              <TextField type={"number"}
-                         size={"small"}
-                         label={"Zeit in Minuten"}
-                         value={(initialTimeInSeconds / 60).toString()}
-                         onChange={handleChange}
-                         sx={{mt: 2, width: "110px"}}/>
+              <Box display={"flex"}
+                   alignItems={"flex-end"}>
+                <Button variant={"outlined"}
+                        size={"small"}
+                        onClick={removeMinute}
+                        disabled={initialTimeInSeconds <= 60}>
+                  <RemoveIcon/>
+                </Button>
+
+                <TextField type={"number"}
+                           size={"small"}
+                           label={"Zeit in Minuten"}
+                           value={(initialTimeInSeconds / 60).toString()}
+                           onChange={handleChange}
+                           sx={{mt: 2, width: "110px"}}
+                           inputProps={{style: {textAlign: "center"}}}/>
+
+                <Button variant={"outlined"}
+                        size={"small"}
+                        onClick={addMinute}>
+                  <AddIcon/>
+                </Button>
+              </Box>
 
               <Button variant={"contained"}
                       onClick={startGame}
