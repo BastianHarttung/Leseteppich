@@ -33,7 +33,7 @@ export const Timer = () => {
   useEffect(() => {
     // start timer after 2 seconds
     activateTimer()
-  }, []);
+  }, [activateTimer]);
 
   useEffect(() => {
     let interval: number;
@@ -47,7 +47,7 @@ export const Timer = () => {
     return () => {
       clearInterval(interval);
     };
-  }, [timerIsActive]);
+  }, [timerIsActive, decreaseTimerSecond]);
 
 
   return (

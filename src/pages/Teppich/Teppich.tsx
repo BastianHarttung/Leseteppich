@@ -44,11 +44,11 @@ export default function Teppich() {
               </Toolbar>
             </AppBar>
 
-            <Box sx={{mt: 4}}
+            <Box sx={{mt: 10}}
                  display={"flex"}
                  flexDirection={"column"}
                  alignItems={"center"}
-                 gap={2}>
+                 gap={1}>
               <Typography variant={"h4"}>
                 Leseteppich Nr.{id}
               </Typography>
@@ -63,7 +63,7 @@ export default function Teppich() {
                          label={"Zeit in Minuten"}
                          value={(initialTimeInSeconds / 60).toString()}
                          onChange={handleChange}
-                         sx={{mt: 2, width: "120px"}}/>
+                         sx={{mt: 2, width: "110px"}}/>
 
               <Button variant={"contained"}
                       onClick={startGame}

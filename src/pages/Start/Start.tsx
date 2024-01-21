@@ -16,6 +16,8 @@ export default function Start() {
                height={48}/>
         </Toolbar>
       </AppBar>
+
+      <Toolbar/>
       {leseteppiche.filter((tepp) => tepp.id > 0)
         .map((teppich: Leseteppich) => (
           <Link key={teppich.id}

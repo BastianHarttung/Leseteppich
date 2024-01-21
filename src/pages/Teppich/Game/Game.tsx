@@ -73,7 +73,7 @@ export const Game = ({onStop}: GameProps) => {
       pauseTimer()
       openWinModal()
     }
-  }, [timerSeconds]);
+  }, [timerSeconds, openWinModal, pauseTimer]);
 
 
   return (
