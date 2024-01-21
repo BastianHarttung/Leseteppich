@@ -26,6 +26,7 @@ export default function Teppich() {
     setTimeInSeconds(event.target.value)
   }
 
+
   return (
     <main>
       {!isPlayGame ? (
