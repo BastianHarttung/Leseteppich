@@ -5,6 +5,7 @@ import NoSleep from "nosleep.js";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Start from "./pages/Start/Start.tsx";
 import Teppich from "./pages/Teppich/Teppich.tsx";
+import { CssBaseline } from "@mui/material";
 
 
 const lightTheme = createTheme({
@@ -30,6 +31,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={lightTheme}>
+        <CssBaseline/>
         <Routes>
           <Route path={"/"} element={<Start/>}/>
           <Route path={"teppich/:id"} element={<Teppich/>}/>
