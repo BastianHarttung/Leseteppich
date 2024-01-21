@@ -24,6 +24,11 @@ const ModalWin = () => {
     useShallow((state) => (
       {count: state.count})),
   )
+  const {initialTimeInSeconds} = useGameStore(
+    useShallow((state) => (
+      {initialTimeInSeconds: state.initialTimeInSeconds}
+    ))
+  )
 
 
   return (
@@ -41,7 +46,8 @@ const ModalWin = () => {
         <Typography variant="h6"
                     fontWeight={400}
                     sx={{mt: 2}}>
-          Du hast <mark>{count}</mark> Wörter gelesen.
+          Du hast <mark>{count}</mark> Wörter <br/>
+          in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
         </Typography>
       </Box>
     </Modal>
