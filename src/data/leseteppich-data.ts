@@ -5,13 +5,14 @@ export const leseteppiche: Leseteppich[] = [
     id: 0,
     chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Ei", "Sch"],
     strings: [
-      "null0", "eins1", "zwei2", "drei3", "vier4",
-      "fünf5", "sechs6", "sieben7", "acht8", "neun9",
-      "zehn10", "elf11", "zwölf12", "dreizehn13", "vierzehn14",
-      "fünfzehn", "Bonbon", "Besen", "Birne", "Ball",
-      "Biber", "Ballett", "Brombeere", "Banane", "basteln",
-      "Mama mag bunte Blumen",
-      "Piri und Leo blubbern mit Limo"
+      "null0", "eins1", "zwei2",
+      // "drei3", "vier4",
+      // "fünf5", "sechs6", "sieben7", "acht8", "neun9",
+      // "zehn10", "elf11", "zwölf12", "dreizehn13", "vierzehn14",
+      // "fünfzehn15", "sechszehn16", "siebzehn17", "achtzehn18", "neunzehn19",
+      // "zwanzig20", "einundzwanzig21", "zweiundzwanzig22", "dreiundzwanzig23", "vierundzwanzig24",
+      // "Erster langer Satz wahrscheinlich mit Umbruch.",
+      // "Zweiter etwas kürzerer Satz."
     ]
   },
   {

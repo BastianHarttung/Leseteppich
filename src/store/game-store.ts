@@ -2,6 +2,20 @@ import { create } from 'zustand'
 import { calculateRandomIndex } from "../helper-functions/randomNumber.ts";
 
 
+export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
+  const uniqueTeppichArray: number[] = []
+  for (let i = 0; i < teppichStringsLength; i++) {
+    const pushRandomIndex = () => {
+      const newIndex = calculateRandomIndex(teppichStringsLength - 1)
+      if (!uniqueTeppichArray.includes(newIndex)) {
+        uniqueTeppichArray.push(newIndex)
+      } else pushRandomIndex()
+    }
+    pushRandomIndex()
+  }
+  return uniqueTeppichArray
+}
+
 interface GameState {
   isPlayGame: boolean,
 
@@ -24,7 +38,7 @@ interface GameState {
   decreaseTimerSecond: () => void,
 
   decreaseCount: () => void,
-  addToGameArray: (newIndex: number) => void,
+  addToGameArray: (newTeppichArray: number[]) => void,
   increaseCount: () => void,
 
   openWinModal: () => void,
@@ -47,17 +61,15 @@ export const useGameStore = create<GameState>((set) => ({
 
   // Game
   startGame: (teppichStringsLength: number) => set((state) => {
-    const newGameArray: number[] = []
+    let newGameArray: number[] = []
 
-    for (let i = 0; i < teppichStringsLength; i++) {
-      const pushRandomIndex = () => {
-        const newIndex = calculateRandomIndex(teppichStringsLength - 1)
-        if (!newGameArray.includes(newIndex)) {
-          newGameArray.push(newIndex)
-        } else pushRandomIndex()
-      }
-      pushRandomIndex()
+    for (let j = 0; j < 10; j++) {
+
+      const newInnerArray = generateOneLeseteppichArray(teppichStringsLength)
+
+      newGameArray = [...newGameArray, ...newInnerArray]
     }
+    console.log("startGame() newGameArray:", newGameArray)
 
     return {
       ...state,
@@ -65,6 +77,7 @@ export const useGameStore = create<GameState>((set) => ({
       gameArray: newGameArray,
     }
   }),
+
   stopGame: () => set((state) => {
     return {
       ...state,
@@ -75,6 +88,7 @@ export const useGameStore = create<GameState>((set) => ({
       isPlayGame: false
     }
   }),
+
   //Timer
   setTimeInSeconds: (timeInMinutes: string) => set((state) => {
     const timeinSec = Number(timeInMinutes) * 60
@@ -84,6 +98,7 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: timeinSec
     }
   }),
+
   addMinute: () => set((state) => {
     const newTime = state.initialTimeInSeconds + 60
     return {
@@ -92,6 +107,7 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: newTime,
     }
   }),
+
   removeMinute: () => set((state) => {
     const newTime = state.initialTimeInSeconds > 60 ? state.initialTimeInSeconds - 60 : state.initialTimeInSeconds
     return {
@@ -100,24 +116,28 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: newTime,
     }
   }),
+
   activateTimer: () => set((state) => {
     return {
       ...state,
       timerIsActive: true
     }
   }),
+
   pauseTimer: () => set((state) => {
     return {
       ...state,
       timerIsActive: false
     }
   }),
+
   decreaseTimerSecond: () => set((state) => {
     return {
       ...state,
       timerSeconds: state.timerSeconds - 1
     }
   }),
+
   // Counter
   decreaseCount: () => set((state) => {
     return {
@@ -125,12 +145,14 @@ export const useGameStore = create<GameState>((set) => ({
       count: state.count - 1
     }
   }),
-  addToGameArray: (newIndex: number) => set((state) => {
+
+  addToGameArray: (newTeppichArray: number[]) => set((state) => {
     return {
       ...state,
-      gameArray: [...state.gameArray, newIndex]
+      gameArray: [...state.gameArray, ...newTeppichArray]
     }
   }),
+
   increaseCount: () => set((state) => {
     return {
       ...state,
@@ -144,6 +166,7 @@ export const useGameStore = create<GameState>((set) => ({
       isWinModalOpen: true,
     }
   }),
+
   closeWinModal: () => set((state) => {
     return {
       ...state,

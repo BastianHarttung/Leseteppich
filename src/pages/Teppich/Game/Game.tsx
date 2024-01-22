@@ -4,7 +4,7 @@ import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import { Timer } from "../Timer/Timer.tsx";
-import { useGameStore } from "../../../store/game-store.ts";
+import { generateOneLeseteppichArray, useGameStore } from "../../../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
 import ModalWin from "../../../components/ModalWin.tsx";
 import { Leseteppich } from "../../../models/interfaces.ts";
@@ -27,9 +27,9 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     useShallow((state) => (
       {decreaseCount: state.decreaseCount})),
   )
-  const {gameArray} = useGameStore(
+  const {gameArray, addToGameArray} = useGameStore(
     useShallow((state) => (
-      {gameArray: state.gameArray})),
+      {gameArray: state.gameArray, addToGameArray: state.addToGameArray})),
   )
   const {count, increaseCount} = useGameStore(
     useShallow((state) => (
@@ -50,9 +50,12 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   }
 
   const handleNext = () => {
-    console.log(leseTeppich.strings[gameArray[count]])
-    if (!isTimerFinished) {
+    if (!isTimerFinished && !!gameArray[count + 1]) {
       increaseCount();
+    } else {
+      const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length)
+      addToGameArray(newTeppichArray)
+      increaseCount()
     }
   }
 
