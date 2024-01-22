@@ -9,7 +9,6 @@ interface GameState {
   initialTimeInSeconds: number,
   timerSeconds: number,
 
-  activeStringIndex: number,
   gameArray: number[],
   count: number,
   isWinModalOpen: boolean,
@@ -24,7 +23,6 @@ interface GameState {
   pauseTimer: () => void,
   decreaseTimerSecond: () => void,
 
-  setActiveStringIndex: (newIndex: number) => void,
   decreaseCount: () => void,
   addToGameArray: (newIndex: number) => void,
   increaseCount: () => void,
@@ -42,7 +40,6 @@ export const useGameStore = create<GameState>((set) => ({
   initialTimeInSeconds: initialTime,
   timerSeconds: initialTime,
 
-  activeStringIndex: 0, //TODO random number from length of teppichstrings
   gameArray: [0],
   count: 0,
 
@@ -122,12 +119,6 @@ export const useGameStore = create<GameState>((set) => ({
     }
   }),
   // Counter
-  setActiveStringIndex: (newIndex: number) => set((state) => {
-    return {
-      ...state,
-      activeStringIndex: newIndex
-    }
-  }),
   decreaseCount: () => set((state) => {
     return {
       ...state,
