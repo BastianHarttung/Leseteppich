@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { calculateRandomIndex } from "../helper-functions/randomNumber.ts";
 
 
 interface GameState {
@@ -13,7 +14,7 @@ interface GameState {
   count: number,
   isWinModalOpen: boolean,
   // Actions
-  startGame: () => void,
+  startGame: (teppichStringsLength: number) => void,
   stopGame: () => void,
 
   setTimeInSeconds: (timeInMinutes: string) => void,
@@ -48,10 +49,23 @@ export const useGameStore = create<GameState>((set) => ({
   isWinModalOpen: false,
 
   // Game
-  startGame: () => set((state) => {
+  startGame: (teppichStringsLength: number) => set((state) => {
+    const newGameArray: number[] = []
+
+    for (let i = 0; i < teppichStringsLength; i++) {
+      const pushRandomIndex = () => {
+        const newIndex = calculateRandomIndex(teppichStringsLength - 1)
+        if (!newGameArray.includes(newIndex)) {
+          newGameArray.push(newIndex)
+        } else pushRandomIndex()
+      }
+      pushRandomIndex()
+    }
+
     return {
       ...state,
-      isPlayGame: true
+      isPlayGame: true,
+      gameArray: newGameArray,
     }
   }),
   stopGame: () => set((state) => {

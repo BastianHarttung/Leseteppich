@@ -1,25 +1,21 @@
 import "./Game.scss";
+import { useEffect } from "react";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
-import { leseteppiche } from "../../../data/leseteppich-data.ts";
-import { useParams } from "react-router-dom";
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import { Timer } from "../Timer/Timer.tsx";
 import { useGameStore } from "../../../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
-import { calculateRandomIndex } from "../../../helper-functions/randomNumber.ts";
 import ModalWin from "../../../components/ModalWin.tsx";
-import { useEffect } from "react";
+import { Leseteppich } from "../../../models/interfaces.ts";
 
 
 interface GameProps {
+  leseTeppich: Leseteppich,
   onStop: () => void,
 }
 
-export const Game = ({onStop}: GameProps) => {
-  const {id} = useParams()
-
-  const findLeseteppich = leseteppiche.find((tepp) => tepp.id.toString() === id!)
+export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const {timerSeconds, timerIsActive, pauseTimer} = useGameStore(
     useShallow((state) => (
@@ -27,17 +23,13 @@ export const Game = ({onStop}: GameProps) => {
   )
   const isTimerFinished = timerSeconds <= 0
 
-  const {activeStringIndex, setActiveStringIndex, decreaseCount} = useGameStore(
+  const {decreaseCount} = useGameStore(
     useShallow((state) => (
-      {
-        activeStringIndex: state.activeStringIndex,
-        setActiveStringIndex: state.setActiveStringIndex,
-        decreaseCount: state.decreaseCount
-      })),
+      {decreaseCount: state.decreaseCount})),
   )
-  const {gameArray, addToGameArray} = useGameStore(
+  const {gameArray} = useGameStore(
     useShallow((state) => (
-      {gameArray: state.gameArray, addToGameArray: state.addToGameArray})),
+      {gameArray: state.gameArray})),
   )
   const {count, increaseCount} = useGameStore(
     useShallow((state) => (
@@ -58,13 +50,9 @@ export const Game = ({onStop}: GameProps) => {
   }
 
   const handleNext = () => {
+    console.log(leseTeppich.strings[gameArray[count]])
     if (!isTimerFinished) {
-      const newIndex = calculateRandomIndex(findLeseteppich ? findLeseteppich.strings.length - 1 : 0)
-      if (newIndex !== activeStringIndex) {
-        setActiveStringIndex(newIndex);
-        addToGameArray(newIndex);
-        increaseCount();
-      } else handleNext()
+      increaseCount();
     }
   }
 
@@ -109,14 +97,15 @@ export const Game = ({onStop}: GameProps) => {
 
         {<Typography variant={"h3"}
                      sx={{paddingX: "12px"}}>
-          {findLeseteppich?.strings[gameArray[count]].split("")
+          {leseTeppich?.strings[gameArray[count]].split("")
             .map((char, index) => {
               const vokabels = /^[aeiou]$/i;
               const isVokabel = vokabels.test(char)
-              return <span key={index}
-                           className={`char ${isVokabel ? "koenig" : ""}`}>
+              return (
+                <span key={index}
+                      className={`char ${isVokabel ? "koenig" : ""}`}>
                 {char}
-              </span>
+              </span>)
             })}
         </Typography>}
 
