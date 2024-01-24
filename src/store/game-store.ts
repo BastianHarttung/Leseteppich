@@ -26,6 +26,7 @@ interface GameState {
   gameArray: number[],
   count: number,
   isWinModalOpen: boolean,
+  isImageModalOpen: boolean,
   // Actions
   startGame: (teppichStringsLength: number) => void,
   stopGame: () => void,
@@ -43,6 +44,9 @@ interface GameState {
 
   openWinModal: () => void,
   closeWinModal: () => void,
+
+  openImageModal: () => void,
+  closeImageModal: () => void,
 }
 
 const initialTime = 300
@@ -58,6 +62,7 @@ export const useGameStore = create<GameState>((set) => ({
   count: 0,
 
   isWinModalOpen: false,
+  isImageModalOpen: false,
 
   // Game
   startGame: (teppichStringsLength: number) => set((state) => {
@@ -173,4 +178,18 @@ export const useGameStore = create<GameState>((set) => ({
       isWinModalOpen: false,
     }
   }),
+
+  openImageModal: () => set((state) => {
+    return {
+      ...state,
+      isImageModalOpen: true
+    }
+  }),
+
+  closeImageModal: () => set((state) => {
+    return {
+      ...state,
+      isImageModalOpen: false
+    }
+  })
 }))

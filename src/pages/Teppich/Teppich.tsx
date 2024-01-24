@@ -7,6 +7,7 @@ import { Game } from "./Game/Game.tsx";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
 import { useGameStore } from "../../store/game-store.ts";
 import LeseLogo from "../../assets/Leseteppich_Logo.svg";
+import ModalImage from "../../components/ModalImage.tsx";
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
@@ -30,6 +31,11 @@ export default function Teppich() {
         removeMinute: state.removeMinute
       })),
   )
+  const {openImageModal} = useGameStore(
+    useShallow((state) => (
+      {openImageModal: state.openImageModal}
+    ))
+  )
 
   const findTeppich = leseteppiche.find((tepp) => tepp.id === Number(id))
 
@@ -45,6 +51,10 @@ export default function Teppich() {
 
   const handleFullscreen = () => {
     document.documentElement.requestFullscreen({navigationUI: "hide"})
+  }
+
+  const handleImageClick = () => {
+    openImageModal()
   }
 
   useEffect(() => {
@@ -97,6 +107,8 @@ export default function Teppich() {
     <main>
       {!isPlayGame ? (
           <>
+            <ModalImage/>
+
             <AppBar position="fixed">
               <Toolbar sx={{justifyContent: "space-between"}}>
                 <Link to={"/"}>
@@ -124,8 +136,11 @@ export default function Teppich() {
                  gap={0.5}>
 
               <Box className={"header-box"}>
-                {teppichPic && <img src={teppichPic} alt={`Leseteppich_${id}.jpg`}
-                                    height={75}/>}
+                {teppichPic && <Button onClick={handleImageClick}>
+                  <img src={teppichPic}
+                       alt={`Leseteppich_${id}.jpg`}
+                       height={75}/>
+                </Button>}
 
                 <Box>
                   <Typography variant={"h4"} textAlign={"left"}>
