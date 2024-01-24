@@ -1,4 +1,4 @@
-import { Box, Modal, Typography } from "@mui/material";
+import { Box, Fade, Modal, Typography } from "@mui/material";
 import { useGameStore } from "../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
 import LeseLogo from "../assets/Leseteppich_Logo.svg";
@@ -36,20 +36,23 @@ const ModalWin = () => {
       open={isWinModalOpen}
       onClose={closeWinModal}
     >
-      <Box sx={style}>
-        <img src={LeseLogo}
-             alt="Leseteppich-Logo"
-             height={48}/>
-        <Typography variant="h5" component="h2">
-          Super gemacht!
-        </Typography>
-        <Typography variant="h6"
-                    fontWeight={400}
-                    sx={{mt: 2}}>
-          Du hast <mark>{count}</mark> Wörter <br/>
-          in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
-        </Typography>
-      </Box>
+      <Fade in={isWinModalOpen}
+            timeout={2300}>
+        <Box sx={style}>
+          <img src={LeseLogo}
+               alt="Leseteppich-Logo"
+               height={48}/>
+          <Typography variant="h5" component="h2">
+            Super gemacht!
+          </Typography>
+          <Typography variant="h6"
+                      fontWeight={400}
+                      sx={{mt: 2}}>
+            Du hast <mark>{count}</mark> Wörter <br/>
+            in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
+          </Typography>
+        </Box>
+      </Fade>
     </Modal>
   );
 };

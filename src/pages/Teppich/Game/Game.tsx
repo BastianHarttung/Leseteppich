@@ -1,5 +1,5 @@
 import "./Game.scss";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
@@ -8,6 +8,7 @@ import { generateOneLeseteppichArray, useGameStore } from "../../../store/game-s
 import { useShallow } from "zustand/react/shallow";
 import ModalWin from "../../../components/ModalWin.tsx";
 import { Leseteppich } from "../../../models/interfaces.ts";
+import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
 
 
 interface GameProps {
@@ -16,6 +17,8 @@ interface GameProps {
 }
 
 export const Game = ({leseTeppich, onStop}: GameProps) => {
+
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const {timerSeconds, timerIsActive, pauseTimer} = useGameStore(
     useShallow((state) => (
@@ -63,13 +66,18 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     if (timerSeconds <= 0) {
       pauseTimer()
       openWinModal()
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play()
+      }
     }
-  }, [timerSeconds, openWinModal, pauseTimer]);
+  }, [timerSeconds, openWinModal, pauseTimer, audioRef]);
 
 
   return (
     <div className={"flex-column gap-2 w-100"}>
       <ModalWin/>
+      <audio ref={audioRef} src={WinSound}/>
 
       <AppBar position="fixed"
               sx={{minHeight: 80, justifyContent: "center"}}>

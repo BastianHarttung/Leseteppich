@@ -1,5 +1,5 @@
 import "./Teppich.scss"
-import { ChangeEvent, useEffect } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AppBar, Box, Button, TextField, Toolbar, Typography } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
@@ -10,10 +10,11 @@ import LeseLogo from "../../assets/Leseteppich_Logo.svg";
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import LeseteppichPic from "../../assets/leseteppiche-scans/Leseteppich_13.jpg";
 
 
 export default function Teppich() {
+  const [teppichPic, setTeppichPic] = useState(null)
+
   const {id} = useParams()
 
   const {isPlayGame, startGame, stopGame} = useGameStore(
@@ -49,6 +50,19 @@ export default function Teppich() {
   useEffect(() => {
     handleFullscreen()
   }, []);
+
+  useEffect(() => {
+    const importTeppichPic = async () => {
+      try {
+        const module = await import(`../../assets/leseteppiche-scans/Leseteppich_${id}.jpg`);
+        setTeppichPic(module.default);
+      } catch (error) {
+        console.error('Fehler beim Laden des Bildes:', error);
+      }
+    };
+
+    importTeppichPic();
+  }, [id]);
 
 
   if (!findTeppich) return (
@@ -107,11 +121,11 @@ export default function Teppich() {
                  display={"flex"}
                  flexDirection={"column"}
                  alignItems={"center"}
-                 gap={1}>
+                 gap={0.5}>
 
               <Box className={"header-box"}>
-                <img src={LeseteppichPic} alt={`Leseteppich_${id}.jpg`}
-                     height={75}/>
+                {teppichPic && <img src={teppichPic} alt={`Leseteppich_${id}.jpg`}
+                                    height={75}/>}
 
                 <Box>
                   <Typography variant={"h4"} textAlign={"left"}>
