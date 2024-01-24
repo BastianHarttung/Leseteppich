@@ -1,4 +1,5 @@
-import { ChangeEvent } from "react";
+import "./Teppich.scss"
+import { ChangeEvent, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { AppBar, Box, Button, TextField, Toolbar, Typography } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
@@ -8,6 +9,8 @@ import { useGameStore } from "../../store/game-store.ts";
 import LeseLogo from "../../assets/Leseteppich_Logo.svg";
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import LeseteppichPic from "../../assets/leseteppiche-scans/Leseteppich_13.jpg";
 
 
 export default function Teppich() {
@@ -38,6 +41,14 @@ export default function Teppich() {
       startGame(findTeppich.strings.length)
     }
   }
+
+  const handleFullscreen = () => {
+    document.documentElement.requestFullscreen({navigationUI: "hide"})
+  }
+
+  useEffect(() => {
+    handleFullscreen()
+  }, []);
 
 
   if (!findTeppich) return (
@@ -73,16 +84,22 @@ export default function Teppich() {
       {!isPlayGame ? (
           <>
             <AppBar position="fixed">
-              <Toolbar>
+              <Toolbar sx={{justifyContent: "space-between"}}>
                 <Link to={"/"}>
                   <Button variant={"contained"}
                           size={"small"}
                           startIcon={<img src={LeseLogo}
                                           alt="Leseteppich-Logo"
-                                          height={32}/>}>
+                                          height={28}/>}>
                     Zurück zur Leseteppich Auswahl
                   </Button>
                 </Link>
+
+                <Button variant={"contained"}
+                        onClick={handleFullscreen}
+                        startIcon={<FullscreenIcon/>}>
+                  Vollbild
+                </Button>
               </Toolbar>
             </AppBar>
 
@@ -91,14 +108,22 @@ export default function Teppich() {
                  flexDirection={"column"}
                  alignItems={"center"}
                  gap={1}>
-              <Typography variant={"h4"}>
-                Leseteppich Nr.{id}
-              </Typography>
 
-              <Typography variant={"body1"}
-                          sx={{fontSize: "1.3rem"}}>
-                {findTeppich?.chars.join(", ")}
-              </Typography>
+              <Box className={"header-box"}>
+                <img src={LeseteppichPic} alt={`Leseteppich_${id}.jpg`}
+                     height={75}/>
+
+                <Box>
+                  <Typography variant={"h4"} textAlign={"left"}>
+                    Leseteppich Nr.{id}
+                  </Typography>
+
+                  <Typography variant={"body1"}
+                              sx={{fontSize: "1.3rem"}}>
+                    {findTeppich?.chars.join(", ")}
+                  </Typography>
+                </Box>
+              </Box>
 
               <Box display={"flex"}
                    alignItems={"flex-end"}>
