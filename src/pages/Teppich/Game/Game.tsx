@@ -90,7 +90,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
               Stop
             </Button>
 
-            <Typography variant={"h5"}
+            <Typography variant={"h4"}
                         className={"count-text"}
                         fontSize={20}
                         sx={{flexGrow: 1}}>{count}</Typography>
