@@ -1,9 +1,10 @@
-import { Box, Fade, Modal, Typography } from "@mui/material";
+import { Box, Fade, IconButton, Modal, Typography } from "@mui/material";
 import { useGameStore } from "../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
 import LeseLogo from "../assets/Leseteppich_Logo.svg";
 import confetti from "canvas-confetti"
 import { useEffect } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
 
 const style = {
@@ -18,6 +19,11 @@ const style = {
 };
 
 const ModalWin = () => {
+  const {activeId} = useGameStore(
+    useShallow((state) => (
+      {activeId: state.setActiveTeppichId}
+    ))
+  )
   const {isWinModalOpen, closeWinModal} = useGameStore(
     useShallow((state) => (
       {isWinModalOpen: state.isWinModalOpen, closeWinModal: state.closeWinModal})),
@@ -71,6 +77,12 @@ const ModalWin = () => {
     }
   }, [isWinModalOpen]);
 
+  useEffect(() => {
+    if (isWinModalOpen) {
+      localStorage.setItem("highscore", JSON.stringify({teppichId: activeId, count: count, time: initialTimeInSeconds}))
+    }
+  }, [isWinModalOpen, activeId, initialTimeInSeconds, count]);
+
 
   return (
     <Modal
@@ -78,8 +90,14 @@ const ModalWin = () => {
       onClose={closeWinModal}
     >
       <Fade in={isWinModalOpen}
-            timeout={2300}>
+            timeout={2000}>
         <Box sx={style}>
+          <Box position={"absolute"} right={8} top={8}>
+            <IconButton onClick={closeWinModal}>
+              <CloseIcon/>
+            </IconButton>
+          </Box>
+
           <img src={LeseLogo}
                alt="Leseteppich-Logo"
                height={48}/>

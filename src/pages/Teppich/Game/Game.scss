@@ -14,8 +14,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
   padding: 16px;
-  margin-top: 50px;
+  margin-top: 92px;
 }
 
 .char {
@@ -27,4 +28,11 @@
 
 .koenig {
   background-color: rgba(255, 234, 0, 0.3);
+}
+
+.fullscreen-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
 }

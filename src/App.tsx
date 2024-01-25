@@ -11,6 +11,9 @@ import { CssBaseline } from "@mui/material";
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    secondary: {
+      main: "#1ccceb"
+    }
   },
 });
 

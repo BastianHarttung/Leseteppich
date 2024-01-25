@@ -11,6 +11,8 @@ import ModalImage from "../../components/ModalImage.tsx";
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import { toggleFullscreen } from "../../helper-functions";
 
 
 export default function Teppich() {
@@ -18,6 +20,11 @@ export default function Teppich() {
 
   const {id} = useParams()
 
+  const {setActiveTeppichId} = useGameStore(
+    useShallow((state) => (
+      {setActiveTeppichId: state.setActiveTeppichId}
+    ))
+  )
   const {isPlayGame, startGame, stopGame} = useGameStore(
     useShallow((state) => (
       {isPlayGame: state.isPlayGame, startGame: state.startGame, stopGame: state.stopGame})),
@@ -36,6 +43,11 @@ export default function Teppich() {
       {openImageModal: state.openImageModal}
     ))
   )
+  const {isFullscreen, checkFullscreen} = useGameStore(
+    useShallow((state) => (
+      {isFullscreen: state.isFullscreen, checkFullscreen: state.checkFullscreen}
+    ))
+  )
 
   const findTeppich = leseteppiche.find((tepp) => tepp.id === Number(id))
 
@@ -49,17 +61,9 @@ export default function Teppich() {
     }
   }
 
-  const handleFullscreen = () => {
-    document.documentElement.requestFullscreen({navigationUI: "hide"})
-  }
-
   const handleImageClick = () => {
     openImageModal()
   }
-
-  useEffect(() => {
-    handleFullscreen()
-  }, []);
 
   useEffect(() => {
     const importTeppichPic = async () => {
@@ -73,6 +77,18 @@ export default function Teppich() {
 
     importTeppichPic();
   }, [id]);
+
+  useEffect(() => {
+    checkFullscreen();
+    document.addEventListener('fullscreenchange', checkFullscreen);
+    return () => {
+      document.removeEventListener('fullscreenchange', checkFullscreen);
+    };
+  }, [checkFullscreen]);
+
+  useEffect(() => {
+    if (findTeppich) setActiveTeppichId(findTeppich.id)
+  }, [findTeppich, setActiveTeppichId]);
 
 
   if (!findTeppich) return (
@@ -122,9 +138,9 @@ export default function Teppich() {
                 </Link>
 
                 <Button variant={"contained"}
-                        onClick={handleFullscreen}
-                        startIcon={<FullscreenIcon/>}>
-                  Vollbild
+                        onClick={toggleFullscreen}
+                        startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}>
+                  {isFullscreen ? "Verkleinern" : "Vollbild"}
                 </Button>
               </Toolbar>
             </AppBar>

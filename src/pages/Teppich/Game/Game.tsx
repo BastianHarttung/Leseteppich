@@ -1,6 +1,6 @@
 import "./Game.scss";
 import { useEffect, useRef } from "react";
-import { AppBar, Button, IconButton, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, IconButton, Toolbar, Typography, useTheme } from "@mui/material";
 import UndoIcon from '@mui/icons-material/Undo';
 import RedoIcon from '@mui/icons-material/Redo';
 import { Timer } from "../Timer/Timer.tsx";
@@ -9,7 +9,9 @@ import { useShallow } from "zustand/react/shallow";
 import ModalWin from "../../../components/ModalWin.tsx";
 import { Leseteppich } from "../../../models/interfaces.ts";
 import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
-
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import { toggleFullscreen } from "../../../helper-functions";
 
 interface GameProps {
   leseTeppich: Leseteppich,
@@ -17,6 +19,8 @@ interface GameProps {
 }
 
 export const Game = ({leseTeppich, onStop}: GameProps) => {
+
+  const theme = useTheme()
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -38,9 +42,14 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     useShallow((state) => (
       {count: state.count, increaseCount: state.increaseCount})),
   )
-  const {openWinModal} = useGameStore(
+  const {isWinModalOpen, openWinModal} = useGameStore(
     useShallow((state) => (
-      {openWinModal: state.openWinModal}
+      {isWinModalOpen: state.isWinModalOpen, openWinModal: state.openWinModal}
+    ))
+  )
+  const {isFullscreen, checkFullscreen} = useGameStore(
+    useShallow((state) => (
+      {isFullscreen: state.isFullscreen, checkFullscreen: state.checkFullscreen}
     ))
   )
 
@@ -73,9 +82,30 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     }
   }, [timerSeconds, openWinModal, pauseTimer, audioRef]);
 
+  useEffect(() => {
+    if (!isWinModalOpen && audioRef.current) {
+      audioRef.current.pause()
+    }
+  }, [isWinModalOpen, audioRef]);
+
+  useEffect(() => {
+    checkFullscreen();
+    document.addEventListener('fullscreenchange', checkFullscreen);
+    return () => {
+      document.removeEventListener('fullscreenchange', checkFullscreen);
+    };
+  }, [checkFullscreen]);
+
 
   return (
     <div className={"flex-column gap-2 w-100"}>
+      <Box className={"fullscreen-btn"}>
+        <IconButton sx={{backgroundColor: theme.palette.grey["300"]}}
+                    onClick={toggleFullscreen}>
+          {isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}
+        </IconButton>
+      </Box>
+
       <ModalWin/>
       <audio ref={audioRef} src={WinSound}/>
 
@@ -107,17 +137,31 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
         </IconButton>
 
         {<Typography variant={"h3"}
-                     sx={{paddingX: "12px"}}>
-          {leseTeppich?.strings[gameArray[count]].split("")
-            .map((char, index) => {
-              const vokabels = /^[aeiou]$/i;
-              const isVokabel = vokabels.test(char)
-              return (
-                <span key={index}
-                      className={`char ${isVokabel ? "koenig" : ""}`}>
+                     sx={{paddingX: "12px", gap: "4px 16px"}}
+                     display={"flex"}
+                     justifyContent={"center"}
+                     flexWrap={"wrap"}>
+
+          {leseTeppich?.strings[gameArray[count]].split(" ")
+            .map((word, wordIndex) => {
+                return (
+                  <div key={wordIndex}>
+                    {word.split("").map((char, charIndex) => {
+                        const vokabels = /^[aeiou]$/i;
+                        const isVokabel = vokabels.test(char)
+                        return (
+                          <span key={charIndex}
+                                className={`char ${isVokabel ? "koenig" : ""}`}>
                 {char}
-              </span>)
-            })}
+              </span>
+                        )
+                      }
+                    )}
+                  </div>
+                )
+              }
+            )}
+
         </Typography>}
 
         <IconButton onClick={handleNext}

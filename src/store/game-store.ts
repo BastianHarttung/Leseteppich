@@ -17,6 +17,7 @@ export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
 }
 
 interface GameState {
+  activeTeppichId: number | null,
   isPlayGame: boolean,
 
   timerIsActive: boolean,
@@ -27,7 +28,11 @@ interface GameState {
   count: number,
   isWinModalOpen: boolean,
   isImageModalOpen: boolean,
+
+  isFullscreen: boolean,
   // Actions
+  setActiveTeppichId: (id: number) => void,
+
   startGame: (teppichStringsLength: number) => void,
   stopGame: () => void,
 
@@ -47,11 +52,14 @@ interface GameState {
 
   openImageModal: () => void,
   closeImageModal: () => void,
+
+  checkFullscreen: () => void,
 }
 
 const initialTime = 300
 
 export const useGameStore = create<GameState>((set) => ({
+  activeTeppichId: null,
   isPlayGame: false,
 
   timerIsActive: false,
@@ -64,6 +72,15 @@ export const useGameStore = create<GameState>((set) => ({
   isWinModalOpen: false,
   isImageModalOpen: false,
 
+  isFullscreen: false,
+
+  //Initial
+  setActiveTeppichId: (id: number) => set((state) => {
+    return {
+      ...state,
+      activeTeppichId: id
+    }
+  }),
   // Game
   startGame: (teppichStringsLength: number) => set((state) => {
     let newGameArray: number[] = []
@@ -82,7 +99,6 @@ export const useGameStore = create<GameState>((set) => ({
       gameArray: newGameArray,
     }
   }),
-
   stopGame: () => set((state) => {
     return {
       ...state,
@@ -171,7 +187,6 @@ export const useGameStore = create<GameState>((set) => ({
       isWinModalOpen: true,
     }
   }),
-
   closeWinModal: () => set((state) => {
     return {
       ...state,
@@ -185,11 +200,18 @@ export const useGameStore = create<GameState>((set) => ({
       isImageModalOpen: true
     }
   }),
-
   closeImageModal: () => set((state) => {
     return {
       ...state,
       isImageModalOpen: false
+    }
+  }),
+
+  checkFullscreen: () => set((state) => {
+    const isFullscreenNow = !!document.fullscreenElement;
+    return {
+      ...state,
+      isFullscreen: isFullscreenNow
     }
   })
 }))

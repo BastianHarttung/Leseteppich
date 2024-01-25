@@ -45,7 +45,7 @@ const ModalImage = () => {
     <Modal open={isImageModalOpen}
            onClose={closeImageModal}>
       <Box sx={style}>
-        <Box position={"absolute"} right={8}>
+        <Box position={"absolute"} right={8} top={8}>
           <IconButton onClick={closeImageModal}>
             <CloseIcon/>
           </IconButton>
