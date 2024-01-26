@@ -1,17 +1,23 @@
 import "./Game.scss";
+import "swiper/css";
+import "swiper/css/navigation";
 import { useEffect, useRef } from "react";
+import { useShallow } from "zustand/react/shallow";
 import { AppBar, Box, Button, IconButton, Toolbar, Typography, useTheme } from "@mui/material";
-import UndoIcon from '@mui/icons-material/Undo';
-import RedoIcon from '@mui/icons-material/Redo';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import UndoIcon from "@mui/icons-material/Undo";
+import RedoIcon from "@mui/icons-material/Redo";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { Timer } from "../Timer/Timer.tsx";
 import { generateOneLeseteppichArray, useGameStore } from "../../../store/game-store.ts";
-import { useShallow } from "zustand/react/shallow";
 import ModalWin from "../../../components/ModalWin.tsx";
 import { Leseteppich } from "../../../models/interfaces.ts";
 import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import { toggleFullscreen } from "../../../helper-functions";
+
 
 interface GameProps {
   leseTeppich: Leseteppich,
@@ -20,79 +26,79 @@ interface GameProps {
 
 export const Game = ({leseTeppich, onStop}: GameProps) => {
 
-  const theme = useTheme()
+  const theme = useTheme();
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const {timerSeconds, timerIsActive, pauseTimer} = useGameStore(
     useShallow((state) => (
       {timerSeconds: state.timerSeconds, timerIsActive: state.timerIsActive, pauseTimer: state.pauseTimer})),
-  )
-  const isTimerFinished = timerSeconds <= 0
+  );
+  const isTimerFinished = timerSeconds <= 0;
 
-  const {decreaseCount} = useGameStore(
-    useShallow((state) => (
-      {decreaseCount: state.decreaseCount})),
-  )
   const {gameArray, addToGameArray} = useGameStore(
     useShallow((state) => (
       {gameArray: state.gameArray, addToGameArray: state.addToGameArray})),
-  )
-  const {count, increaseCount} = useGameStore(
+  );
+  const {count, setCount} = useGameStore(
     useShallow((state) => (
-      {count: state.count, increaseCount: state.increaseCount})),
-  )
+      {
+        count: state.count,
+        setCount: state.setCount,
+      })),
+  );
   const {isWinModalOpen, openWinModal} = useGameStore(
     useShallow((state) => (
       {isWinModalOpen: state.isWinModalOpen, openWinModal: state.openWinModal}
-    ))
-  )
+    )),
+  );
   const {isFullscreen, checkFullscreen} = useGameStore(
     useShallow((state) => (
       {isFullscreen: state.isFullscreen, checkFullscreen: state.checkFullscreen}
-    ))
-  )
+    )),
+  );
 
-  const isBackDisabled = !timerIsActive || isTimerFinished || count <= 0
+  const isBackDisabled = !timerIsActive || isTimerFinished || count <= 0;
 
-  const isNextDisabled = !timerIsActive || isTimerFinished
+  const isNextDisabled = !timerIsActive || isTimerFinished;
 
-  const handleBack = () => {
-    decreaseCount()
-  }
+  const teppichGameArray = gameArray.map((gameIndex) => leseTeppich.strings[gameIndex]);
 
   const handleNext = () => {
     if (!isTimerFinished && !!gameArray[count + 1]) {
-      increaseCount();
+      return;
     } else {
-      const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length)
-      addToGameArray(newTeppichArray)
-      increaseCount()
+      const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length);
+      addToGameArray(newTeppichArray);
     }
-  }
+  };
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    setCount(swiper.activeIndex);
+  };
 
   useEffect(() => {
     if (timerSeconds <= 0) {
-      pauseTimer()
-      openWinModal()
+      pauseTimer();
+      openWinModal();
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
-        audioRef.current.play()
+        audioRef.current.play();
       }
     }
   }, [timerSeconds, openWinModal, pauseTimer, audioRef]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {
-      audioRef.current.pause()
+      audioRef.current.pause();
     }
   }, [isWinModalOpen, audioRef]);
 
   useEffect(() => {
     checkFullscreen();
-    document.addEventListener('fullscreenchange', checkFullscreen);
+    document.addEventListener("fullscreenchange", checkFullscreen);
     return () => {
-      document.removeEventListener('fullscreenchange', checkFullscreen);
+      document.removeEventListener("fullscreenchange", checkFullscreen);
     };
   }, [checkFullscreen]);
 
@@ -131,42 +137,59 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
       </AppBar>
 
       <div className={"game-row"}>
-        <IconButton onClick={handleBack}
-                    disabled={isBackDisabled}>
+        <IconButton disabled={isBackDisabled}
+                    className="prev-button">
           <UndoIcon/>
         </IconButton>
 
-        {<Typography variant={"h3"}
-                     sx={{paddingX: "12px", gap: "4px 16px"}}
-                     display={"flex"}
-                     justifyContent={"center"}
-                     flexWrap={"wrap"}>
+        <Swiper modules={[Navigation]}
+                className={"swiper_container"}
+                style={{padding: "24px"}}
+                spaceBetween={50}
+                slidesPerView={1}
+                onSlideChange={handleSlideChange}
+          // onSwiper={(swiper) => console.log(swiper)}
+                navigation={{
+                  prevEl: ".prev-button",
+                  nextEl: ".next-button",
+                }}>
 
-          {leseTeppich?.strings[gameArray[count]].split(" ")
-            .map((word, wordIndex) => {
-                return (
-                  <div key={wordIndex}>
-                    {word.split("").map((char, charIndex) => {
-                        const vokabels = /^[aeiou]$/i;
-                        const isVokabel = vokabels.test(char)
-                        return (
-                          <span key={charIndex}
-                                className={`char ${isVokabel ? "koenig" : ""}`}>
-                {char}
-              </span>
-                        )
-                      }
-                    )}
-                  </div>
-                )
-              }
-            )}
-
-        </Typography>}
+          {teppichGameArray.map((teppichStrings, index) => (
+            <SwiperSlide key={index}
+                         className={"swiper_slide"}>
+              <Typography variant={"h3"}
+                          sx={{padding: "12px", gap: "4px 16px"}}
+                          display={"flex"}
+                          justifyContent={"center"}
+                          flexWrap={"wrap"}>
+                {/*{teppichStrings}*/}
+                {teppichStrings.split(" ")
+                  .map((word, wordIndex) => {
+                      return (
+                        <div key={wordIndex}>
+                          {word.split("").map((char, charIndex) => {
+                              const vokabels = /^[aeiou]$/i;
+                              const isVokabel = vokabels.test(char);
+                              return (
+                                <span key={charIndex}
+                                      className={`char ${isVokabel ? "koenig" : ""}`}>
+                  {char}
+                </span>
+                              );
+                            },
+                          )}
+                        </div>
+                      );
+                    },
+                  )}
+              </Typography>
+            </SwiperSlide>))}
+        </Swiper>
 
         <IconButton onClick={handleNext}
                     color="primary"
-                    disabled={isNextDisabled}>
+                    disabled={isNextDisabled}
+                    className="next-button">
           <RedoIcon fontSize={"large"}/>
         </IconButton>
       </div>

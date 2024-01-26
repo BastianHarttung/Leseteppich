@@ -1,20 +1,20 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 import { calculateRandomIndex } from "../helper-functions/randomNumber.ts";
 
 
 export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
-  const uniqueTeppichArray: number[] = []
+  const uniqueTeppichArray: number[] = [];
   for (let i = 0; i < teppichStringsLength; i++) {
     const pushRandomIndex = () => {
-      const newIndex = calculateRandomIndex(teppichStringsLength - 1)
+      const newIndex = calculateRandomIndex(teppichStringsLength - 1);
       if (!uniqueTeppichArray.includes(newIndex)) {
-        uniqueTeppichArray.push(newIndex)
-      } else pushRandomIndex()
-    }
-    pushRandomIndex()
+        uniqueTeppichArray.push(newIndex);
+      } else pushRandomIndex();
+    };
+    pushRandomIndex();
   }
-  return uniqueTeppichArray
-}
+  return uniqueTeppichArray;
+};
 
 interface GameState {
   activeTeppichId: number | null,
@@ -44,8 +44,10 @@ interface GameState {
   decreaseTimerSecond: () => void,
 
   decreaseCount: () => void,
-  addToGameArray: (newTeppichArray: number[]) => void,
   increaseCount: () => void,
+  setCount: (newIndex: number) => void,
+
+  addToGameArray: (newTeppichArray: number[]) => void,
 
   openWinModal: () => void,
   closeWinModal: () => void,
@@ -56,7 +58,7 @@ interface GameState {
   checkFullscreen: () => void,
 }
 
-const initialTime = 300
+const initialTime = 300;
 
 export const useGameStore = create<GameState>((set) => ({
   activeTeppichId: null,
@@ -78,26 +80,26 @@ export const useGameStore = create<GameState>((set) => ({
   setActiveTeppichId: (id: number) => set((state) => {
     return {
       ...state,
-      activeTeppichId: id
-    }
+      activeTeppichId: id,
+    };
   }),
   // Game
   startGame: (teppichStringsLength: number) => set((state) => {
-    let newGameArray: number[] = []
+    let newGameArray: number[] = [];
 
     for (let j = 0; j < 10; j++) {
 
-      const newInnerArray = generateOneLeseteppichArray(teppichStringsLength)
+      const newInnerArray = generateOneLeseteppichArray(teppichStringsLength);
 
-      newGameArray = [...newGameArray, ...newInnerArray]
+      newGameArray = [...newGameArray, ...newInnerArray];
     }
-    console.log("startGame() newGameArray:", newGameArray)
+    console.log("startGame() newGameArray:", newGameArray);
 
     return {
       ...state,
       isPlayGame: true,
       gameArray: newGameArray,
-    }
+    };
   }),
   stopGame: () => set((state) => {
     return {
@@ -106,112 +108,121 @@ export const useGameStore = create<GameState>((set) => ({
       count: 0,
       initialTimeInSeconds: state.initialTimeInSeconds,
       timerSeconds: state.initialTimeInSeconds,
-      isPlayGame: false
-    }
+      isPlayGame: false,
+    };
   }),
 
   //Timer
   setTimeInSeconds: (timeInMinutes: string) => set((state) => {
-    const timeinSec = Number(timeInMinutes) * 60
+    const timeinSec = Number(timeInMinutes) * 60;
     return {
       ...state,
       timerSeconds: timeinSec,
-      initialTimeInSeconds: timeinSec
-    }
+      initialTimeInSeconds: timeinSec,
+    };
   }),
 
   addMinute: () => set((state) => {
-    const newTime = state.initialTimeInSeconds + 60
+    const newTime = state.initialTimeInSeconds + 60;
     return {
       ...state,
       timerSeconds: newTime,
       initialTimeInSeconds: newTime,
-    }
+    };
   }),
 
   removeMinute: () => set((state) => {
-    const newTime = state.initialTimeInSeconds > 60 ? state.initialTimeInSeconds - 60 : state.initialTimeInSeconds
+    const newTime = state.initialTimeInSeconds > 60 ? state.initialTimeInSeconds - 60 : state.initialTimeInSeconds;
     return {
       ...state,
       timerSeconds: newTime,
       initialTimeInSeconds: newTime,
-    }
+    };
   }),
 
   activateTimer: () => set((state) => {
     return {
       ...state,
-      timerIsActive: true
-    }
+      timerIsActive: true,
+    };
   }),
 
   pauseTimer: () => set((state) => {
     return {
       ...state,
-      timerIsActive: false
-    }
+      timerIsActive: false,
+    };
   }),
 
   decreaseTimerSecond: () => set((state) => {
     return {
       ...state,
-      timerSeconds: state.timerSeconds - 1
-    }
+      timerSeconds: state.timerSeconds - 1,
+    };
   }),
 
   // Counter
-  decreaseCount: () => set((state) => {
-    return {
-      ...state,
-      count: state.count - 1
-    }
-  }),
-
-  addToGameArray: (newTeppichArray: number[]) => set((state) => {
-    return {
-      ...state,
-      gameArray: [...state.gameArray, ...newTeppichArray]
-    }
-  }),
-
   increaseCount: () => set((state) => {
     return {
       ...state,
-      count: state.count + 1
-    }
+      count: state.count + 1,
+    };
+  }),
+  decreaseCount: () => set((state) => {
+    return {
+      ...state,
+      count: state.count - 1,
+    };
+  }),
+  setCount: (newIndex: number) => set((state) => {
+    return {
+      ...state,
+      count: newIndex,
+    };
   }),
 
+  //Game Array
+  addToGameArray: (newTeppichArray: number[]) => set((state) => {
+    return {
+      ...state,
+      gameArray: [...state.gameArray, ...newTeppichArray],
+    };
+  }),
+
+  // Modal Win
   openWinModal: () => set((state) => {
     return {
       ...state,
       isWinModalOpen: true,
-    }
+    };
   }),
   closeWinModal: () => set((state) => {
     return {
       ...state,
       isWinModalOpen: false,
-    }
+    };
   }),
 
+  // Modal Image Teppich
   openImageModal: () => set((state) => {
     return {
       ...state,
-      isImageModalOpen: true
-    }
+      isImageModalOpen: true,
+    };
   }),
   closeImageModal: () => set((state) => {
     return {
       ...state,
-      isImageModalOpen: false
-    }
+      isImageModalOpen: false,
+    };
   }),
 
+  // Fullscreen
   checkFullscreen: () => set((state) => {
     const isFullscreenNow = !!document.fullscreenElement;
     return {
       ...state,
-      isFullscreen: isFullscreenNow
-    }
-  })
-}))
+      isFullscreen: isFullscreenNow,
+    };
+  }),
+}));
