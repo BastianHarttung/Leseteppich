@@ -1,7 +1,7 @@
 import "./Teppich.scss"
 import { ChangeEvent, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AppBar, Box, Button, TextField, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, FormControlLabel, Switch, TextField, Toolbar, Typography } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
 import { Game } from "./Game/Game.tsx";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
@@ -41,6 +41,11 @@ export default function Teppich() {
   const {openImageModal} = useGameStore(
     useShallow((state) => (
       {openImageModal: state.openImageModal}
+    ))
+  )
+  const {isKingsMarked, toggleKingsMarked} = useGameStore(
+    useShallow((state) => (
+      {isKingsMarked: state.isKingsMarked, toggleKingsMarked: state.toggleKingsMarked}
     ))
   )
   const {isFullscreen, checkFullscreen} = useGameStore(
@@ -194,6 +199,12 @@ export default function Teppich() {
                 </Button>
               </Box>
 
+              <FormControlLabel checked={isKingsMarked}
+                                control={<Switch value={isKingsMarked}
+                                                 onChange={toggleKingsMarked}/>}
+                                label="Könige (A,E,I,O,U) markieren"
+                                sx={{mr: 0}}/>
+
               <Button variant={"contained"}
                       onClick={handleStart}
                       size={"large"}>Start</Button>
@@ -203,5 +214,6 @@ export default function Teppich() {
                 onStop={stopGame}/>
       }
     </main>
-  );
+  )
+    ;
 }

@@ -52,6 +52,11 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
       {isWinModalOpen: state.isWinModalOpen, openWinModal: state.openWinModal}
     )),
   );
+  const {isKingsMarked} = useGameStore(
+    useShallow((state) => (
+      {isKingsMarked: state.isKingsMarked}
+    ))
+  );
   const {isFullscreen, checkFullscreen} = useGameStore(
     useShallow((state) => (
       {isFullscreen: state.isFullscreen, checkFullscreen: state.checkFullscreen}
@@ -162,7 +167,6 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                           display={"flex"}
                           justifyContent={"center"}
                           flexWrap={"wrap"}>
-                {/*{teppichStrings}*/}
                 {teppichStrings.split(" ")
                   .map((word, wordIndex) => {
                       return (
@@ -172,7 +176,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                               const isVokabel = vokabels.test(char);
                               return (
                                 <span key={charIndex}
-                                      className={`char ${isVokabel ? "koenig" : ""}`}>
+                                      className={`char ${(isVokabel && isKingsMarked) ? "koenig" : ""}`}>
                   {char}
                 </span>
                               );

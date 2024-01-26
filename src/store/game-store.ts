@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { calculateRandomIndex } from "../helper-functions/randomNumber.ts";
+import { ChangeEvent } from "react";
 
 
 export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
@@ -29,7 +30,10 @@ interface GameState {
   isWinModalOpen: boolean,
   isImageModalOpen: boolean,
 
+  isKingsMarked: boolean,
+
   isFullscreen: boolean,
+
   // Actions
   setActiveTeppichId: (id: number) => void,
 
@@ -55,6 +59,8 @@ interface GameState {
   openImageModal: () => void,
   closeImageModal: () => void,
 
+  toggleKingsMarked: (event: ChangeEvent<HTMLInputElement>) => void,
+
   checkFullscreen: () => void,
 }
 
@@ -73,6 +79,8 @@ export const useGameStore = create<GameState>((set) => ({
 
   isWinModalOpen: false,
   isImageModalOpen: false,
+
+  isKingsMarked: true,
 
   isFullscreen: false,
 
@@ -215,6 +223,14 @@ export const useGameStore = create<GameState>((set) => ({
       ...state,
       isImageModalOpen: false,
     };
+  }),
+
+  // Kings Marked
+  toggleKingsMarked: (event: ChangeEvent<HTMLInputElement>) => set((state) => {
+    return {
+      ...state,
+      isKingsMarked: event.target.checked
+    }
   }),
 
   // Fullscreen
