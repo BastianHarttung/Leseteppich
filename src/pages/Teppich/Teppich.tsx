@@ -127,7 +127,7 @@ export default function Teppich() {
   return (
     <main>
       {!isPlayGame ? (
-          <>
+          <Box>
             <ModalImage/>
 
             <AppBar position="fixed">
@@ -209,7 +209,7 @@ export default function Teppich() {
                       onClick={handleStart}
                       size={"large"}>Start</Button>
             </Box>
-          </>)
+          </Box>)
         : <Game leseTeppich={findTeppich!}
                 onStop={stopGame}/>
       }
