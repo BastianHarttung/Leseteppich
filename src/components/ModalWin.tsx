@@ -1,10 +1,10 @@
-import { Box, Fade, IconButton, Modal, Typography } from "@mui/material";
-import { useGameStore } from "../store/game-store.ts";
+import { useEffect, useState } from "react";
 import { useShallow } from "zustand/react/shallow";
-import LeseLogo from "../assets/Leseteppich_Logo.svg";
 import confetti from "canvas-confetti"
-import { useEffect } from "react";
+import { Box, Fade, IconButton, Modal, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { useGameStore } from "../store/game-store.ts";
+import LeseLogo from "../assets/Leseteppich_Logo.svg";
 
 
 const style = {
@@ -19,6 +19,8 @@ const style = {
 };
 
 const ModalWin = () => {
+  const [piriPic, setPiriPic] = useState(null)
+
   const {activeId} = useGameStore(
     useShallow((state) => (
       {activeId: state.setActiveTeppichId}
@@ -83,6 +85,20 @@ const ModalWin = () => {
     }
   }, [isWinModalOpen, activeId, initialTimeInSeconds, count]);
 
+  useEffect(() => {
+    const importTeppichPic = async () => {
+      const randomNr = Math.round(Math.random() * 2) + 1
+      try {
+        const module = await import(`../assets/piri/Piri_${randomNr}.png`);
+        setPiriPic(module.default);
+      } catch (error) {
+        console.error('Fehler beim Laden des Bildes:', error);
+      }
+    };
+
+    importTeppichPic();
+  }, []);
+
 
   return (
     <Modal
@@ -98,18 +114,25 @@ const ModalWin = () => {
             </IconButton>
           </Box>
 
-          <img src={LeseLogo}
-               alt="Leseteppich-Logo"
-               height={48}/>
-          <Typography variant="h5" component="h2">
-            Super gemacht!
-          </Typography>
-          <Typography variant="h6"
-                      fontWeight={400}
-                      sx={{mt: 2}}>
-            Du hast <mark>{count}</mark> Wörter <br/>
-            in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
-          </Typography>
+          <Box display={"flex"} alignItems={"center"} gap={2}>
+            {piriPic && <img src={piriPic} alt="Piri" height={160}/>}
+
+            <Box>
+              <img src={LeseLogo}
+                   alt="Leseteppich-Logo"
+                   height={48}/>
+              <Typography variant="h5" component="h2">
+                Super gemacht!
+              </Typography>
+              <Typography variant="h6"
+                          fontWeight={400}
+                          sx={{mt: 2}}>
+                Du hast <mark>{count}</mark> Wörter <br/>
+                in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
+              </Typography>
+            </Box>
+          </Box>
+
         </Box>
       </Fade>
     </Modal>
