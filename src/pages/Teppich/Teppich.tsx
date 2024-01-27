@@ -20,6 +20,8 @@ export default function Teppich() {
 
   const {id} = useParams()
 
+  const windowHeight = window.innerHeight
+
   const {setActiveTeppichId} = useGameStore(
     useShallow((state) => (
       {setActiveTeppichId: state.setActiveTeppichId}
@@ -80,8 +82,8 @@ export default function Teppich() {
       }
     };
 
-    importTeppichPic();
-  }, [id]);
+    if (findTeppich) importTeppichPic();
+  }, [id, findTeppich]);
 
   useEffect(() => {
     checkFullscreen();
@@ -94,6 +96,10 @@ export default function Teppich() {
   useEffect(() => {
     if (findTeppich) setActiveTeppichId(findTeppich.id)
   }, [findTeppich, setActiveTeppichId]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
 
   if (!findTeppich) return (
@@ -125,9 +131,9 @@ export default function Teppich() {
   )
 
   return (
-    <main>
+    <main style={{justifyContent: windowHeight < 400 ? "flex-start" : "center"}}>
       {!isPlayGame ? (
-          <Box>
+          <Box paddingBottom={2}>
             <ModalImage/>
 
             <AppBar position="fixed">
