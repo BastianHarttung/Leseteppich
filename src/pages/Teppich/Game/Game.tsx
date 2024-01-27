@@ -1,7 +1,7 @@
 import "./Game.scss";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useShallow } from "zustand/react/shallow";
 import { AppBar, Box, Button, IconButton, Toolbar, Typography, useTheme } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -92,7 +92,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     setCount(swiper.activeIndex);
   };
 
-  const saveHighscore = () => {
+  const saveHighscore = useCallback(() => {
     const localStorageKey = `highscore_leseteppich`
     const actualTime = new Date().getTime()
     const oldHighscore: StorageHighscore[] = JSON.parse(localStorage.getItem(localStorageKey)!)
@@ -104,9 +104,9 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     }
     let storageData = [newHighscore]
     if (oldHighscore) storageData = [...oldHighscore, newHighscore]
-    console.log("higscores:", storageData)
+    console.log("highscores:", storageData)
     localStorage.setItem(localStorageKey, JSON.stringify(storageData))
-  }
+  }, [activeTeppichId, count, initialTimeInSeconds])
 
   useEffect(() => {
     if (timerSeconds <= 0) {
@@ -118,7 +118,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
         audioRef.current.play();
       }
     }
-  }, [timerSeconds, openWinModal, pauseTimer, audioRef, count, initialTimeInSeconds, activeTeppichId]);
+  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {
