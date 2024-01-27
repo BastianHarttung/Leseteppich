@@ -21,11 +21,6 @@ const style = {
 const ModalWin = () => {
   const [piriPic, setPiriPic] = useState(null)
 
-  const {activeId} = useGameStore(
-    useShallow((state) => (
-      {activeId: state.setActiveTeppichId}
-    ))
-  )
   const {isWinModalOpen, closeWinModal} = useGameStore(
     useShallow((state) => (
       {isWinModalOpen: state.isWinModalOpen, closeWinModal: state.closeWinModal})),
@@ -78,12 +73,6 @@ const ModalWin = () => {
       }, 250);
     }
   }, [isWinModalOpen]);
-
-  useEffect(() => {
-    if (isWinModalOpen) {
-      localStorage.setItem("highscore", JSON.stringify({teppichId: activeId, count: count, time: initialTimeInSeconds}))
-    }
-  }, [isWinModalOpen, activeId, initialTimeInSeconds, count]);
 
   useEffect(() => {
     const importTeppichPic = async () => {

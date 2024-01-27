@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { calculateRandomIndex } from "../helper-functions/randomNumber.ts";
 import { ChangeEvent } from "react";
+import { create } from "zustand";
+import { calculateRandomIndex } from "../helper-functions";
 
 
 export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
@@ -96,12 +96,9 @@ export const useGameStore = create<GameState>((set) => ({
     let newGameArray: number[] = [];
 
     for (let j = 0; j < 10; j++) {
-
       const newInnerArray = generateOneLeseteppichArray(teppichStringsLength);
-
       newGameArray = [...newGameArray, ...newInnerArray];
     }
-    console.log("startGame() newGameArray:", newGameArray);
 
     return {
       ...state,

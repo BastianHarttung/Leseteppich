@@ -3,3 +3,10 @@ export interface Leseteppich {
   chars: string[];
   strings: string[]
 }
+
+export interface StorageHighscore {
+  creationTime: number,
+  teppichId: number,
+  count: number,
+  time: number
+}

@@ -14,7 +14,7 @@ import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { Timer } from "../Timer/Timer.tsx";
 import { generateOneLeseteppichArray, useGameStore } from "../../../store/game-store.ts";
 import ModalWin from "../../../components/ModalWin.tsx";
-import { Leseteppich } from "../../../models/interfaces.ts";
+import { Leseteppich, StorageHighscore } from "../../../models/interfaces.ts";
 import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
 import { toggleFullscreen } from "../../../helper-functions";
 
@@ -30,9 +30,19 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const {timerSeconds, timerIsActive, pauseTimer} = useGameStore(
+  const {activeTeppichId} = useGameStore(
     useShallow((state) => (
-      {timerSeconds: state.timerSeconds, timerIsActive: state.timerIsActive, pauseTimer: state.pauseTimer})),
+      {activeTeppichId: state.activeTeppichId}
+    ))
+  )
+  const {timerSeconds, timerIsActive, pauseTimer, initialTimeInSeconds} = useGameStore(
+    useShallow((state) => (
+      {
+        timerSeconds: state.timerSeconds,
+        timerIsActive: state.timerIsActive,
+        pauseTimer: state.pauseTimer,
+        initialTimeInSeconds: state.initialTimeInSeconds
+      })),
   );
   const isTimerFinished = timerSeconds <= 0;
 
@@ -82,16 +92,33 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     setCount(swiper.activeIndex);
   };
 
+  const saveHighscore = () => {
+    const localStorageKey = `highscore_leseteppich`
+    const actualTime = new Date().getTime()
+    const oldHighscore: StorageHighscore[] = JSON.parse(localStorage.getItem(localStorageKey)!)
+    const newHighscore: StorageHighscore = {
+      creationTime: actualTime,
+      teppichId: activeTeppichId!,
+      count: count,
+      time: initialTimeInSeconds
+    }
+    let storageData = [newHighscore]
+    if (oldHighscore) storageData = [...oldHighscore, newHighscore]
+    console.log("higscores:", storageData)
+    localStorage.setItem(localStorageKey, JSON.stringify(storageData))
+  }
+
   useEffect(() => {
     if (timerSeconds <= 0) {
       pauseTimer();
       openWinModal();
+      saveHighscore();
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
     }
-  }, [timerSeconds, openWinModal, pauseTimer, audioRef]);
+  }, [timerSeconds, openWinModal, pauseTimer, audioRef, count, initialTimeInSeconds, activeTeppichId]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {

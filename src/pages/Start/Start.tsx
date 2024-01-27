@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
@@ -8,6 +9,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 export default function Start() {
   const windowHeight = window.innerHeight
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, []);
 
 
   return (
