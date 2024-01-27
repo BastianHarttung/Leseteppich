@@ -7,9 +7,11 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 
 export default function Start() {
+  const windowHeight = window.innerHeight
+
 
   return (
-    <main style={{justifyContent: "flex-start"}}>
+    <main style={{justifyContent: windowHeight < 500 ? "flex-start" : "center"}}>
       <AppBar position="fixed">
         <Toolbar sx={{display: "flex", justifyContent: "center", gap: "8px"}}>
           <img src={LeseLogo}
@@ -19,16 +21,15 @@ export default function Start() {
       </AppBar>
 
       <Box display={"flex"} flexDirection={"column"} gap={2} py={10}>
-        {leseteppiche.filter((tepp) => tepp.id > 0)
-          .map((teppich: Leseteppich) => (
-            <Link key={teppich.id}
-                  to={`/teppich/${teppich.id}`}>
-              <Button variant="contained"
-                      size="large">
-                Leseteppich {teppich.id}
-              </Button>
-            </Link>
-          ))}
+        {leseteppiche.map((teppich: Leseteppich) => (
+          <Link key={teppich.id}
+                to={`/teppich/${teppich.id}`}>
+            <Button variant="contained"
+                    size="large">
+              Leseteppich {teppich.id}
+            </Button>
+          </Link>
+        ))}
       </Box>
 
       <Box
