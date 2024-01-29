@@ -1,2 +1,2 @@
-export * from "./fullScreen.ts"
-export * from "./randomNumber.ts"
+export * from "./fullScreen.ts";
+export * from "./randomNumber.ts";
