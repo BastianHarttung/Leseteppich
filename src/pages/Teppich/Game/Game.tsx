@@ -89,22 +89,6 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     setCount(swiper.activeIndex);
   };
 
-  // const saveHighscore = useCallback(() => {
-  //   const localStorageKey = `highscore_leseteppich`
-  //   const actualTime = new Date().getTime()
-  //   const oldHighscore: StorageHighscore[] = JSON.parse(localStorage.getItem(localStorageKey)!)
-  //   const newHighscore: StorageHighscore = {
-  //     creationTime: actualTime,
-  //     teppichId: activeTeppichId!,
-  //     count: count,
-  //     time: initialTimeInSeconds
-  //   }
-  //   let storageData = [newHighscore]
-  //   if (oldHighscore) storageData = [...oldHighscore, newHighscore]
-  //   console.log("highscores:", storageData)
-  //   localStorage.setItem(localStorageKey, JSON.stringify(storageData))
-  // }, [activeTeppichId, count, initialTimeInSeconds])
-
   useEffect(() => {
     if (timerSeconds <= 0) {
       pauseTimer();
