@@ -1,7 +1,18 @@
 import "./Teppich.scss";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, MouseEvent } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AppBar, Box, Button, FormControlLabel, Switch, TextField, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  FormControlLabel,
+  Switch,
+  TextField,
+  Toolbar,
+  Typography,
+  Menu,
+  MenuItem, ListItemIcon, ListItemText, IconButton,
+} from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
 import { Game } from "./Game/Game.tsx";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
@@ -14,6 +25,8 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 
 
 export default function Teppich() {
@@ -71,6 +84,15 @@ export default function Teppich() {
 
   const handleImageClick = () => {
     openImageModal();
+  };
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClickMore = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMore = () => {
+    setAnchorEl(null);
   };
 
   useEffect(() => {
@@ -156,6 +178,24 @@ export default function Teppich() {
                     {findTeppich?.chars.join(", ")}
                   </Typography>
                 </Box>
+
+                <Box>
+                  <IconButton onClick={handleClickMore}>
+                    <MoreVertIcon/>
+                  </IconButton>
+                </Box>
+
+                <Menu
+                  id="more-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleCloseMore}>
+                  <MenuItem onClick={handleCloseMore}>
+                    <ListItemIcon><FormatListNumberedIcon/></ListItemIcon>
+                    <ListItemText><Typography>Höchste Punkte</Typography></ListItemText>
+                  </MenuItem>
+                </Menu>
+
               </Box>
 
               <Box display={"flex"}
