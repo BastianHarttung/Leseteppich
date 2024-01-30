@@ -18,7 +18,7 @@ import { Game } from "./Game/Game.tsx";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
 import { useGameStore } from "../../store/game-store.ts";
 import LeseLogo from "../../assets/Leseteppich_Logo.svg";
-import ModalImage from "../../components/ModalImage.tsx";
+import ModalImage from "../../components/Modals/ModalImage.tsx";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
@@ -27,7 +27,7 @@ import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import ModalHighscore from "../../components/ModalHighscore.tsx";
+import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
 
 
 export default function Teppich() {

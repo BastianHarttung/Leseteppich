@@ -1,11 +1,14 @@
 import { useShallow } from "zustand/react/shallow";
-import { Box, IconButton, Modal } from "@mui/material";
+import { Box, IconButton, Modal, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useGameStore } from "../store/game-store.ts";
+import { useGameStore } from "../../store/game-store.ts";
+import HighscoreTable from "../Tables/HighscoreTable.tsx";
 
 
 const style = {
   display: 'flex',
+  flexDirection: 'column',
+  alignItems: "flex-start",
   position: 'absolute',
   top: '50%',
   left: '50%',
@@ -14,7 +17,7 @@ const style = {
   height: "90%",
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 1,
+  p: 2,
 };
 
 const ModalHighscore = () => {
@@ -36,7 +39,11 @@ const ModalHighscore = () => {
         </Box>
 
         <Box>
-          TODO Highscore
+          <Typography variant={"h6"}>Höchstpunktezahl</Typography>
+        </Box>
+
+        <Box sx={{width: "100%", height: "100%"}}>
+          <HighscoreTable/>
         </Box>
 
       </Box>

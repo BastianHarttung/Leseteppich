@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useShallow } from "zustand/react/shallow";
 import { Box, IconButton, Modal } from "@mui/material";
-import { useGameStore } from "../store/game-store.ts";
+import { useGameStore } from "../../store/game-store.ts";
 import CloseIcon from '@mui/icons-material/Close';
 
 

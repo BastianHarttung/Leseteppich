@@ -3,8 +3,8 @@ import { useShallow } from "zustand/react/shallow";
 import confetti from "canvas-confetti";
 import { Box, Fade, IconButton, Modal, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useGameStore } from "../store/game-store.ts";
-import LeseLogo from "../assets/Leseteppich_Logo.svg";
+import { useGameStore } from "../../store/game-store.ts";
+import LeseLogo from "../../assets/Leseteppich_Logo.svg";
 
 
 const style = {

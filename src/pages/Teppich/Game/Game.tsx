@@ -13,7 +13,7 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { Timer } from "../Timer/Timer.tsx";
 import { generateOneLeseteppichArray, useGameStore } from "../../../store/game-store.ts";
-import ModalWin from "../../../components/ModalWin.tsx";
+import ModalWin from "../../../components/Modals/ModalWin.tsx";
 import { Leseteppich } from "../../../models/interfaces.ts";
 import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
 import { toggleFullscreen } from "../../../helper-functions";
