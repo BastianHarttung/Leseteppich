@@ -27,6 +27,7 @@ import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import ModalHighscore from "../../components/ModalHighscore.tsx";
 
 
 export default function Teppich() {
@@ -59,6 +60,11 @@ export default function Teppich() {
       {openImageModal: state.openImageModal}
     )),
   );
+  const {openHighscoreModal} = useGameStore(
+    useShallow((state) => (
+      {openHighscoreModal: state.openHighscoreModal}
+    )),
+  );
   const {isKingsMarked, toggleKingsMarked} = useGameStore(
     useShallow((state) => (
       {isKingsMarked: state.isKingsMarked, toggleKingsMarked: state.toggleKingsMarked}
@@ -87,13 +93,19 @@ export default function Teppich() {
   };
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const openMoreMenu = Boolean(anchorEl);
+
   const handleClickMore = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
   const handleCloseMore = () => {
     setAnchorEl(null);
   };
+
+  const handleHighscoreClick = () => {
+    handleCloseMore();
+    openHighscoreModal()
+  }
 
   useEffect(() => {
     const importTeppichPic = async () => {
@@ -134,6 +146,8 @@ export default function Teppich() {
       {!isPlayGame ? (
           <Box paddingBottom={2}>
             <ModalImage/>
+
+            <ModalHighscore/>
 
             <AppBar position="fixed">
               <Toolbar sx={{justifyContent: "space-between"}}>
@@ -179,18 +193,25 @@ export default function Teppich() {
                   </Typography>
                 </Box>
 
-                <Box>
+                <Box height={73}>
                   <IconButton onClick={handleClickMore}>
                     <MoreVertIcon/>
                   </IconButton>
                 </Box>
 
-                <Menu
-                  id="more-menu"
-                  anchorEl={anchorEl}
-                  open={open}
-                  onClose={handleCloseMore}>
-                  <MenuItem onClick={handleCloseMore}>
+                <Menu id="more-menu"
+                      anchorEl={anchorEl}
+                      open={openMoreMenu}
+                      onClose={handleCloseMore}
+                      anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left',
+                      }}
+                      transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center',
+                      }}>
+                  <MenuItem onClick={handleHighscoreClick}>
                     <ListItemIcon><FormatListNumberedIcon/></ListItemIcon>
                     <ListItemText><Typography>Höchste Punkte</Typography></ListItemText>
                   </MenuItem>

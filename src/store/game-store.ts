@@ -29,6 +29,7 @@ interface GameState {
   count: number,
   isWinModalOpen: boolean,
   isImageModalOpen: boolean,
+  isHighscoreModalOpen: boolean,
 
   isKingsMarked: boolean,
 
@@ -59,6 +60,9 @@ interface GameState {
   openImageModal: () => void,
   closeImageModal: () => void,
 
+  openHighscoreModal: () => void,
+  closeHighscoreModal: () => void,
+
   toggleKingsMarked: (event: ChangeEvent<HTMLInputElement>) => void,
 
   checkFullscreen: () => void,
@@ -79,6 +83,7 @@ export const useGameStore = create<GameState>((set) => ({
 
   isWinModalOpen: false,
   isImageModalOpen: false,
+  isHighscoreModalOpen: false,
 
   isKingsMarked: true,
 
@@ -220,6 +225,20 @@ export const useGameStore = create<GameState>((set) => ({
       ...state,
       isImageModalOpen: false,
     };
+  }),
+
+  // Modal Highscore
+  openHighscoreModal: () => set(state => {
+    return {
+      ...state,
+      isHighscoreModalOpen: true
+    }
+  }),
+  closeHighscoreModal: () => set(state => {
+    return {
+      ...state,
+      isHighscoreModalOpen: false
+    }
   }),
 
   // Kings Marked
