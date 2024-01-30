@@ -34,7 +34,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 100svw;
+  width: 100svw;
   min-height: 100svh;
 }
 
@@ -45,7 +45,7 @@ main {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  height: 100svh;
+  min-height: 100svh;
   width: 100svw;
   padding: 0 12px 12px 12px;
 }
