@@ -1,33 +1,41 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { useHighscore } from "../../helper-functions/Hooks";
 import { useParams } from "react-router-dom";
+import moment from "moment"
 import { Box, Typography } from "@mui/material";
 
 const columns: GridColDef[] = [
   {
     field: 'place',
     headerName: 'Platz',
-    width: 75,
+    width: 55,
     flex: 0,
-    sortable: false
+    disableColumnMenu: true,
+    sortable: false,
+    align: "center",
+    headerAlign: "center",
   },
   {
     field: 'countMin',
     headerName: 'Wörter/Min',
     type: "number",
-    minWidth: 100,
+    minWidth: 95,
     flex: 1,
     disableColumnMenu: true,
-    sortable: false
+    sortable: false,
+    align: "center",
+    headerAlign: "center",
   },
   {
     field: 'time',
     headerName: 'Zeit',
     type: "number",
-    minWidth: 70,
+    minWidth: 65,
     flex: 1,
     disableColumnMenu: true,
     sortable: false,
+    align: "center",
+    headerAlign: "center",
     valueGetter: (params: GridValueGetterParams) =>
       `${params.row.time / 60} Min`,
   },
@@ -35,20 +43,22 @@ const columns: GridColDef[] = [
     field: 'count',
     headerName: 'Wörter',
     type: 'number',
-    minWidth: 70,
+    minWidth: 65,
     flex: 1,
     disableColumnMenu: true,
     sortable: false,
+    align: "center",
+    headerAlign: "center",
   },
   {
     field: 'creationTime',
     headerName: 'Datum/Zeit',
-    minWidth: 200,
+    minWidth: 140,
     flex: 2,
     disableColumnMenu: true,
     sortable: false,
     valueGetter: (params: GridValueGetterParams) =>
-      `${new Date(params.row.creationTime).toISOString()}`,
+      moment(new Date(params.row.creationTime)).format("DD.MM.YYYY | HH:mm"),
   },
 ];
 
@@ -75,16 +85,16 @@ const HighscoreTable = () => {
   const {id} = useParams()
   const {getHighscoreOfTeppichForTable} = useHighscore()
 
+  const rows = getHighscoreOfTeppichForTable(Number(id))
+
 
   return (
     <DataGrid
       getRowId={(row) => row.place}
-      rows={getHighscoreOfTeppichForTable(Number(id))}
+      rows={rows}
       columns={columns}
       disableColumnFilter
-      autoHeight={true}
-      columnHeaderHeight={42}
-      rowHeight={42}
+      density={rows.length < 3 ? "standard" : "compact"}
       hideFooter
       slots={{
         noRowsOverlay: CustomNoRowsOverlay,
