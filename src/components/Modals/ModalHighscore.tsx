@@ -9,6 +9,7 @@ const style = {
   display: 'flex',
   flexDirection: 'column',
   alignItems: "flex-start",
+  gap: "0.5rem",
   position: 'absolute',
   top: '50%',
   left: '50%',

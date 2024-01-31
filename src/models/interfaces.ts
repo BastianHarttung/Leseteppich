@@ -8,5 +8,6 @@ export interface StorageHighscore {
   creationTime: number,
   teppichId: number,
   count: number,
-  time: number
+  time: number,
+  countMin: number,
 }

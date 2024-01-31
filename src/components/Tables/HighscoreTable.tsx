@@ -1,8 +1,11 @@
 import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { useHighscore } from "../../helper-functions/Hooks";
+import { useParams } from "react-router-dom";
+import { Box, Typography } from "@mui/material";
 
 const columns: GridColDef[] = [
   {
-    field: 'id',
+    field: 'place',
     headerName: 'Platz',
     width: 75,
     flex: 0,
@@ -49,24 +52,43 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows = [
-  {id: 1, countMin: 15, time: 300, count: 70, creationTime: 1706646828321},
-  {id: 2, countMin: 14.5, time: 300, count: 70, creationTime: 1706646828321},
-  {id: 3, countMin: 13, time: 60, count: 13, creationTime: 1706646828321},
-  {id: 4, countMin: 12, time: 300, count: 62, creationTime: 1706646828321},
-  {id: 5, countMin: 11.7, time: 300, count: 60, creationTime: 1706646828321},
-];
+export interface HighscoreTableRow {
+  place: number,
+  countMin: number,
+  time: number,
+  count: number,
+  creationTime: number
+}
+
+function CustomNoRowsOverlay() {
+  return (
+    <Box display={"flex"}
+         alignItems={"center"}
+         justifyContent={"center"}
+         sx={{width: "100%", height: "100%"}}>
+      <Typography variant={"body1"}>Noch keine Höchstpunkte</Typography>
+    </Box>
+  );
+}
 
 const HighscoreTable = () => {
+  const {id} = useParams()
+  const {getHighscoreOfTeppichForTable} = useHighscore()
+
+
   return (
     <DataGrid
-      rows={rows}
+      getRowId={(row) => row.place}
+      rows={getHighscoreOfTeppichForTable(Number(id))}
       columns={columns}
       disableColumnFilter
+      autoHeight={true}
       columnHeaderHeight={42}
       rowHeight={42}
       hideFooter
-      autoHeight={true}
+      slots={{
+        noRowsOverlay: CustomNoRowsOverlay,
+      }}
     />
   );
 };
