@@ -78,7 +78,7 @@ const ModalWin = () => {
     const importTeppichPic = async () => {
       const randomNr = Math.round(Math.random() * 2) + 1;
       try {
-        const module = await import(`../assets/piri/Piri_${randomNr}.png`);
+        const module = await import(`../../assets/piri/Piri_${randomNr}.png`);
         setPiriPic(module.default);
       } catch (error) {
         console.error("Fehler beim Laden des Bildes:", error);
