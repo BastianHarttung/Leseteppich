@@ -45,6 +45,7 @@ export const useHighscore = () => {
         ...sco,
         place: index + 1,
       }))
+      .slice(0, 5) //only show first 5 in table
     return ret
   }
 

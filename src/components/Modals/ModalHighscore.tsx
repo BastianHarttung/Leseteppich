@@ -1,25 +1,9 @@
 import { useShallow } from "zustand/react/shallow";
-import { Box, IconButton, Modal, Typography } from "@mui/material";
+import { Box, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useGameStore } from "../../store/game-store.ts";
 import HighscoreTable from "../Tables/HighscoreTable.tsx";
 
-
-const style = {
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: "flex-start",
-  gap: "0.5rem",
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  maxWidth: "90%",
-  maxHeight: "90%",
-  bgcolor: 'background.paper',
-  boxShadow: 24,
-  p: 2,
-};
 
 const ModalHighscore = () => {
   const {isHighscoreModalOpen, closeHighscoreModal} = useGameStore(
@@ -30,25 +14,24 @@ const ModalHighscore = () => {
 
 
   return (
-    <Modal open={isHighscoreModalOpen}
-           onClose={closeHighscoreModal}>
-      <Box sx={style}>
-        <Box position={"absolute"} right={8} top={8}>
+    <Dialog open={isHighscoreModalOpen}
+            onClose={closeHighscoreModal}
+            scroll={"paper"}>
+      <DialogTitle>
+        Höchstpunktzahl
+        <Box position={"absolute"} right={12} top={12}>
           <IconButton onClick={closeHighscoreModal}>
             <CloseIcon/>
           </IconButton>
         </Box>
+      </DialogTitle>
 
-        <Box>
-          <Typography variant={"h6"}>Höchstpunktezahl</Typography>
-        </Box>
+      <DialogContent>
+        <HighscoreTable/>
+      </DialogContent>
 
-        <Box sx={{width: "100%", height: "100%"}}>
-          <HighscoreTable/>
-        </Box>
-
-      </Box>
-    </Modal>
+      <DialogActions/>
+    </Dialog>
   );
 };
 
