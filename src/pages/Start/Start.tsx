@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
 import { Leseteppich } from "../../models/interfaces.ts";
-import LeseLogo from "../../assets/Leseteppich_Logo_Text.svg"
 import GitHubIcon from '@mui/icons-material/GitHub';
+import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 
 
 export default function Start() {
@@ -17,13 +17,7 @@ export default function Start() {
 
   return (
     <main style={{justifyContent: windowHeight < 500 ? "flex-start" : "center"}}>
-      <AppBar position="fixed">
-        <Toolbar sx={{display: "flex", justifyContent: "center", gap: "8px"}}>
-          <img src={LeseLogo}
-               alt="Leseteppich-Logo"
-               height={48}/>
-        </Toolbar>
-      </AppBar>
+      <LeseteppichAppBar/>
 
       <Box display={"flex"} flexDirection={"column"} gap={2} py={10}>
         {leseteppiche.map((teppich: Leseteppich) => (
@@ -43,16 +37,15 @@ export default function Start() {
         bottom={0}
         sx={{
           width: "100%",
-          p: 2,
+          px: 2,
+          py: 1,
           backgroundColor: (theme) =>
             `${theme.palette.grey[200]}C8`,
         }}
       >
 
         <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-          <Typography variant="body1">
-            ©2024 von Bastian Harttung
-          </Typography>
+          <Typography variant="body1">©2024 von Bastian Harttung</Typography>
 
           <Link to={"https://github.com/BastianHarttung"} target={"_blank"}>
             <GitHubIcon/>

@@ -6,6 +6,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Start from "./pages/Start/Start.tsx";
 import Teppich from "./pages/Teppich/Teppich.tsx";
 import { CssBaseline } from "@mui/material";
+import FourOhFour from "./pages/404/FourOhFour.tsx";
+import Imprint from "./pages/Imprint/Imprint.tsx";
 
 
 const lightTheme = createTheme({
@@ -36,8 +38,10 @@ function App() {
       <ThemeProvider theme={lightTheme}>
         <CssBaseline/>
         <Routes>
-          <Route path={"/"} element={<Start/>}/>
-          <Route path={"teppich/:id"} element={<Teppich/>}/>
+          <Route path="/" element={<Start/>}/>
+          <Route path="teppich/:id" element={<Teppich/>}/>
+          <Route path="/impressum" element={<Imprint/>}/>
+          <Route path="*" element={<FourOhFour/>}/>
         </Routes>
       </ThemeProvider>
     </>
