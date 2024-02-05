@@ -79,7 +79,9 @@ export default function Teppich() {
   const findTeppich = leseteppiche.find((tepp) => tepp.id === Number(id));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setTimeInSeconds(event.target.value);
+    if (Number(event.target.value) > 0) {
+      setTimeInSeconds(event.target.value);
+    }
   };
 
   const handleStart = () => {
@@ -104,8 +106,8 @@ export default function Teppich() {
 
   const handleHighscoreClick = () => {
     handleCloseMore();
-    openHighscoreModal()
-  }
+    openHighscoreModal();
+  };
 
   useEffect(() => {
     const importTeppichPic = async () => {
@@ -204,12 +206,12 @@ export default function Teppich() {
                       open={openMoreMenu}
                       onClose={handleCloseMore}
                       anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'left',
+                        vertical: "bottom",
+                        horizontal: "left",
                       }}
                       transformOrigin={{
-                        vertical: 'top',
-                        horizontal: 'center',
+                        vertical: "top",
+                        horizontal: "center",
                       }}>
                   <MenuItem onClick={handleHighscoreClick}>
                     <ListItemIcon><FormatListNumberedIcon/></ListItemIcon>
