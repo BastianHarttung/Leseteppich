@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography,
   Menu,
-  MenuItem, ListItemIcon, ListItemText, IconButton,
+  MenuItem, ListItemIcon, ListItemText, IconButton, Stack,
 } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
 import { Game } from "./Game/Game.tsx";
@@ -23,6 +23,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
+// import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
@@ -163,11 +164,17 @@ export default function Teppich() {
                   </Button>
                 </Link>
 
-                <Button variant={"contained"}
-                        onClick={toggleFullscreen}
-                        startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}>
-                  {isFullscreen ? "Verkleinern" : "Vollbild"}
-                </Button>
+                <Stack direction={"row"} alignItems={"center"} gap={2}>
+                  {/*<IconButton sx={{color:"white"}}>*/}
+                  {/*  <HelpOutlineIcon/>*/}
+                  {/*</IconButton>*/}
+
+                  <Button variant={"contained"}
+                          onClick={toggleFullscreen}
+                          startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}>
+                    {isFullscreen ? "Verkleinern" : "Vollbild"}
+                  </Button>
+                </Stack>
               </Toolbar>
             </AppBar>
 
