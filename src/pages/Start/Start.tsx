@@ -19,7 +19,7 @@ export default function Start() {
     <main style={{justifyContent: windowHeight < 500 ? "flex-start" : "center"}}>
       <LeseteppichAppBar/>
 
-      <Box display={"flex"} flexDirection={"column"} gap={2} py={10}>
+      <Box display={"flex"} flexDirection={"column"} gap={2} pt={10} pb={6}>
         {leseteppiche.map((teppich: Leseteppich) => (
           <Link key={teppich.id}
                 to={`/teppich/${teppich.id}`}>
