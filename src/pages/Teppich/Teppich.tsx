@@ -132,7 +132,10 @@ export default function Teppich() {
   }, [checkFullscreen]);
 
   useEffect(() => {
-    if (findTeppich) setActiveTeppichId(findTeppich.id);
+    if (findTeppich) {
+      setActiveTeppichId(findTeppich.id);
+      document.title = findTeppich.name;
+    }
   }, [findTeppich, setActiveTeppichId]);
 
   useEffect(() => {
@@ -193,7 +196,7 @@ export default function Teppich() {
 
                 <Box>
                   <Typography variant={"h4"} textAlign={"left"}>
-                    Leseteppich Nr.{id}
+                    {findTeppich.name}
                   </Typography>
 
                   <Typography variant={"body1"}

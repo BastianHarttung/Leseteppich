@@ -3,6 +3,7 @@ import { Leseteppich } from "../models/interfaces.ts";
 export const leseteppiche: Leseteppich[] = [
   // {
   //   id: 0,
+  //   name: "Testteppich 0",
   //   chars: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "Ei", "Sch"],
   //   strings: [
   //     "null0", "eins1", "zwei2",
@@ -17,6 +18,7 @@ export const leseteppiche: Leseteppich[] = [
   // },
   {
     id: 10,
+    name: "Leseteppich Nr. 10",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "Ei"],
     strings: [
       "no", "na", "on", "ein", "nein",
@@ -30,6 +32,7 @@ export const leseteppiche: Leseteppich[] = [
   },
   {
     id: 11,
+    name: "Leseteppich Nr. 11",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "Ei", "H"],
     strings: [
       "ha", "ho", "hi", "he", "hu",
@@ -43,6 +46,7 @@ export const leseteppiche: Leseteppich[] = [
   },
   {
     id: 12,
+    name: "Leseteppich Nr. 12",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "Ei", "H", "B"],
     strings: [
       "ein", "eine", "um", "am", "alle",
@@ -56,6 +60,7 @@ export const leseteppiche: Leseteppich[] = [
   },
   {
     id: 13,
+    name: "Leseteppich Nr. 13",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "Ei", "H", "B", "-ch"],
     strings: [
       "ich", "bei", "im", "um", "alle",
@@ -69,6 +74,7 @@ export const leseteppiche: Leseteppich[] = [
   },
   {
     id: 14,
+    name: "Leseteppich Nr. 14",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "Ei", "H", "B", "-ch", "F"],
     strings: [
       "Foto", "Farbe", "Film", "Fest", "Ofen",

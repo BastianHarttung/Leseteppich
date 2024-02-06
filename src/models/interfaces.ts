@@ -1,5 +1,6 @@
 export interface Leseteppich {
   id: number;
+  name: string;
   chars: string[];
   strings: string[]
 }

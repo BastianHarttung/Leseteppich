@@ -1,7 +1,13 @@
 import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import { Box, Typography } from "@mui/material";
+import { useEffect } from "react";
 
 const Imprint = () => {
+  useEffect(() => {
+    document.title = "Leseteppich Impressum"
+  }, []);
+
+
   return (
     <main style={{justifyContent: "flex-start"}}>
       <LeseteppichAppBar/>
