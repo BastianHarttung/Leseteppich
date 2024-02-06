@@ -23,18 +23,21 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-// import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
+import { useTour } from "@reactour/tour";
 
 
 export default function Teppich() {
   const [teppichPic, setTeppichPic] = useState(null);
 
   const {id} = useParams();
+
+  const {setIsOpen, setCurrentStep} = useTour()
 
   const windowHeight = window.innerHeight;
 
@@ -110,6 +113,11 @@ export default function Teppich() {
     openHighscoreModal();
   };
 
+  const handleHelp = () => {
+    setCurrentStep(0)
+    setIsOpen(true)
+  }
+
   useEffect(() => {
     const importTeppichPic = async () => {
       try {
@@ -151,6 +159,7 @@ export default function Teppich() {
     <main style={{justifyContent: windowHeight < 400 ? "flex-start" : "center"}}>
       {!isPlayGame ? (
           <Box paddingBottom={2}>
+
             <ModalImage/>
 
             <ModalHighscore/>
@@ -168,13 +177,15 @@ export default function Teppich() {
                 </Link>
 
                 <Stack direction={"row"} alignItems={"center"} gap={2}>
-                  {/*<IconButton sx={{color:"white"}}>*/}
-                  {/*  <HelpOutlineIcon/>*/}
-                  {/*</IconButton>*/}
+                  <IconButton sx={{color: "white"}}
+                              onClick={handleHelp}>
+                    <HelpOutlineIcon/>
+                  </IconButton>
 
                   <Button variant={"contained"}
                           onClick={toggleFullscreen}
-                          startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}>
+                          startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}
+                          data-tut="reactour_fullscreen">
                     {isFullscreen ? "Verkleinern" : "Vollbild"}
                   </Button>
                 </Stack>
@@ -188,7 +199,7 @@ export default function Teppich() {
                  gap={0.5}>
 
               <Box className={"header-box"}>
-                {teppichPic && <Button onClick={handleImageClick}>
+                {teppichPic && <Button data-tut="reactour_modal-image" onClick={handleImageClick}>
                   <img src={teppichPic}
                        alt={`Leseteppich_${id}.jpg`}
                        height={75}/>
