@@ -176,7 +176,7 @@ export default function Teppich() {
                   </Button>
                 </Link>
 
-                <Stack direction={"row"} alignItems={"center"} gap={2}>
+                <Stack direction={"row"} alignItems={"center"} gap={1}>
                   <IconButton sx={{color: "white"}}
                               onClick={handleHelp}>
                     <HelpOutlineIcon/>
@@ -199,7 +199,7 @@ export default function Teppich() {
                  gap={0.5}>
 
               <Box className={"header-box"}>
-                {teppichPic && <Button data-tut="reactour_modal-image" onClick={handleImageClick}>
+                {teppichPic && <Button data-tut="reactour_image" onClick={handleImageClick}>
                   <img src={teppichPic}
                        alt={`Leseteppich_${id}.jpg`}
                        height={75}/>
@@ -217,7 +217,8 @@ export default function Teppich() {
                 </Box>
 
                 <Box height={73}>
-                  <IconButton onClick={handleClickMore}>
+                  <IconButton onClick={handleClickMore}
+                              data-tut="reactour_more-btn">
                     <MoreVertIcon/>
                   </IconButton>
                 </Box>
@@ -243,7 +244,8 @@ export default function Teppich() {
               </Box>
 
               <Box display={"flex"}
-                   alignItems={"flex-end"}>
+                   alignItems={"flex-end"}
+                   data-tut="reactour_time">
                 <Button variant={"outlined"}
                         size={"small"}
                         onClick={removeMinute}
@@ -270,11 +272,13 @@ export default function Teppich() {
                                 control={<Switch value={isKingsMarked}
                                                  onChange={toggleKingsMarked}/>}
                                 label="Könige (A,E,I,O,U) markieren"
-                                sx={{mr: 0}}/>
+                                sx={{mr: 0}}
+                                data-tut="reactour_kings"/>
 
               <Button variant={"contained"}
                       onClick={handleStart}
-                      size={"large"}>Start</Button>
+                      size={"large"}
+                      data-tut="reactour_start">Start</Button>
             </Box>
           </Box>)
         : <Game leseTeppich={findTeppich!}

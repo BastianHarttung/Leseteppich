@@ -44,7 +44,8 @@ const ModalImage = () => {
   return (
     <Modal open={isImageModalOpen}
            onClose={closeImageModal}>
-      <Box sx={style}>
+      <Box sx={style}
+           data-tut="reactour_modal-image">
         <Box position={"absolute"} right={8} top={8}>
           <IconButton onClick={closeImageModal}>
             <CloseIcon/>
@@ -54,6 +55,7 @@ const ModalImage = () => {
         {teppichPic && <img src={teppichPic}
                             alt={`Leseteppich_${id}.jpg`}
                             style={{height: "100%", width: "100%", objectFit: "contain"}}/>}
+
       </Box>
     </Modal>
   );

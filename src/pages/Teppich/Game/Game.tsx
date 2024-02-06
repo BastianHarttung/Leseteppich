@@ -142,7 +142,8 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
             <Typography variant={"h4"}
                         className={"count-text"}
                         fontSize={20}
-                        sx={{flexGrow: 1}}>{count}</Typography>
+                        sx={{flexGrow: 1}}
+                        data-tut="reactour_count">{count}</Typography>
 
             <Timer/>
           </div>
@@ -161,7 +162,6 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                 spaceBetween={50}
                 slidesPerView={1}
                 onSlideChange={handleSlideChange}
-          // onSwiper={(swiper) => console.log(swiper)}
                 navigation={{
                   prevEl: ".prev-button",
                   nextEl: ".next-button",
