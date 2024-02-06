@@ -26,7 +26,7 @@ export default function Start() {
                 to={`/teppich/${teppich.id}`}>
             <Button variant="contained"
                     size="large">
-              Leseteppich {teppich.id}
+              {teppich.name}
             </Button>
           </Link>
         ))}
