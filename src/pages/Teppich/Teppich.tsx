@@ -1,6 +1,7 @@
 import "./Teppich.scss";
 import { ChangeEvent, useEffect, useState, MouseEvent } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useTour } from "@reactour/tour";
 import {
   AppBar,
   Box,
@@ -24,16 +25,16 @@ import AddIcon from "@mui/icons-material/Add";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import { toggleFullscreen } from "../../helper-functions";
-import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import { toggleFullscreen } from "../../helper-functions";
+import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
-import { useTour } from "@reactour/tour";
+import DefaultTeppichPic from "../../assets/leseteppiche-scans/Leseteppich_0.jpg"
 
 
 export default function Teppich() {
-  const [teppichPic, setTeppichPic] = useState(null);
+  const [teppichPic, setTeppichPic] = useState(DefaultTeppichPic);
 
   const {id} = useParams();
 

@@ -14,7 +14,7 @@ import {
   TimelineSeparator,
   TimelineContent,
 } from "@mui/lab";
-import { localStorageKey } from "../../helper-functions/Hooks/index.ts";
+import { localStorageKey } from "../../helper-functions/Hooks";
 
 
 export default function Start() {
@@ -49,10 +49,12 @@ export default function Start() {
             </TimelineOppositeContent>
             <TimelineSeparator>
               <TimelineConnector sx={{opacity: index === 0 ? 0 : 1}}/>
-              <Link to={`/teppich/${teppich.id}`}>
+              <Link to={`/teppich/${teppich.id}`}
+                    data-tut="reactour_start-timelinedot">
                 <TimelineDot
                   color={highscoreLength(teppich.id) >= 5 ? "success" : highscoreLength(teppich.id) > 0 ? "yellow" : "primary"}
-                  sx={{width: "36px", display: "flex", justifyContent: "center", alignItems: "center"}}>
+                  sx={{width: "36px", display: "flex", justifyContent: "center", alignItems: "center"}}
+                >
                   {teppich.id}
                 </TimelineDot>
               </Link>
@@ -67,18 +69,6 @@ export default function Start() {
         )}
 
       </Timeline>
-
-      {/*<Box display={"flex"} flexDirection={"column"} gap={2} pt={10} pb={6}>*/}
-      {/*  {leseteppiche.map((teppich: Leseteppich) => (*/}
-      {/*    <Link key={teppich.id}*/}
-      {/*          to={`/teppich/${teppich.id}`}>*/}
-      {/*      <Button variant="contained"*/}
-      {/*              size="large">*/}
-      {/*        {teppich.name}*/}
-      {/*      </Button>*/}
-      {/*    </Link>*/}
-      {/*  ))}*/}
-      {/*</Box>*/}
 
       <Box
         component="footer"

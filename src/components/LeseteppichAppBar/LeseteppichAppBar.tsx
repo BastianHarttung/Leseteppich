@@ -1,12 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import LeseLogo from "../../assets/Leseteppich_Logo_Text.svg";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import { useState, MouseEvent } from "react";
+import { useTour } from "@reactour/tour";
 
 const LeseteppichAppBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const {setIsOpen, setCurrentStep} = useTour()
+
+  const navigate = useNavigate()
 
   const handleOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -16,6 +21,12 @@ const LeseteppichAppBar = () => {
     setAnchorEl(null);
   };
 
+  const handleHelp = () => {
+    handleCloseMenu();
+    navigate("/")
+    setCurrentStep(0)
+    setIsOpen(true)
+  }
 
   return (
     <AppBar position="fixed">
@@ -34,8 +45,12 @@ const LeseteppichAppBar = () => {
         <Menu anchorEl={anchorEl}
               open={open}
               onClose={handleCloseMenu}>
+          <MenuItem onClick={handleHelp}>
+            Hilfe
+          </MenuItem>
+
           <MenuItem onClick={handleCloseMenu}>
-            <Link to={"/impressum"} style={{color:"#000"}}>
+            <Link to={"/impressum"} style={{color: "#000", fontWeight: 400}}>
               Impressum
             </Link>
           </MenuItem>
