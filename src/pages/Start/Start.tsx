@@ -51,7 +51,7 @@ export default function Start() {
               <TimelineConnector sx={{opacity: index === 0 ? 0 : 1}}/>
               <Link to={`/teppich/${teppich.id}`}>
                 <TimelineDot
-                  color={highscoreLength(teppich.id) >= 5 ? "success" : highscoreLength(teppich.id) > 0 ? "warning" : "primary"}
+                  color={highscoreLength(teppich.id) >= 5 ? "success" : highscoreLength(teppich.id) > 0 ? "yellow" : "primary"}
                   sx={{width: "36px", display: "flex", justifyContent: "center", alignItems: "center"}}>
                   {teppich.id}
                 </TimelineDot>

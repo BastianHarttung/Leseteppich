@@ -10,14 +10,44 @@ import FourOhFour from "./pages/404/FourOhFour.tsx";
 import Imprint from "./pages/Imprint/Imprint.tsx";
 import { yellow } from "@mui/material/colors";
 
+declare module "@mui/material/styles" {
+  interface Palette {
+    yellow: Palette["primary"];
+  }
 
-const lightTheme = createTheme({
+  interface PaletteOptions {
+    yellow?: PaletteOptions["primary"];
+  }
+}
+declare module "@mui/material/Button" {
+  interface ButtonPropsColorOverrides {
+    yellow: true;
+  }
+}
+declare module "@mui/lab/TimelineDot" {
+  interface TimelineDotPropsColorOverrides {
+    yellow: true;
+  }
+}
+
+let lightTheme = createTheme({
   palette: {
     mode: "light",
-    warning: yellow,
     secondary: {
       main: "#1ccceb",
     },
+  },
+});
+
+lightTheme = createTheme(lightTheme, {
+  // Custom colors created with augmentColor go here
+  palette: {
+    yellow: lightTheme.palette.augmentColor({
+      color: {
+        main: yellow["500"],
+      },
+      name: "yellow",
+    }),
   },
 });
 
