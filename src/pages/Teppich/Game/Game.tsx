@@ -18,6 +18,7 @@ import { Leseteppich } from "../../../models/interfaces.ts";
 import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
 import { toggleFullscreen } from "../../../helper-functions";
 import { useHighscore } from "../../../helper-functions/Hooks";
+import StopOutlinedIcon from "@mui/icons-material/StopOutlined";
 
 
 interface GameProps {
@@ -135,13 +136,15 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
             <Button onClick={onStop}
                     color="error"
                     variant={"contained"}
-                    size={"small"}>
+                    size={"small"}
+                    startIcon={<StopOutlinedIcon/>}>
               Stop
             </Button>
 
             <Typography variant={"h4"}
                         className={"count-text"}
-                        fontSize={20}
+                        fontFamily={"ABeeZee"}
+                        fontSize={24}
                         sx={{flexGrow: 1}}
                         data-tut="reactour_count">{count}</Typography>
 
