@@ -1,10 +1,5 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
-import { leseteppiche } from "../../data/leseteppich-data.ts";
-import { Leseteppich, StorageHighscore } from "../../models/interfaces.ts";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import {
   Timeline,
   TimelineConnector,
@@ -14,6 +9,11 @@ import {
   TimelineSeparator,
   TimelineContent,
 } from "@mui/lab";
+import { Box, Typography } from "@mui/material";
+import { leseteppiche } from "../../data/leseteppich-data.ts";
+import { Leseteppich, StorageHighscore } from "../../models/interfaces.ts";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import { localStorageKey } from "../../helper-functions/Hooks";
 
 

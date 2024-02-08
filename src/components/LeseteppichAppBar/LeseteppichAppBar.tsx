@@ -1,9 +1,10 @@
+import { useState, MouseEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTour } from "@reactour/tour";
 import { AppBar, IconButton, Menu, MenuItem, Toolbar } from "@mui/material";
 import LeseLogo from "../../assets/Leseteppich_Logo_Text.svg";
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
-import { useState, MouseEvent } from "react";
-import { useTour } from "@reactour/tour";
+
 
 const LeseteppichAppBar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

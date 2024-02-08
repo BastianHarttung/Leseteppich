@@ -1,6 +1,6 @@
 import "./Teppich.scss";
 import { ChangeEvent, useEffect, useState, MouseEvent } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useTour } from "@reactour/tour";
 import {
   AppBar,
@@ -31,12 +31,15 @@ import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
 import DefaultTeppichPic from "../../assets/leseteppiche-scans/Leseteppich_0.jpg"
+import { useHelpTourStore } from "../../store/help-tour-store.ts";
 
 
 export default function Teppich() {
   const [teppichPic, setTeppichPic] = useState(DefaultTeppichPic);
 
   const {id} = useParams();
+
+  const location = useLocation()
 
   const {setIsOpen, setCurrentStep} = useTour()
 
@@ -81,6 +84,12 @@ export default function Teppich() {
     )),
   );
 
+  const {setStartingHelpUrl} = useHelpTourStore(
+    useShallow((state) => (
+      {setStartingHelpUrl: state.setStartingHelpUrl}
+    )),
+  );
+
   const findTeppich = leseteppiche.find((tepp) => tepp.id === Number(id));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -115,6 +124,8 @@ export default function Teppich() {
   };
 
   const handleHelp = () => {
+    const url = location.pathname
+    setStartingHelpUrl(url)
     setCurrentStep(0)
     setIsOpen(true)
   }

@@ -1,7 +1,8 @@
 import "./App.scss";
 import { SetStateAction, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { TourProvider} from "@reactour/tour";
+import { TourProvider } from "@reactour/tour";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import NoSleep from "nosleep.js";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -11,7 +12,8 @@ import Teppich from "./pages/Teppich/Teppich.tsx";
 import FourOhFour from "./pages/404/FourOhFour.tsx";
 import Imprint from "./pages/Imprint/Imprint.tsx";
 import { steps } from "./help-tour-steps.tsx";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { useHelpTourStore } from "./store/help-tour-store.ts";
+import { useShallow } from "zustand/react/shallow";
 
 
 declare module "@mui/material/styles" {
@@ -59,13 +61,21 @@ function App() {
 
   const [step, setStep] = useState(0)
 
+  const {startingHelpUrl} = useHelpTourStore(
+    useShallow((state) => (
+      {startingHelpUrl: state.startingHelpUrl}
+    )),
+  );
+
   const redirect = useNavigate()
 
   const disableBody = (target: Element | null) => {
-    disableBodyScroll(target!)
+    if (target) disableBodyScroll(target)
+    else disableBodyScroll(document.body)
   }
   const enableBody = (target: Element | null) => {
-    enableBodyScroll(target!)
+    if (target) enableBodyScroll(target)
+    else enableBodyScroll(document.body)
   };
 
   const handleSetCurrentStep = (step: SetStateAction<number>) => {
@@ -74,7 +84,8 @@ function App() {
         redirect("/");
         break;
       case 1:
-        redirect("/teppich/1");
+        if (startingHelpUrl.split("/")[1] === "teppich") redirect(startingHelpUrl);
+        else redirect("/teppich/1")
         break;
       default:
         break;
