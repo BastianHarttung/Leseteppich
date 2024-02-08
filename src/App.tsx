@@ -1,21 +1,23 @@
-import './App.scss'
+import "./App.scss";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import NoSleep from "nosleep.js";
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Start from "./pages/Start/Start.tsx";
 import Teppich from "./pages/Teppich/Teppich.tsx";
 import { CssBaseline } from "@mui/material";
 import FourOhFour from "./pages/404/FourOhFour.tsx";
 import Imprint from "./pages/Imprint/Imprint.tsx";
+import { yellow } from "@mui/material/colors";
 
 
 const lightTheme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
+    warning: yellow,
     secondary: {
-      main: "#1ccceb"
-    }
+      main: "#1ccceb",
+    },
   },
 });
 
@@ -45,7 +47,7 @@ function App() {
         </Routes>
       </ThemeProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

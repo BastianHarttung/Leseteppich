@@ -27,8 +27,8 @@ export const leseteppiche: Leseteppich[] = [
       "Tor", "Torte", "Sessel", "Semmel", "Reis",
       "Eis", "essen", "meinen", "alleine", "Eier",
       "Eimer", "Seil", "Ameise", "Amsel", "Lisa",
-      "teilen", "eine", "Leiter", "Nuss", "leise"
-    ]
+      "teilen", "eine", "Leiter", "Nuss", "leise",
+    ],
   },
   {
     id: 11,
@@ -41,8 +41,8 @@ export const leseteppiche: Leseteppich[] = [
       "Hanna", "Rehe", "Hase", "Hose", "mir",
       "sehen", "Hammer", "Halm", "Hut", "Huhn",
       "Eimer", "holen", "Hahn", "Uhu", "Atlas",
-      "Nashorn", "Einhorn", "Himmel", "Helm", "Malerin"
-    ]
+      "Nashorn", "Einhorn", "Himmel", "Helm", "Malerin",
+    ],
   },
   {
     id: 12,
@@ -55,8 +55,8 @@ export const leseteppiche: Leseteppich[] = [
       "Blume", "Bonbon", "Besen", "Birne", "Ball",
       "Biber", "Ballett", "Brombeere", "Banane", "basteln",
       "Mama mag bunte Blumen.",
-      "Piri und Leo blubbern mit Limo."
-    ]
+      "Piri und Leo blubbern mit Limo.",
+    ],
   },
   {
     id: 13,
@@ -69,8 +69,8 @@ export const leseteppiche: Leseteppich[] = [
       "Licht", "nicht", "Bach", "Buch", "Bein",
       "Locher", "rechnen", "machen", "lachen", "suchen",
       "Leon sucht sein Buch unter dem Tuch.",
-      "Die Buben basteln nachts."
-    ]
+      "Die Buben basteln nachts.",
+    ],
   },
   {
     id: 14,
@@ -83,7 +83,7 @@ export const leseteppiche: Leseteppich[] = [
       "fressen", "haben", "fallen", "toben", "Teich",
       "Futter", "helfen", "rufen", "holen", "filmen",
       "Anna malt einen Roboter.",
-      "Oma filmt einen Affen."
-    ]
+      "Oma filmt einen Affen.",
+    ],
   },
-]
+];
