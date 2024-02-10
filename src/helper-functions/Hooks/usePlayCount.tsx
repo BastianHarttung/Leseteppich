@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { PlayCount } from "../../models/interfaces.ts";
 
-
-interface PlayCount {
-  [key: number]: number
-}
 
 export const localStoragePlayCountKey = "leseteppich_play-count"
 
@@ -22,6 +19,11 @@ const usePlayCount = () => {
     localStorage.setItem(localStoragePlayCountKey, JSON.stringify(newStorage));
   }, [storagePlayCount]);
 
+  const getPlayCount = (id: number): number => {
+    if (storagePlayCount) return storagePlayCount[id] || 0
+    else return 0
+  }
+
   useEffect(() => {
     playCountStorage()
   }, [playCountStorage]);
@@ -29,7 +31,8 @@ const usePlayCount = () => {
 
   return {
     storagePlayCount,
-    addPlayCount
+    addPlayCount,
+    getPlayCount
   }
 };
 

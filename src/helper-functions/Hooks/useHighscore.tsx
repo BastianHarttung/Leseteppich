@@ -1,5 +1,5 @@
 import { StorageHighscore } from "../../models/interfaces.ts";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useGameStore } from "../../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
 import { HighscoreTableRow } from "../../components/Tables/HighscoreTable.tsx";
@@ -8,6 +8,8 @@ import { HighscoreTableRow } from "../../components/Tables/HighscoreTable.tsx";
 export const localStorageHighscoreKey = `leseteppich_highscores`;
 
 export const useHighscore = () => {
+
+  const [highscore, setHighscore] = useState<StorageHighscore[]>([])
 
   const {activeTeppichId, count, initialTimeInSeconds} = useGameStore(
     useShallow((state) => (
@@ -18,10 +20,10 @@ export const useHighscore = () => {
       })),
   );
 
-  const oldHighscore = useCallback((): StorageHighscore[] => {
+  const getOldHighscore = useCallback(() => {
     const storage = localStorage.getItem(localStorageHighscoreKey);
-    if (storage) return JSON.parse(storage);
-    else return [];
+    if (storage) setHighscore(JSON.parse(storage) as StorageHighscore[]);
+    else setHighscore([]);
   }, []);
 
   const saveHighscore = useCallback(() => {
@@ -34,13 +36,13 @@ export const useHighscore = () => {
       countMin: Math.round((count / initialTimeInSeconds * 60) * 100) / 100,
     };
     let storageData = [newHighscore];
-    if (oldHighscore()) storageData = [...oldHighscore(), newHighscore];
+    if (highscore.length > 0) storageData = [...highscore, newHighscore];
     console.log("save highscores:", storageData);
     localStorage.setItem(localStorageHighscoreKey, JSON.stringify(storageData));
-  }, [oldHighscore, activeTeppichId, count, initialTimeInSeconds]);
+  }, [highscore, activeTeppichId, count, initialTimeInSeconds]);
 
-  const getHighscoreOfTeppichForTable = (teppichId: number) => {
-    const ret: HighscoreTableRow[] = oldHighscore()
+  const getHighscoreOfTeppichForTable = (teppichId: number): HighscoreTableRow[] => {
+    return highscore
       .filter((score) => score.teppichId === teppichId)
       .sort((scoreA, scoreB) => scoreB.countMin - scoreA.countMin)
       .map((sco, index) => ({
@@ -48,12 +50,16 @@ export const useHighscore = () => {
         place: index + 1,
       }))
       .slice(0, 5); //only show first 5 in table
-    return ret;
   };
 
+  useEffect(() => {
+    getOldHighscore()
+  }, [getOldHighscore]);
+
+
   return {
+    highscore,
     saveHighscore,
-    oldHighscore,
     getHighscoreOfTeppichForTable,
   };
 };

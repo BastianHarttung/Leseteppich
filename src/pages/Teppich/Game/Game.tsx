@@ -32,6 +32,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   const theme = useTheme();
 
   const {saveHighscore} = useHighscore();
+
   const {addPlayCount} = usePlayCount()
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -103,7 +104,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
         audioRef.current.play();
       }
     }
-  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore, addPlayCount]);
+  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore, addPlayCount, leseTeppich.id]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {

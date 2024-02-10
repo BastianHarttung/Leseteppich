@@ -10,23 +10,15 @@ import {
 } from "@mui/lab";
 import { Box, Typography } from "@mui/material";
 import { leseteppiche } from "../../data/leseteppich-data.ts";
-import { Leseteppich, StorageHighscore } from "../../models/interfaces.ts";
+import { Leseteppich } from "../../models/interfaces.ts";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
-import { localStorageHighscoreKey } from "../../helper-functions/Hooks";
+import usePlayCount from "../../helper-functions/Hooks/usePlayCount.tsx";
 
 
 export default function Start() {
-  const highscores = (): StorageHighscore[] => {
-    const storage = localStorage.getItem(localStorageHighscoreKey);
-    if (storage) return JSON.parse(storage);
-    else return [];
-  };
 
-  const highscoreLength = (id: number) => {
-    const filteredHighscores = highscores().filter((score) => score.teppichId === id);
-    return filteredHighscores.length;
-  };
+  const {getPlayCount} = usePlayCount()
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -46,7 +38,7 @@ export default function Start() {
                 <Link to={`/teppich/${teppich.id}`}
                       data-tut="reactour_start-timelinedot">
                   <TimelineDot
-                    color={highscoreLength(teppich.id) >= 5 ? "success" : highscoreLength(teppich.id) > 0 ? "yellow" : "primary"}
+                    color={getPlayCount(teppich.id) >= 5 ? "success" : getPlayCount(teppich.id) > 0 ? "yellow" : "primary"}
                     sx={{width: "36px", display: "flex", justifyContent: "center", alignItems: "center"}}
                   >
                     {teppich.id}

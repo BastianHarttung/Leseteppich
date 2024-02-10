@@ -12,3 +12,7 @@ export interface StorageHighscore {
   time: number,
   countMin: number,
 }
+
+export interface PlayCount {
+  [key: number]: number
+}
