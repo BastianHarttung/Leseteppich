@@ -4,6 +4,7 @@ import { useShallow } from "zustand/react/shallow";
 import { Box, IconButton, Modal } from "@mui/material";
 import { useGameStore } from "../../store/game-store.ts";
 import CloseIcon from '@mui/icons-material/Close';
+import DefaultTeppichPic from "../../assets/leseteppiche-scans/Leseteppich_0.jpg"
 
 
 const style = {
@@ -19,7 +20,7 @@ const style = {
 };
 
 const ModalImage = () => {
-  const [teppichPic, setTeppichPic] = useState(null)
+  const [teppichPic, setTeppichPic] = useState(DefaultTeppichPic)
 
   const {isImageModalOpen, closeImageModal} = useGameStore(
     useShallow((state) => (

@@ -5,7 +5,7 @@ import { useShallow } from "zustand/react/shallow";
 import { HighscoreTableRow } from "../../components/Tables/HighscoreTable.tsx";
 
 
-export const localStorageKey = `highscore_leseteppich`;
+export const localStorageHighscoreKey = `leseteppich_highscores`;
 
 export const useHighscore = () => {
 
@@ -19,10 +19,10 @@ export const useHighscore = () => {
   );
 
   const oldHighscore = useCallback((): StorageHighscore[] => {
-    const storage = localStorage.getItem(localStorageKey);
+    const storage = localStorage.getItem(localStorageHighscoreKey);
     if (storage) return JSON.parse(storage);
     else return [];
-  }, [localStorageKey]);
+  }, []);
 
   const saveHighscore = useCallback(() => {
     const actualTime = new Date().getTime();
@@ -36,8 +36,8 @@ export const useHighscore = () => {
     let storageData = [newHighscore];
     if (oldHighscore()) storageData = [...oldHighscore(), newHighscore];
     console.log("save highscores:", storageData);
-    localStorage.setItem(localStorageKey, JSON.stringify(storageData));
-  }, [localStorageKey, oldHighscore, activeTeppichId, count, initialTimeInSeconds]);
+    localStorage.setItem(localStorageHighscoreKey, JSON.stringify(storageData));
+  }, [oldHighscore, activeTeppichId, count, initialTimeInSeconds]);
 
   const getHighscoreOfTeppichForTable = (teppichId: number) => {
     const ret: HighscoreTableRow[] = oldHighscore()

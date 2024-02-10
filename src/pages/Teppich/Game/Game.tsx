@@ -19,6 +19,7 @@ import WinSound from "../../../assets/sounds/Stage-Win_(Super-Mario).mp3";
 import { toggleFullscreen } from "../../../helper-functions";
 import { useHighscore } from "../../../helper-functions/Hooks";
 import StopOutlinedIcon from "@mui/icons-material/StopOutlined";
+import usePlayCount from "../../../helper-functions/Hooks/usePlayCount.tsx";
 
 
 interface GameProps {
@@ -31,6 +32,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   const theme = useTheme();
 
   const {saveHighscore} = useHighscore();
+  const {addPlayCount} = usePlayCount()
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -95,12 +97,13 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
       pauseTimer();
       openWinModal();
       saveHighscore();
+      addPlayCount(leseTeppich.id);
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
         audioRef.current.play();
       }
     }
-  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore]);
+  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore, addPlayCount]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {
