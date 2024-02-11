@@ -137,22 +137,27 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
               sx={{minHeight: 80, justifyContent: "center"}}>
         <Toolbar>
           <div className={"game-cockpit"}>
-            <Button onClick={onStop}
-                    color="error"
-                    variant={"contained"}
-                    size={"small"}
-                    startIcon={<StopOutlinedIcon/>}>
-              Stop
-            </Button>
+            <Box flex={1} display={"flex"}>
+              <Button onClick={onStop}
+                      color="error"
+                      variant={"contained"}
+                      size={"small"}
+                      startIcon={<StopOutlinedIcon/>}>
+                Stop
+              </Button>
+            </Box>
 
-            <Typography variant={"h4"}
-                        className={"count-text"}
-                        fontFamily={"ABeeZee"}
-                        fontSize={24}
-                        sx={{flexGrow: 1}}
-                        data-tut="reactour_count">{count}</Typography>
+            <Box flex={1} display={"flex"} justifyContent={"center"}>
+              <Typography variant={"h4"}
+                          className={"count-text"}
+                          fontFamily={"ABeeZee"}
+                          fontSize={24}
+                          data-tut="reactour_count">{count}</Typography>
+            </Box>
 
-            <Timer/>
+            <Box flex={1} display={"flex"} justifyContent={"right"}>
+              <Timer/>
+            </Box>
           </div>
         </Toolbar>
       </AppBar>
