@@ -2,7 +2,6 @@
   "name": "leseteppich",
   "private": true,
   "version": "1.3.0",
-  "homepage": "/leseteppich",
   "type": "module",
   "scripts": {
     "dev": "vite",
