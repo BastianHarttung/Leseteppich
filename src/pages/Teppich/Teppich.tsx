@@ -168,7 +168,7 @@ export default function Teppich() {
   );
 
   return (
-    <main style={{justifyContent: windowHeight < 400 ? "flex-start" : "center"}}>
+    <main style={{justifyContent: windowHeight < 348 ? "flex-start" : "center"}}>
       {!isPlayGame ? (
           <Box paddingBottom={2}>
 

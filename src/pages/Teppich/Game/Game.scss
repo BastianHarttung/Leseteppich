@@ -14,8 +14,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 0;
   margin-top: 92px;
+  margin-left: -12px;
+  margin-right: -12px;
+
+  .prev-button {
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    left: 16px;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+  }
+
+  .next-button {
+    background-color: rgba(255, 255, 255, 0.6);
+    position: absolute;
+    right: 16px;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
 }
 
 .char {

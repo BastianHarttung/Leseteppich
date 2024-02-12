@@ -170,15 +170,14 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
         <Swiper modules={[Navigation]}
                 className={"swiper_container"}
-                style={{padding: "24px"}}
-                spaceBetween={50}
+                style={{padding: "24px 70px"}}
+                spaceBetween={60}
                 slidesPerView={1}
                 onSlideChange={handleSlideChange}
                 navigation={{
                   prevEl: ".prev-button",
                   nextEl: ".next-button",
                 }}>
-
           {teppichGameArray.map((teppichStrings, index) => (
             <SwiperSlide key={index}
                          className={"swiper_slide"}>
@@ -207,7 +206,8 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                     },
                   )}
               </Typography>
-            </SwiperSlide>))}
+            </SwiperSlide>
+          ))}
         </Swiper>
 
         <IconButton onClick={handleNext}
@@ -216,6 +216,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                     className="next-button">
           <RedoIcon fontSize={"large"}/>
         </IconButton>
+
       </div>
     </div>
   );
