@@ -182,7 +182,11 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
             <SwiperSlide key={index}
                          className={"swiper_slide"}>
               <Typography variant={"h3"}
-                          sx={{padding: "12px", gap: "4px 16px"}}
+                          sx={{
+                            fontSize: teppichStrings.length > 44 ? "2.2em" : "3em",
+                            gap: teppichStrings.length > 44 ? "6px 10px" : "4px 16px",
+                            padding: "12px"
+                          }}
                           display={"flex"}
                           justifyContent={"center"}
                           flexWrap={"wrap"}>

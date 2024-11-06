@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { useShallow } from "zustand/react/shallow";
 import { Game } from "./Game/Game.tsx";
-import { leseteppiche } from "../../data/leseteppich-data.ts";
+import { liesMitPiri } from "../../data/leseteppich-data.ts";
 import { useGameStore } from "../../store/game-store.ts";
 import LeseLogo from "../../assets/Leseteppich_Logo.svg";
 import ModalImage from "../../components/Modals/ModalImage.tsx";
@@ -90,7 +90,7 @@ export default function Teppich() {
     )),
   );
 
-  const findTeppich = leseteppiche.find((tepp) => tepp.id === Number(id));
+  const findTeppich = liesMitPiri.find((tepp) => tepp.id === Number(id));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (Number(event.target.value) > 0) {
@@ -133,7 +133,7 @@ export default function Teppich() {
   useEffect(() => {
     const importTeppichPic = async () => {
       try {
-        const module = await import(`../../assets/leseteppiche-scans/Leseteppich_${id}.jpg`);
+        const module = await import(`../../assets/lies-mit-piri/Lies_mit_Piri-${id}.jpg`);
         setTeppichPic(module.default);
       } catch (error) {
         console.error("Fehler beim Laden des Bildes:", error);
@@ -211,7 +211,9 @@ export default function Teppich() {
                  gap={0.5}>
 
               <Box className={"header-box"}>
-                {teppichPic && <Button data-tut="reactour_image" onClick={handleImageClick}>
+                {teppichPic && <Button data-tut="reactour_image"
+                                       sx={{minWidth: "128px"}}
+                                       onClick={handleImageClick}>
                   <img src={teppichPic}
                        alt={`Leseteppich_${id}.jpg`}
                        height={75}/>
@@ -223,7 +225,7 @@ export default function Teppich() {
                   </Typography>
 
                   <Typography variant={"body1"}
-                              sx={{fontSize: "1.3rem"}}>
+                              sx={{fontSize: "1.3rem", textAlign: "left"}}>
                     {findTeppich?.chars.join(", ")}
                   </Typography>
                 </Box>

@@ -32,7 +32,7 @@ const ModalImage = () => {
   useEffect(() => {
     const importTeppichPic = async () => {
       try {
-        const module = await import(`../../assets/leseteppiche-scans/Leseteppich_${id}.jpg`);
+        const module = await import(`../../assets/lies-mit-piri/Lies_mit_Piri-${id}.jpg`);
         setTeppichPic(module.default);
       } catch (error) {
         console.error('Fehler beim Laden des Bildes:', error);
