@@ -12,9 +12,9 @@ import { Box, Typography } from "@mui/material";
 import { liesMitPiri } from "../../data/leseteppich-data.ts";
 import { Leseteppich } from "../../models/interfaces.ts";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import usePlayCount from "../../helper-functions/Hooks/usePlayCount.tsx";
+import SchulAppsLogo from "../../assets/icons/Logo_Schul-Apps_schwarz-weiss.svg"
 
 
 export default function Start() {
@@ -73,9 +73,10 @@ export default function Start() {
                `${theme.palette.grey[200]}C8`,
            }}>
         <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-          <Link to={"https://school-apps.de"} target={"_blank"}
+          <Link to={"https://schul-apps.de"} target={"_blank"}
                 style={{display: "flex"}}>
-            <SchoolOutlinedIcon sx={{ fontSize: 28 }}/>
+            <img src={SchulAppsLogo} alt="Schul-Apps"
+                 style={{height: "28px"}}/>
           </Link>
 
           <Box display={"flex"} alignItems={"center"} gap={1}>
@@ -83,7 +84,7 @@ export default function Start() {
 
             <Link to={"https://github.com/BastianHarttung"} target={"_blank"}
                   style={{display: "flex"}}>
-              <GitHubIcon />
+              <GitHubIcon/>
             </Link>
           </Box>
         </Box>
