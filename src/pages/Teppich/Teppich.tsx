@@ -30,12 +30,11 @@ import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import { toggleFullscreen } from "../../helper-functions";
 import NoTeppich from "./NoTeppich/NoTeppich.tsx";
 import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
-import DefaultTeppichPic from "../../assets/leseteppiche-scans/Leseteppich_0.jpg"
 import { useHelpTourStore } from "../../store/help-tour-store.ts";
 
 
 export default function Teppich() {
-  const [teppichPic, setTeppichPic] = useState(DefaultTeppichPic);
+  const [teppichPic, setTeppichPic] = useState<string | null>(null);
 
   const {id} = useParams();
 
@@ -133,9 +132,10 @@ export default function Teppich() {
   useEffect(() => {
     const importTeppichPic = async () => {
       try {
-        const module = await import(`../../assets/lies-mit-piri/Lies_mit_Piri-${id}.jpg`);
+        const module = await import(`../../assets/lies-mit-piri/Lies-mit-Piri_${id}.jpg`);
         setTeppichPic(module.default);
       } catch (error) {
+        setTeppichPic(null)
         console.error("Fehler beim Laden des Bildes:", error);
       }
     };
@@ -225,7 +225,7 @@ export default function Teppich() {
                   </Typography>
 
                   <Typography variant={"body1"}
-                              sx={{fontSize: "1.3rem", textAlign: "left"}}>
+                              sx={{fontSize: "1.1rem", textAlign: "left"}}>
                     {findTeppich?.chars.join(", ")}
                   </Typography>
                 </Box>

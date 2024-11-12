@@ -4,7 +4,7 @@ export const liesMitPiri: Leseteppich[] = [
   {
     id: 1,
     name: "Lies mit Piri 1",
-    chars: ["M", "A", "L", "E", "O"],
+    chars: ["M", "A", "L"],
     strings: [
       "am", "ma", "me", "mo", "em",
       "le", "me", "om", "al", "lo",
@@ -16,6 +16,30 @@ export const liesMitPiri: Leseteppich[] = [
   {
     id: 2,
     name: "Lies mit Piri 2",
+    chars: ["M", "A", "L", "E"],
+    strings: [
+      "am", "ma", "me", "mo", "em",
+      "le", "me", "om", "al", "lo",
+      "mal", "lom", "mem", "mam", "lem",
+      "Mal", "Alm", "Ole", "Leo", "Oma",
+      "Lamm", "Alma", "male", "Momo", "Mama",
+    ],
+  },
+  {
+    id: 3,
+    name: "Lies mit Piri 3",
+    chars: ["M", "A", "L", "E", "O"],
+    strings: [
+      "am", "ma", "me", "mo", "em",
+      "le", "me", "om", "al", "lo",
+      "mal", "lom", "mem", "mam", "lem",
+      "Mal", "Alm", "Ole", "Leo", "Oma",
+      "Lamm", "Alma", "male", "Momo", "Mama",
+    ],
+  },
+  {
+    id: 4,
+    name: "Lies mit Piri 4",
     chars: ["M", "A", "L", "E", "O", "R"],
     strings: [
       "ra", "re", "re", "ar", "er",
@@ -26,8 +50,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 3,
-    name: "Lies mit Piri 3",
+    id: 5,
+    name: "Lies mit Piri 5",
     chars: ["M", "A", "L", "E", "O", "R", "I"],
     strings: [
       "mi", "li", "ri", "Mimi", "Miri",
@@ -38,8 +62,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 4,
-    name: "Lies mit Piri 4",
+    id: 6,
+    name: "Lies mit Piri 6",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T"],
     strings: [
       "ta", "te", "to", "ot", "at",
@@ -50,8 +74,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 5,
-    name: "Lies mit Piri 5",
+    id: 7,
+    name: "Lies mit Piri 7",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U"],
     strings: [
       "tu", "me", "lu", "um", "im",
@@ -62,8 +86,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 6,
-    name: "Lies mit Piri 6",
+    id: 8,
+    name: "Lies mit Piri 8",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N"],
     strings: [
       "Toni", "Leon", "Moni", "Mutti", "Nina",
@@ -74,8 +98,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 7,
-    name: "Lies mit Piri 7",
+    id: 9,
+    name: "Lies mit Piri 9",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S"],
     strings: [
       "summ", "Rast", "Muster", "Nuss", "Susi",
@@ -87,8 +111,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 8,
-    name: "Lies mit Piri 8",
+    id: 10,
+    name: "Lies mit Piri 10",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI"],
     strings: [
       "ein", "nein", "leise", "mein", "rein",
@@ -100,8 +124,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 9,
-    name: "Lies mit Piri 9",
+    id: 11,
+    name: "Lies mit Piri 11",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H"],
     strings: [
       "hallo", "Hai", "Husten", "Hose",
@@ -113,8 +137,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 10,
-    name: "Lies mit Piri 10",
+    id: 12,
+    name: "Lies mit Piri 12",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B"],
     strings: [
       "Ball", "bunt", "Blut", "Bein", "blau",
@@ -126,8 +150,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 11,
-    name: "Lies mit Piri 11",
+    id: 13,
+    name: "Lies mit Piri 13",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH"],
     strings: [
       "Buch", "reich", "seicht", "Hecht", "Bach",
@@ -139,8 +163,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 12,
-    name: "Lies mit Piri 12",
+    id: 14,
+    name: "Lies mit Piri 14",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH", "F"],
     strings: [
       "Foto", "fein", "Bein", "Film", "oft",
@@ -152,8 +176,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 13,
-    name: "Lies mit Piri 13",
+    id: 15,
+    name: "Lies mit Piri 15",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K"],
     strings: [
       "klein", "Mark", "Korb", "Kurs", "Kabel",
@@ -165,8 +189,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 14,
-    name: "Lies mit Piri 14",
+    id: 16,
+    name: "Lies mit Piri 16",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K", "SCH"],
     strings: [
       "Schaf", "Schal", "Schach", "scheinen",
@@ -178,8 +202,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 15,
-    name: "Lies mit Piri 15",
+    id: 17,
+    name: "Lies mit Piri 17",
     chars: ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH", "F", "SCH", "D"],
     strings: [
       "das", "Rudi", "dein", "Dusche", "fade",
@@ -191,8 +215,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 16,
-    name: "Lies mit Piri 16",
+    id: 18,
+    name: "Lies mit Piri 18",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU"],
     strings: [
@@ -205,8 +229,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 17,
-    name: "Lies mit Piri 17",
+    id: 19,
+    name: "Lies mit Piri 19",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W"],
     strings: [
@@ -219,8 +243,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 18,
-    name: "Lies mit Piri 18",
+    id: 20,
+    name: "Lies mit Piri 20",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü"],
     strings: [
@@ -233,8 +257,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 19,
-    name: "Lies mit Piri 19",
+    id: 21,
+    name: "Lies mit Piri 21",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P"],
     strings: [
@@ -247,8 +271,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 20,
-    name: "Lies mit Piri 20",
+    id: 22,
+    name: "Lies mit Piri 22",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE"],
     strings: [
@@ -261,8 +285,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 21,
-    name: "Lies mit Piri 21",
+    id: 23,
+    name: "Lies mit Piri 23",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G"],
     strings: [
@@ -275,8 +299,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 22,
-    name: "Lies mit Piri 22",
+    id: 24,
+    name: "Lies mit Piri 24",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö"],
     strings: [
@@ -289,8 +313,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 23,
-    name: "Lies mit Piri 23",
+    id: 25,
+    name: "Lies mit Piri 25",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU"],
     strings: [
@@ -303,8 +327,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 24,
-    name: "Lies mit Piri 24",
+    id: 26,
+    name: "Lies mit Piri 26",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß"],
     strings: [
@@ -317,8 +341,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 25,
-    name: "Lies mit Piri 25",
+    id: 27,
+    name: "Lies mit Piri 27",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J"],
     strings: [
@@ -331,8 +355,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 26,
-    name: "Lies mit Piri 26",
+    id: 28,
+    name: "Lies mit Piri 28",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG"],
     strings: [
@@ -343,8 +367,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 27,
-    name: "Lies mit Piri 27",
+    id: 29,
+    name: "Lies mit Piri 29",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP"],
     strings: [
@@ -355,8 +379,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 28,
-    name: "Lies mit Piri 28",
+    id: 30,
+    name: "Lies mit Piri 30",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST"],
     strings: [
@@ -367,8 +391,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 29,
-    name: "Lies mit Piri 29",
+    id: 31,
+    name: "Lies mit Piri 31",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z"],
     strings: [
@@ -379,8 +403,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 30,
-    name: "Lies mit Piri 30",
+    id: 32,
+    name: "Lies mit Piri 32",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF"],
     strings: [
@@ -391,8 +415,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 31,
-    name: "Lies mit Piri 31",
+    id: 33,
+    name: "Lies mit Piri 33",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK"],
     strings: [
@@ -403,8 +427,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 32,
-    name: "Lies mit Piri 32",
+    id: 34,
+    name: "Lies mit Piri 34",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y"],
     strings: [
@@ -415,8 +439,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 33,
-    name: "Lies mit Piri 33",
+    id: 35,
+    name: "Lies mit Piri 35",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä"],
@@ -428,8 +452,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 34,
-    name: "Lies mit Piri 34",
+    id: 36,
+    name: "Lies mit Piri 36",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä", "X"],
@@ -441,8 +465,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 35,
-    name: "Lies mit Piri 35",
+    id: 37,
+    name: "Lies mit Piri 37",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä", "X", "QU"],
@@ -454,8 +478,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 36,
-    name: "Lies mit Piri 36",
+    id: 38,
+    name: "Lies mit Piri 38",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä", "X", "QU", "V"],
@@ -467,8 +491,8 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 37,
-    name: "Lies mit Piri 37",
+    id: 39,
+    name: "Lies mit Piri 39",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä", "X", "QU", "V", "C"],
@@ -480,14 +504,39 @@ export const liesMitPiri: Leseteppich[] = [
     ],
   },
   {
-    id: 38,
-    name: "Lies mit Piri 38",
+    id: 40,
+    name: "Lies mit Piri 40",
     chars: ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
       "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
       "Ä", "X", "QU", "V", "C", "TZ"],
     strings: [
       "Satz", "Witz", "sitzen", "Spielplatz",
       "Katze", "Tatze", "putzen", "verschwitzt",
+      "Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.",
+      "Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz...",
+    ],
+  },
+  {
+    id: 41,
+    name: "Extra Teppich für Lese-Profis 1",
+    chars: ["Alle Buchstaben"],
+    strings: [
+      "Piri pfeift auf Pfannkuchen mit Pflanzenöl. Er mag lieber Apfelsaft und Pflaumenmus.",
+      "Ein Pferd hüpft tapfer über einen Futternapf mit blauen Tupfen. Darin liegt ein dampfender Apfelkrapfen.",
+      "Dackel Jockel steht auf dem Sockel mit der dicken Jacke.",
+      "Der Bäcker bäckt dreieckige Zuckerschnecken mit Zimt und Zwetschgen. Das schmeckt lecker.",
+      "In Ägypten gibt es Pyramiden.",
+      "Das Baby kuschelt den Teddy.",
+      "Müde Kinder gähnen. Böse Kinder ärgern. Liebe Kinder lächeln.",
+      "Du sollst nicht immer drängeln! Kämm lieber deine Haare.",
+      "Xenia mixt mit dem Mixer Teig für einen Kuchen für Xaver. Das geht ganz fix.",
+      "Das Taxi bringt die Hexe zur Nixe. Beide üben für einen Boxkampf.",
+      "An der Quelle sitzt die Qualle und sie quiekt in keinem Falle.",
+      "Quirin hat quirlige Kaulquappen im Aquarium. Später werden das quakende Frösche.",
+      "Oliver versteht viel vom Klavier spielen. Er spielt seit er vier ist.",
+      "Vitali versucht seinem violetten Vogel beizubringen, auf das Vogelhaus zu fliegen.",
+      "Claus und Curt campen auf dem Campingplatz.",
+      "Der Clown Marcus liest einen coolen Comic für zehn Cent.",
       "Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.",
       "Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz...",
     ],

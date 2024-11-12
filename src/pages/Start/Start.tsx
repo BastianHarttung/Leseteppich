@@ -12,6 +12,7 @@ import { Box, Typography } from "@mui/material";
 import { liesMitPiri } from "../../data/leseteppich-data.ts";
 import { Leseteppich } from "../../models/interfaces.ts";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined';
 import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import usePlayCount from "../../helper-functions/Hooks/usePlayCount.tsx";
 
@@ -60,25 +61,31 @@ export default function Start() {
 
       </Timeline>
 
-      <Box
-        component="footer"
-        position={"fixed"}
-        bottom={0}
-        sx={{
-          width: "100%",
-          px: 2,
-          py: 1,
-          backgroundColor: (theme) =>
-            `${theme.palette.grey[200]}C8`,
-        }}
-      >
-
+      <Box component="footer"
+           position={"fixed"}
+           bottom={0}
+           left={0}
+           sx={{
+             width: "100%",
+             px: 2,
+             py: 1,
+             backgroundColor: (theme) =>
+               `${theme.palette.grey[200]}C8`,
+           }}>
         <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-          <Typography variant="body1">©2024 von Bastian Harttung</Typography>
-
-          <Link to={"https://github.com/BastianHarttung"} target={"_blank"}>
-            <GitHubIcon/>
+          <Link to={"https://school-apps.de"} target={"_blank"}
+                style={{display: "flex"}}>
+            <SchoolOutlinedIcon sx={{ fontSize: 28 }}/>
           </Link>
+
+          <Box display={"flex"} alignItems={"center"} gap={1}>
+            <Typography variant="body1">©2024 von Bastian Harttung</Typography>
+
+            <Link to={"https://github.com/BastianHarttung"} target={"_blank"}
+                  style={{display: "flex"}}>
+              <GitHubIcon />
+            </Link>
+          </Box>
         </Box>
 
       </Box>

@@ -4,7 +4,6 @@ import { useShallow } from "zustand/react/shallow";
 import { Box, IconButton, Modal } from "@mui/material";
 import { useGameStore } from "../../store/game-store.ts";
 import CloseIcon from '@mui/icons-material/Close';
-import DefaultTeppichPic from "../../assets/leseteppiche-scans/Leseteppich_0.jpg"
 
 
 const style = {
@@ -20,7 +19,7 @@ const style = {
 };
 
 const ModalImage = () => {
-  const [teppichPic, setTeppichPic] = useState(DefaultTeppichPic)
+  const [teppichPic, setTeppichPic] = useState<string | null>(null)
 
   const {isImageModalOpen, closeImageModal} = useGameStore(
     useShallow((state) => (
@@ -32,9 +31,10 @@ const ModalImage = () => {
   useEffect(() => {
     const importTeppichPic = async () => {
       try {
-        const module = await import(`../../assets/lies-mit-piri/Lies_mit_Piri-${id}.jpg`);
+        const module = await import(`../../assets/lies-mit-piri/Lies-mit-Piri_${id}.jpg`);
         setTeppichPic(module.default);
       } catch (error) {
+        setTeppichPic(null)
         console.error('Fehler beim Laden des Bildes:', error);
       }
     };
