@@ -41,6 +41,10 @@
   font-family: "ABeeZee", "Roboto", sans-serif;
   min-width: 20px;
   text-align: center;
+
+  &.small{
+    min-width: 14px;
+  }
 }
 
 .koenig {

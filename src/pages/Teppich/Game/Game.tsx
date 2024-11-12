@@ -178,13 +178,15 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                   prevEl: ".prev-button",
                   nextEl: ".next-button",
                 }}>
-          {teppichGameArray.map((teppichStrings, index) => (
-            <SwiperSlide key={index}
-                         className={"swiper_slide"}>
+          {teppichGameArray.map((teppichStrings, index) => {
+            const isLongTeppich = teppichStrings.length > 44
+
+            return <SwiperSlide key={index}
+                                className={"swiper_slide"}>
               <Typography variant={"h3"}
                           sx={{
-                            fontSize: teppichStrings.length > 44 ? "2.2em" : "3em",
-                            gap: teppichStrings.length > 44 ? "6px 10px" : "4px 16px",
+                            fontSize: isLongTeppich ? "2.2em" : "3em",
+                            gap: isLongTeppich ? "6px 10px" : "4px 16px",
                             padding: "12px"
                           }}
                           display={"flex"}
@@ -199,9 +201,9 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                               const isVokabel = vokabels.test(char);
                               return (
                                 <span key={charIndex}
-                                      className={`char ${(isVokabel && isKingsMarked) ? "koenig" : ""}`}>
-                  {char}
-                </span>
+                                      className={`char ${isLongTeppich ? "small" : ""} ${(isVokabel && isKingsMarked) ? "koenig" : ""}`}>
+                                  {char}
+                                </span>
                               );
                             },
                           )}
@@ -211,7 +213,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                   )}
               </Typography>
             </SwiperSlide>
-          ))}
+          })}
         </Swiper>
 
         <IconButton onClick={handleNext}
