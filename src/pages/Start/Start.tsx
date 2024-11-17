@@ -14,7 +14,7 @@ import { Leseteppich } from "../../models/interfaces.ts";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
 import usePlayCount from "../../helper-functions/Hooks/usePlayCount.tsx";
-import SchulAppsLogo from "../../assets/icons/Logo_Schul-Apps_schwarz-weiss.svg"
+import SchulAppsLogo from "../../assets/icons/Logo_Schul-Apps_nurLogo.svg"
 
 
 export default function Start() {
