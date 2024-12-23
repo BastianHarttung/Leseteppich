@@ -7,13 +7,15 @@ import NoSleep from "nosleep.js";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { yellow } from "@mui/material/colors";
+import { useShallow } from "zustand/react/shallow";
 import Start from "./pages/Start/Start.tsx";
 import Teppich from "./pages/Teppich/Teppich.tsx";
 import FourOhFour from "./pages/404/FourOhFour.tsx";
 import Imprint from "./pages/Imprint/Imprint.tsx";
 import { steps } from "./help-tour-steps.tsx";
 import { useHelpTourStore } from "./store/help-tour-store.ts";
-import { useShallow } from "zustand/react/shallow";
+import { useIpAddress } from "./helper-functions/Hooks";
+import { updateBackendStats } from "./helper-functions";
 
 
 declare module "@mui/material/styles" {
@@ -58,16 +60,17 @@ lightTheme = createTheme(lightTheme, {
 });
 
 function App() {
-
   const [step, setStep] = useState(0)
+
+  const ip = useIpAddress()
+
+  const redirect = useNavigate()
 
   const {startingHelpUrl} = useHelpTourStore(
     useShallow((state) => (
       {startingHelpUrl: state.startingHelpUrl}
     )),
   );
-
-  const redirect = useNavigate()
 
   const disableBody = (target: Element | null) => {
     if (target) disableBodyScroll(target)
@@ -103,6 +106,19 @@ function App() {
       noSleep.disable();
     };
   }, []);
+
+  useEffect(() => {
+    if (!ip) return;
+
+    const runUpdate = async () => {
+      try {
+        await updateBackendStats(ip);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    runUpdate();
+  }, [ip]);
 
 
   return (
