@@ -1,31 +1,38 @@
 // Interfaces
 export interface Data {
   overallCount: number;
-  [ip: string]: number;
+  users: {
+    [ip: string]: UserStats;
+  };
+}
+
+export interface UserStats {
+  count: number;
+  coins: number;
 }
 
 interface Backend {
-  setItem<T>(key: string, item: T): Promise<string>;
+  setItem(key: string, item: Data): Promise<string>;
 
-  getItem<T>(key: string): T | null;
+  getItem(key: string): Data | null;
 
   deleteItem(key: string): Promise<string>;
 }
 
 // Methods
-let jsonFromServer: Record<string, any> = {};
+let jsonFromServer: Record<string, Data> = {};
 let BASE_SERVER_URL: string | undefined;
 
 export const backend: Backend = {
-  setItem<T>(key: string, item: T): Promise<string> {
+  setItem(key: string, item: Data): Promise<string> {
     jsonFromServer[key] = item;
     return saveJSONToServer();
   },
-  getItem<T>(key: string): T | null {
+  getItem(key: string): Data | null {
     if (!jsonFromServer[key]) {
       return null;
     }
-    return jsonFromServer[key] as T;
+    return jsonFromServer[key];
   },
   deleteItem(key: string): Promise<string> {
     delete jsonFromServer[key];
@@ -34,21 +41,21 @@ export const backend: Backend = {
 };
 
 // Nur ausführen, falls wir uns in einer Browser-Umgebung befinden
-if (typeof window !== 'undefined') {
-  window.onload = async function (): Promise<void> {
-    await downloadFromServer();
-  };
-}
-
-export async function downloadFromServer(): Promise<string> {
-  const result = await loadJSONFromServer();
-  jsonFromServer = JSON.parse(result);
-  // console.log('Loaded', result);
-  return result
-}
+// if (typeof window !== 'undefined') {
+//   window.onload = async function (): Promise<void> {
+//     await downloadFromServer();
+//   };
+// }
 
 export function setURL(url: string): void {
   BASE_SERVER_URL = url;
+}
+
+export async function downloadFromServer(): Promise<void> {
+  const result = await loadJSONFromServer();
+  if (result) {
+    jsonFromServer = JSON.parse(result);
+  }
 }
 
 /**
@@ -59,6 +66,7 @@ export async function loadJSONFromServer(): Promise<string> {
     throw new Error('BASE_SERVER_URL is not set.');
   }
   const response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&noache=' + new Date().getTime());
+
   return await response.text();
 }
 
@@ -128,4 +136,4 @@ function determineProxySettings(): string {
   // }
 }
 
-export { jsonFromServer }
+export { jsonFromServer };
