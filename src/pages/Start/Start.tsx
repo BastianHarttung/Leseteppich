@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Timeline,
   TimelineConnector,
@@ -7,23 +7,24 @@ import {
   TimelineItem,
   TimelineSeparator,
   TimelineContent,
-} from "@mui/lab";
-import { Box, Typography } from "@mui/material";
-import { liesMitPiri } from "../../data/leseteppich-data.ts";
-import { Leseteppich } from "../../models/interfaces.ts";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import LeseteppichAppBar from "../../components/LeseteppichAppBar/LeseteppichAppBar.tsx";
-import usePlayCount from "../../helper-functions/Hooks/usePlayCount.tsx";
-import SchulAppsLogo from "../../assets/icons/Logo_Schul-Apps_nurLogo.svg"
+} from '@mui/lab';
+import { Box, Typography } from '@mui/material';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import SchulAppsLogo from '../../assets/icons/Logo_Schul-Apps_nurLogo.svg';
+import LeseteppichAppBar from '../../components/LeseteppichAppBar/LeseteppichAppBar.tsx';
+import { liesMitPiri } from '../../data/leseteppich-data.ts';
+import usePlayCount from '../../helper-functions/Hooks/usePlayCount.tsx';
+import { Leseteppich } from '../../models/interfaces.ts';
+import packageJson from '../../../package.json';
 
 
 export default function Start() {
 
-  const {getPlayCount} = usePlayCount()
+  const {getPlayCount} = usePlayCount();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Leseteppich";
+    document.title = 'Leseteppich';
   }, []);
 
 
@@ -31,7 +32,7 @@ export default function Start() {
     <main>
       <LeseteppichAppBar/>
 
-      <Timeline position={"alternate"} sx={{pt: 7, pb: 4}}>
+      <Timeline position={'alternate'} sx={{pt: 7, pb: 4}}>
         {liesMitPiri.map((teppich: Leseteppich, index) => (
             <TimelineItem key={teppich.id}>
               <TimelineSeparator>
@@ -39,18 +40,18 @@ export default function Start() {
                 <Link to={`/teppich/${teppich.id}`}
                       data-tut="reactour_start-timelinedot">
                   <TimelineDot
-                    color={getPlayCount(teppich.id) >= 5 ? "success" : getPlayCount(teppich.id) > 0 ? "yellow" : "primary"}
-                    sx={{width: "36px", display: "flex", justifyContent: "center", alignItems: "center"}}
+                    color={getPlayCount(teppich.id) >= 5 ? 'success' : getPlayCount(teppich.id) > 0 ? 'yellow' : 'primary'}
+                    sx={{width: '36px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                   >
                     {teppich.id}
                   </TimelineDot>
                 </Link>
                 <TimelineConnector sx={{opacity: index === (liesMitPiri.length - 1) ? 0 : 1}}/>
               </TimelineSeparator>
-              <TimelineContent sx={{m: "auto 0", width: "500px"}}>
+              <TimelineContent sx={{m: 'auto 0', width: '500px'}}>
                 <Link to={`/teppich/${teppich.id}`}
                       data-tut="reactour_start-timelinedot">
-                  <Typography variant="h6" component="span" color={"text.primary"}>
+                  <Typography variant="h6" component="span" color={'text.primary'}>
                     {teppich.name}
                   </Typography>
                 </Link>
@@ -62,28 +63,28 @@ export default function Start() {
       </Timeline>
 
       <Box component="footer"
-           position={"fixed"}
+           position={'fixed'}
            bottom={0}
            left={0}
            sx={{
-             width: "100%",
+             width: '100%',
              px: 2,
              py: 1,
              backgroundColor: (theme) =>
                `${theme.palette.grey[200]}C8`,
            }}>
-        <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-          <Link to={"https://schul-apps.de"} target={"_blank"}
-                style={{display: "flex"}}>
+        <Box display={'flex'} alignItems={'center'} justifyContent={'space-between'}>
+          <Link to={'https://schul-apps.de'} target={'_blank'}
+                style={{display: 'flex'}}>
             <img src={SchulAppsLogo} alt="Schul-Apps"
-                 style={{height: "28px"}}/>
+                 style={{height: '28px'}}/>
           </Link>
 
-          <Box display={"flex"} alignItems={"center"} gap={1}>
-            <Typography variant="body1">©2024 von Bastian Harttung</Typography>
+          <Box display={'flex'} alignItems={'center'} gap={1}>
+            <Typography variant="body1">©20{packageJson.version} von Bastian Harttung</Typography>
 
-            <Link to={"https://github.com/BastianHarttung"} target={"_blank"}
-                  style={{display: "flex"}}>
+            <Link to={'https://github.com/BastianHarttung'} target={'_blank'}
+                  style={{display: 'flex'}}>
               <GitHubIcon/>
             </Link>
           </Box>
