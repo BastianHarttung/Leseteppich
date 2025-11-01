@@ -6,11 +6,11 @@ export const liesMitPiri: Leseteppich[] = [
     name: "Lies mit Piri 1",
     chars: ["M", "A", "L"],
     strings: [
-      "am", "ma", "me", "mo", "em",
-      "le", "me", "om", "al", "lo",
-      "mal", "lom", "mem", "mam", "lem",
-      "Mal", "Alm", "Ole", "Leo", "Oma",
-      "Lamm", "Alma", "male", "Momo", "Mama",
+      "al", "la", "ma",
+      "la", "am", "mal", "la", "lal",
+      "mam",
+      "Mal", "Alm", "Lala", "Lama", "Lamm",
+      "Mama", "Alma",
     ],
   },
   {
@@ -18,11 +18,11 @@ export const liesMitPiri: Leseteppich[] = [
     name: "Lies mit Piri 2",
     chars: ["M", "A", "L", "E"],
     strings: [
-      "am", "ma", "me", "mo", "em",
-      "le", "me", "om", "al", "lo",
-      "mal", "lom", "mem", "mam", "lem",
-      "Mal", "Alm", "Ole", "Leo", "Oma",
-      "Lamm", "Alma", "male", "Momo", "Mama",
+      "al", "la", "le", "el", "me",
+      "ma", "am",
+      "Lela", "Lala", "Lale", "Lele", "Ele",
+      "Mama", "mal", "alle", "Emma", "Alma",
+      "Male", "Mel", "Lea", "Elma", "Lale",
     ],
   },
   {
