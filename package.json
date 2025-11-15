@@ -1,7 +1,7 @@
 {
   "name": "leseteppich",
   "private": true,
-  "version": "25.10",
+  "version": "25.11",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,8 +18,7 @@
     "@mui/material": "^5.15.5",
     "@mui/x-data-grid": "^6.19.2",
     "@reactour/tour": "^3.6.1",
-    "@types/body-scroll-lock": "^3.1.2",
-    "body-scroll-lock": "4.0.0-beta.0",
+    "body-scroll-lock-upgrade": "^1.1.0",
     "canvas-confetti": "^1.9.2",
     "moment": "^2.30.1",
     "nosleep.js": "^0.12.0",
@@ -41,6 +40,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.12"
+    "vite": "^7.2.2"
   }
 }

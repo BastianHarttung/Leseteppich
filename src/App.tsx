@@ -2,7 +2,7 @@ import "./App.scss";
 import { SetStateAction, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { TourProvider } from "@reactour/tour";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock-upgrade";
 import NoSleep from "nosleep.js";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
@@ -73,11 +73,11 @@ function App() {
   );
 
   const disableBody = (target: Element | null) => {
-    if (target) disableBodyScroll(target)
+    if (target) disableBodyScroll(target as HTMLElement)
     else disableBodyScroll(document.body)
   }
   const enableBody = (target: Element | null) => {
-    if (target) enableBodyScroll(target)
+    if (target) enableBodyScroll(target as HTMLElement)
     else enableBodyScroll(document.body)
   };
 
