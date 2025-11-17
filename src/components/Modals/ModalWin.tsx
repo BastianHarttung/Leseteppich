@@ -4,7 +4,11 @@ import confetti from 'canvas-confetti';
 import { Box, Fade, IconButton, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LeseLogo from '../../assets/Leseteppich_Logo.svg';
-import { useGameStore, useTimerStore } from '../../store/index.ts';
+import Funki1 from '../../assets/funki/Funki_Freude_01.svg';
+import Piri1 from '../../assets/piri/Piri_1.png'
+import Piri2 from '../../assets/piri/Piri_2.png'
+import Piri3 from '../../assets/piri/Piri_3.png'
+import { useGameStore, useTimerStore } from '../../store';
 
 
 const style = {
@@ -19,7 +23,7 @@ const style = {
 };
 
 const ModalWin = () => {
-  const [piriPic, setPiriPic] = useState(null);
+  const [piriPic, setPiriPic] = useState<string | null>(null);
 
   const {isWinModalOpen, closeWinModal} = useGameStore(
     useShallow((state) => (
@@ -75,18 +79,17 @@ const ModalWin = () => {
   }, [isWinModalOpen]);
 
   useEffect(() => {
-    const importTeppichPic = async () => {
-      const randomNr = Math.round(Math.random() * 2) + 1;
-      try {
-        const module = await import(`../../assets/piri/Piri_${randomNr}.png`);
-        setPiriPic(module.default);
-      } catch (error) {
-        console.error('Fehler beim Laden des Bildes:', error);
-      }
-    };
-
-    importTeppichPic();
-  }, []);
+    if (piriPic) return;
+    const images = [Funki1, Piri1, Piri2, Piri3];
+    const randomNr = Math.round(Math.random() * (images.length - 1));
+    try {
+      console.log("images", randomNr, images[randomNr])
+      setPiriPic(images[randomNr]);
+    } catch (error) {
+      console.error('Fehler beim Laden des Bildes:', error);
+      setPiriPic(null);
+    }
+  }, [piriPic]);
 
 
   return (
