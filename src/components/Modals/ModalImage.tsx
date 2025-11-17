@@ -34,7 +34,7 @@ const ModalImage = () => {
   const findTeppich = json?.find((tepp) => tepp.id === Number(id));
 
   const handlePrintImage = () => {
-    if (!findTeppich?.images) return;
+    if (!findTeppich?.images.length) return;
     printImage(findTeppich.images[0], id);
   };
 

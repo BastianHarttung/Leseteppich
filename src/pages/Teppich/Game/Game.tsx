@@ -18,7 +18,7 @@ import { toggleFullscreen, uniqueStrings } from '../../../helper-functions';
 import { useHighscore } from '../../../helper-functions/Hooks';
 import usePlayCount from '../../../helper-functions/Hooks/usePlayCount.tsx';
 import { Leseteppich } from '../../../models/interfaces.ts';
-import { generateOneLeseteppichArray, useGameStore } from '../../../store/game-store.ts';
+import { generateOneLeseteppichArray, useGameStore, useTimerStore } from '../../../store/index.ts';
 import { Timer } from '../Timer/Timer.tsx';
 
 
@@ -37,7 +37,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const {timerSeconds, timerIsActive, pauseTimer} = useGameStore(
+  const {timerSeconds, timerIsActive, pauseTimer} = useTimerStore(
     useShallow((state) => (
       {
         timerSeconds: state.timerSeconds,

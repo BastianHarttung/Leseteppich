@@ -20,9 +20,7 @@ import ModalImage from '../../components/Modals/ModalImage.tsx';
 import { Game } from './Game/Game.tsx';
 import { toggleFullscreen, uniqueStrings } from '../../helper-functions';
 import NoTeppich from './NoTeppich/NoTeppich.tsx';
-import { useGameStore } from '../../store/game-store.ts';
-import { useHelpTourStore } from '../../store/help-tour-store.ts';
-import { useJsonStore } from '../../store/json-store.ts';
+import { useGameStore, useHelpTourStore, useJsonStore, useTimerStore } from '../../store/index.ts';
 
 
 export default function Teppich() {
@@ -43,7 +41,7 @@ export default function Teppich() {
     useShallow((state) => (
       {isPlayGame: state.isPlayGame, startGame: state.startGame, stopGame: state.stopGame})),
   );
-  const {initialTimeInSeconds, setTimeInSeconds, addMinute, removeMinute} = useGameStore(
+  const {initialTimeInSeconds, setTimeInSeconds, addMinute, removeMinute} = useTimerStore(
     useShallow((state) => (
       {
         initialTimeInSeconds: state.initialTimeInSeconds,
@@ -121,22 +119,6 @@ export default function Teppich() {
     setIsOpen(true);
   };
 
-  // useEffect(() => {
-  //   const importTeppichPic = async () => {
-  //     try {
-  //       if (findTeppich && findTeppich.images) {
-  //         const module = await import(findTeppich.images[0]);
-  //         setTeppichPic(module.default);
-  //       }
-  //     } catch (error) {
-  //       setTeppichPic(null);
-  //       console.error('Fehler beim Laden des Bildes oder keins vorhanden:', error);
-  //     }
-  //   };
-  //
-  //   if (findTeppich) importTeppichPic();
-  // }, [id, findTeppich]);
-
   useEffect(() => {
     checkFullscreen();
     document.addEventListener('fullscreenchange', checkFullscreen);
@@ -205,7 +187,7 @@ export default function Teppich() {
                  gap={0.5}>
 
               <Box className={'header-box'}>
-                {findTeppich.images && (
+                {findTeppich.images.length > 0 && (
                   <Button data-tut="reactour_image"
                           sx={{minWidth: '128px'}}
                           onClick={handleImageClick}>
@@ -295,6 +277,5 @@ export default function Teppich() {
                 onStop={stopGame}/>
       }
     </main>
-  )
-    ;
+  );
 }

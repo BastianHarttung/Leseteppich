@@ -4,7 +4,7 @@ import confetti from 'canvas-confetti';
 import { Box, Fade, IconButton, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LeseLogo from '../../assets/Leseteppich_Logo.svg';
-import { useGameStore } from '../../store/game-store.ts';
+import { useGameStore, useTimerStore } from '../../store/index.ts';
 
 
 const style = {
@@ -29,7 +29,7 @@ const ModalWin = () => {
     useShallow((state) => (
       {count: state.count})),
   );
-  const {initialTimeInSeconds} = useGameStore(
+  const {initialTimeInSeconds} = useTimerStore(
     useShallow((state) => (
       {initialTimeInSeconds: state.initialTimeInSeconds}
     )),

@@ -1,17 +1,17 @@
-import { useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import { useGameStore } from "../../../store/game-store.ts";
-import { useShallow } from "zustand/react/shallow";
-import PlayArrowOutlinedIcon from "@mui/icons-material/PlayArrowOutlined";
-import PauseOutlinedIcon from "@mui/icons-material/PauseOutlined";
+import { useEffect } from 'react';
+import { Box, Button, Typography } from '@mui/material';
+import { useShallow } from 'zustand/react/shallow';
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
+import { useTimerStore } from '../../../store/index.ts';
 
 
 export const Timer = () => {
-  const {timerSeconds, decreaseTimerSecond} = useGameStore(
+  const {timerSeconds, decreaseTimerSecond} = useTimerStore(
     useShallow((state) => (
       {timerSeconds: state.timerSeconds, decreaseTimerSecond: state.decreaseTimerSecond})),
   );
-  const {timerIsActive, activateTimer, pauseTimer} = useGameStore(
+  const {timerIsActive, activateTimer, pauseTimer} = useTimerStore(
     useShallow((state) => (
       {timerIsActive: state.timerIsActive, activateTimer: state.activateTimer, pauseTimer: state.pauseTimer})),
   );
@@ -19,7 +19,7 @@ export const Timer = () => {
   const formatTime = (timeInSeconds: number): string => {
     const minutes = Math.floor(timeInSeconds / 60);
     const seconds = timeInSeconds % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
   };
 
   const isTimerEnd = timerSeconds <= 0;
@@ -54,26 +54,26 @@ export const Timer = () => {
 
   return (
     <Box>
-      <Typography variant={"h5"}
-                  fontFamily={"monospace"}
+      <Typography variant={'h5'}
+                  fontFamily={'monospace'}
                   fontWeight={100}>
         {formatTime(timerSeconds)}
       </Typography>
 
       <Button onClick={handleStart}
               disabled={timerIsActive || isTimerEnd}
-              variant={"contained"}
-              size={"small"}
-              color={"success"}
+              variant={'contained'}
+              size={'small'}
+              color={'success'}
               startIcon={<PlayArrowOutlinedIcon/>}>
         Start
       </Button>
 
       <Button onClick={handlePause}
               disabled={!timerIsActive}
-              variant={"contained"}
-              size={"small"}
-              color={"warning"}
+              variant={'contained'}
+              size={'small'}
+              color={'warning'}
               startIcon={<PauseOutlinedIcon/>}>
         Pause
       </Button>

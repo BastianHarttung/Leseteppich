@@ -13,6 +13,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Mal', 'Alm', 'Lala', 'Lama', 'Lamm',
       'Mama', 'Alma',
     ],
+    images: [],
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Mama', 'mal', 'alle', 'Emma', 'Alma',
       'Male', 'Mel', 'Lea', 'Elma',
     ],
+    images: [],
   },
   {
     id: 3,
@@ -37,6 +39,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Mal', 'Alm', 'Ole', 'Leo', 'Oma',
       'Lamm', 'Alma', 'male', 'Momo', 'Mama',
     ],
+    images: [],
   },
   {
     id: 4,
@@ -49,6 +52,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Rollo', 'Lore', 'Lara', 'Mara', 'Lale',
       'Lama', 'Maler', 'Lola', 'Moor', 'Arme',
     ],
+    images: [],
   },
   {
     id: 5,
@@ -61,6 +65,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Romi', 'Lami', 'Lora', 'Mami', 'Meli',
       'Romi im Moor.',
     ],
+    images: [],
   },
   {
     id: 6,
@@ -73,6 +78,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Tom malt mit Merit.',
       'Leo tritt Lotti.',
     ],
+    images: [],
   },
   {
     id: 7,
@@ -85,6 +91,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Tom malt mit Uli.',
       'Tee mit Rum.',
     ],
+    images: [],
   },
   {
     id: 8,
@@ -97,6 +104,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Oma malt mit Onur.',
       'Ali und Lia retten Nattern.',
     ],
+    images: [],
   },
   {
     id: 9,
@@ -110,6 +118,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Urmel ist alt.',
       'Simon ist mit Mutter am Rummel.',
     ],
+    images: [],
   },
   {
     id: 10,
@@ -123,6 +132,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Ein Reiter reitet alleine.',
       'Meine Murmel muss alt sein.',
     ],
+    images: [],
   },
   {
     id: 11,
@@ -136,6 +146,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Mein Hase hat helle Haare.',
       'Heinis Hut ist rot mit lila.',
     ],
+    images: [],
   },
   {
     id: 12,
@@ -149,6 +160,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Torben bastelt tolle Blumen.',
       'Bitte hol mir einen Besen.',
     ],
+    images: [],
   },
   {
     id: 13,
@@ -162,6 +174,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Solche Sachen machen alle.',
       'In der Nacht lacht Rachel am Bach.',
     ],
+    images: [],
   },
   {
     id: 14,
@@ -175,6 +188,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Ole ist so furchtbar fit.',
       'Im Fach ist noch Butter.',
     ],
+    images: [],
   },
   {
     id: 15,
@@ -188,6 +202,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Karo rennt oft im Kreis.',
       'Mit dem Kabel kann man knallen.',
     ],
+    images: [],
   },
   {
     id: 16,
@@ -201,6 +216,7 @@ export const liesMitPiri: Leseteppich[] = [
       'In der Tasche ist Matsch.',
       'Schafe schlafen nicht in der Schule.',
     ],
+    images: [],
   },
   {
     id: 17,
@@ -214,6 +230,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Der rote Drache badet.',
       'Dein Bruder macht dumme Sachen.',
     ],
+    images: [],
   },
   {
     id: 18,
@@ -228,6 +245,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Trauben muss man auch kauen.',
       'Im Traum sehe ich ein blaues Auto.',
     ],
+    images: [],
   },
   {
     id: 19,
@@ -242,6 +260,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Im Wattenmeer schwimmt ein Fisch.',
       'Kein Wissenschaftler weiß alles.',
     ],
+    images: [],
   },
   {
     id: 20,
@@ -256,6 +275,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Keiner hat Hüte an den Füßen.',
       'Die Brüder düsen über die Hügel.',
     ],
+    images: [],
   },
   {
     id: 21,
@@ -270,6 +290,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Der Papagei plappert auf der Palme.',
       'Pepe hoppelt humpelnd durch die Wüste.',
     ],
+    images: [],
   },
   {
     id: 22,
@@ -284,6 +305,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Diese Ziegen riechen mies.',
       'Liebe Wiesel spielen lieber in den Wiesen.',
     ],
+    images: [],
   },
   {
     id: 23,
@@ -298,6 +320,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Die Giraffen glotzen ungläubig die Gorillas an.',
       'Gerald hat schon eine ganz glatte Glatze.',
     ],
+    images: [],
   },
   {
     id: 24,
@@ -312,6 +335,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Schöne Söhne trösten öfter Königstöchter.',
       'Der blöde Löffel ist ins Öl gefallen.',
     ],
+    images: [],
   },
   {
     id: 25,
@@ -326,6 +350,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Heute mach ich ein Lagerfeuer in der Scheune.',
       'Neun Euro ist ganz schön teuer.',
     ],
+    images: [],
   },
   {
     id: 26,
@@ -340,6 +365,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Mona hat größere Füße als Mara.',
       'Der weiße Schwan beißt in das große Floß.',
     ],
+    images: [],
   },
   {
     id: 27,
@@ -354,6 +380,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Im Juli schleicht der Jaguar zur Jagd.',
       'Im Januar beginnt der Jahreskreis.',
     ],
+    images: [],
   },
   {
     id: 28,
@@ -366,6 +393,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Die hungrigen Jungen fangen mit der Angel einen langen Fisch.',
       'Junge Engel singen mit Engelszungen lange Dinge aus der Zeitung.',
     ],
+    images: [],
   },
   {
     id: 29,
@@ -378,6 +406,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Im Sportunterricht springen und sprinten die sportlichen Kinder.',
       'Spinnen spinnen ihre Netze am Spaten. Später spielen Spinnenkinder spannende Spiele.',
     ],
+    images: [],
   },
   {
     id: 30,
@@ -390,6 +419,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Stefan steigt auf den Stuhl und streicht die Wand.',
       'Auf der Straße ist es still. Starker Regen lässt alle Autos stehen. Die Straßenbahn stoppt im Stau.',
     ],
+    images: [],
   },
   {
     id: 31,
@@ -402,6 +432,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Zauberer Zwiebelzahn zwickt sich beim Zaubern in die Zehen.',
       'Zwergenfrau Zenzi tanzt mit Zwerg Heinz zusammen um den Zwetschgenbaum.',
     ],
+    images: [],
   },
   {
     id: 32,
@@ -414,6 +445,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Piri pfeift auf Pfannkuchen mit Pflanzenöl. Er mag lieber Apfelsaft und Pflaumenmus.',
       'Ein Pferd hüpft tapfer über einen Futternapf mit blauen Tupfen. Darin liegt ein dampfender Apfelkrapfen.',
     ],
+    images: [],
   },
   {
     id: 33,
@@ -426,6 +458,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Dackel Jockel steht auf dem Sockel mit der dicken Jacke.',
       'Der Bäcker bäckt dreieckige Zuckerschnecken mit Zimt und Zwetschgen. Das schmeckt lecker.',
     ],
+    images: [],
   },
   {
     id: 34,
@@ -438,6 +471,7 @@ export const liesMitPiri: Leseteppich[] = [
       'In Ägypten gibt es Pyramiden.',
       'Das Baby kuschelt den Teddy.',
     ],
+    images: [],
   },
   {
     id: 35,
@@ -451,6 +485,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Müde Kinder gähnen. Böse Kinder ärgern. Liebe Kinder lächeln.',
       'Du sollst nicht immer drängeln! Kämm lieber deine Haare.',
     ],
+    images: [],
   },
   {
     id: 36,
@@ -464,6 +499,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Xenia mixt mit dem Mixer Teig für einen Kuchen für Xaver. Das geht ganz fix.',
       'Das Taxi bringt die Hexe zur Nixe. Beide üben für einen Boxkampf.',
     ],
+    images: [],
   },
   {
     id: 37,
@@ -477,6 +513,7 @@ export const liesMitPiri: Leseteppich[] = [
       'An der Quelle sitzt die Qualle und sie quiekt in keinem Falle.',
       'Quirin hat quirlige Kaulquappen im Aquarium. Später werden das quakende Frösche.',
     ],
+    images: [],
   },
   {
     id: 38,
@@ -490,6 +527,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Oliver versteht viel vom Klavier spielen. Er spielt seit er vier ist.',
       'Vitali versucht seinem violetten Vogel beizubringen, auf das Vogelhaus zu fliegen.',
     ],
+    images: [],
   },
   {
     id: 39,
@@ -503,6 +541,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Claus und Curt campen auf dem Campingplatz.',
       'Der Clown Marcus liest einen coolen Comic für zehn Cent.',
     ],
+    images: [],
   },
   {
     id: 40,
@@ -516,6 +555,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.',
       'Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz...',
     ],
+    images: [],
   },
   {
     id: 41,
@@ -541,6 +581,7 @@ export const liesMitPiri: Leseteppich[] = [
       'Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.',
       'Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz...',
     ],
+    images: [],
   },
 ];
 
@@ -571,6 +612,7 @@ export const leseteppiche: Leseteppich[] = [
       'Alm', 'Lamm', 'Alma', 'Mama', 'Am',
       'Mal', 'Mama', 'Lama', 'Alma', 'Lamm',
     ],
+    images: [],
   },
   {
     id: 2,
@@ -583,6 +625,7 @@ export const leseteppiche: Leseteppich[] = [
       'Mama', 'mal', 'alle', 'Emma', 'Alma',
       'Male', 'Ella', 'Lea', 'Elma', 'Lama',
     ],
+    images: [],
   },
   {
     id: 3,
@@ -596,6 +639,7 @@ export const leseteppiche: Leseteppich[] = [
       'Momo', 'Emma', 'Lea', 'Alma', 'Ella',
       'Ole', 'Ele', 'toll', 'alle', 'Alm',
     ],
+    images: [],
   },
   {
     id: 4,
@@ -609,6 +653,7 @@ export const leseteppiche: Leseteppich[] = [
       'Mama', 'Meer', 'Oma', 'Maro', 'Merle',
       'Arm', 'Rollo', 'Rom', 'Roller', 'leer',
     ],
+    images: [],
   },
   {
     id: 5,
@@ -622,6 +667,7 @@ export const leseteppiche: Leseteppich[] = [
       'Rima', 'Mama', 'Mimi', 'Romi', 'Rollo',
       'Miri', 'Irmi', 'Lolli', 'Limo', 'Miriam',
     ],
+    images: [],
   },
   {
     id: 6,
@@ -635,6 +681,7 @@ export const leseteppiche: Leseteppich[] = [
       'rot', 'toll', 'Tom', 'Tim', 'mit',
       'Ritter', 'Rama', 'Rolle', 'Limo', 'Timo',
     ],
+    images: [],
   },
   {
     id: 7,
@@ -648,6 +695,7 @@ export const leseteppiche: Leseteppich[] = [
       'Ritter', 'Mut', 'Turm', 'Lama', 'Urmel',
       'toll', 'Roller', 'Trommel', 'Mutter', 'Rute',
     ],
+    images: [],
   },
   {
     id: 8,
@@ -661,6 +709,7 @@ export const leseteppiche: Leseteppich[] = [
       'turnen', 'Tal', 'malen', 'Mutter', 'murmeln',
       'nennen', 'Martin', 'Note', 'Name', 'Internet',
     ],
+    images: [],
   },
   {
     id: 9,
@@ -675,6 +724,7 @@ export const leseteppiche: Leseteppich[] = [
       'Rose', 'Rolle', 'Esel', 'Lose', 'Amsel',
       'Sommer', 'Sara', 'Nase', 'Maro', 'Salat',
     ],
+    images: [],
   },
   {
     id: 10,
@@ -689,6 +739,7 @@ export const leseteppiche: Leseteppich[] = [
       'Eimer', 'Seil', 'Ameise', 'Amsel', 'Lisa',
       'teilen', 'eine', 'Leiter', 'Nuss', 'leise',
     ],
+    images: [],
   },
   {
     id: 11,
@@ -703,6 +754,7 @@ export const leseteppiche: Leseteppich[] = [
       'Eimer', 'holen', 'Hahn', 'Uhu', 'Atlas',
       'Nashorn', 'Einhorn', 'Himmel', 'Helm', 'Malerin',
     ],
+    images: [],
   },
   {
     id: 12,
@@ -717,6 +769,7 @@ export const leseteppiche: Leseteppich[] = [
       'Mama mag bunte Blumen.',
       'Piri und Leo blubbern mit Limo.',
     ],
+    images: [],
   },
   {
     id: 13,
@@ -731,6 +784,7 @@ export const leseteppiche: Leseteppich[] = [
       'Leon sucht sein Buch unter dem Tuch.',
       'Die Buben basteln nachts.',
     ],
+    images: [],
   },
   {
     id: 14,
@@ -745,5 +799,6 @@ export const leseteppiche: Leseteppich[] = [
       'Anna malt einen Roboter.',
       'Oma filmt einen Affen.',
     ],
+    images: [],
   },
 ];
