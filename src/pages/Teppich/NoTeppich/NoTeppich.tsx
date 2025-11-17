@@ -1,10 +1,10 @@
-import { AppBar, Toolbar, Button, Box, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
+import { AppBar, Toolbar, Button, Box, Typography } from "@mui/material";
 import LeseLogo from "../../../assets/Leseteppich_Logo.svg";
+
 
 const NoTeppich = () => {
   const {id} = useParams();
-
 
   return (
     <main>

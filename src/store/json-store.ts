@@ -23,8 +23,12 @@ export const useJsonStore = create<JsonState>((set, get) => ({
     try {
       const res = await fetch('/datas/leseteppiche.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json: Leseteppich[] = await res.json();
-      set({json: json, isLoading: false});
+      const data: Leseteppich[] = await res.json();
+      const uniqueData = data.map((tepp) => ({
+        ...tepp,
+        strings: Array.from(new Set(tepp.strings))
+      }))
+      set({json: uniqueData, isLoading: false});
     } catch (e: unknown) {
       const error = e as Error;
       set({error: error.message ?? 'Fehler beim Laden des Json', isLoading: false});

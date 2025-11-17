@@ -1,8 +1,8 @@
-import { StorageHighscore } from "../../models/interfaces.ts";
 import { useCallback, useEffect, useState } from "react";
-import { useGameStore } from "../../store/game-store.ts";
 import { useShallow } from "zustand/react/shallow";
 import { HighscoreTableRow } from "../../components/Tables/HighscoreTable.tsx";
+import { StorageHighscore } from "../../models/interfaces.ts";
+import { useGameStore, useTimerStore } from "../../store";
 
 
 export const localStorageHighscoreKey = `leseteppich_highscores`;
@@ -11,12 +11,13 @@ export const useHighscore = () => {
 
   const [highscore, setHighscore] = useState<StorageHighscore[]>([])
 
-  const {activeTeppichId, count, initialTimeInSeconds} = useGameStore(
+  const initialTimeInSeconds = useTimerStore(state => state.initialTimeInSeconds)
+
+  const {activeTeppichId, count} = useGameStore(
     useShallow((state) => (
       {
         activeTeppichId: state.activeTeppichId,
         count: state.count,
-        initialTimeInSeconds: state.initialTimeInSeconds,
       })),
   );
 

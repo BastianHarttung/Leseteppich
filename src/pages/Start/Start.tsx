@@ -12,13 +12,14 @@ import { Box, Typography } from '@mui/material';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SchulAppsLogo from '../../assets/icons/Logo_Schul-Apps_nurLogo.svg';
 import LeseteppichAppBar from '../../components/LeseteppichAppBar/LeseteppichAppBar.tsx';
-import { liesMitPiri } from '../../data/leseteppich-data.ts';
 import usePlayCount from '../../helper-functions/Hooks/usePlayCount.tsx';
 import { Leseteppich } from '../../models/interfaces.ts';
 import packageJson from '../../../package.json';
+import { useJsonStore } from "../../store";
 
 
 export default function Start() {
+  const {json} = useJsonStore()
 
   const {getPlayCount} = usePlayCount();
 
@@ -33,7 +34,7 @@ export default function Start() {
       <LeseteppichAppBar/>
 
       <Timeline position={'alternate'} sx={{pt: 7, pb: 4}}>
-        {liesMitPiri.map((teppich: Leseteppich, index) => (
+        {json && json.map((teppich: Leseteppich, index) => (
             <TimelineItem key={teppich.id}>
               <TimelineSeparator>
                 <TimelineConnector sx={{opacity: index === 0 ? 0 : 1}}/>
@@ -46,7 +47,7 @@ export default function Start() {
                     {teppich.id}
                   </TimelineDot>
                 </Link>
-                <TimelineConnector sx={{opacity: index === (liesMitPiri.length - 1) ? 0 : 1}}/>
+                <TimelineConnector sx={{opacity: index === (json.length - 1) ? 0 : 1}}/>
               </TimelineSeparator>
               <TimelineContent sx={{m: 'auto 0', width: '500px'}}>
                 <Link to={`/teppich/${teppich.id}`}

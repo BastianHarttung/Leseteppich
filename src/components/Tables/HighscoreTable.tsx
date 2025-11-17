@@ -1,8 +1,9 @@
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import { useHighscore } from "../../helper-functions/Hooks";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import { Box, Typography } from "@mui/material";
+import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { useHighscore } from "../../helper-functions/Hooks";
+
 
 const columns: GridColDef[] = [
   {

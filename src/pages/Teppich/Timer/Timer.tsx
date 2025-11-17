@@ -3,7 +3,7 @@ import { Box, Button, Typography } from '@mui/material';
 import { useShallow } from 'zustand/react/shallow';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
-import { useTimerStore } from '../../../store/index.ts';
+import { useTimerStore } from '../../../store';
 
 
 export const Timer = () => {

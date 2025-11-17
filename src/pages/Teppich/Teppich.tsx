@@ -18,9 +18,9 @@ import LeseLogo from '../../assets/Leseteppich_Logo.svg';
 import ModalHighscore from '../../components/Modals/ModalHighscore.tsx';
 import ModalImage from '../../components/Modals/ModalImage.tsx';
 import { Game } from './Game/Game.tsx';
-import { toggleFullscreen, uniqueStrings } from '../../helper-functions';
+import { toggleFullscreen } from '../../helper-functions';
 import NoTeppich from './NoTeppich/NoTeppich.tsx';
-import { useGameStore, useHelpTourStore, useJsonStore, useTimerStore } from '../../store/index.ts';
+import { useGameStore, useHelpTourStore, useJsonStore, useTimerStore } from '../../store';
 
 
 export default function Teppich() {
@@ -89,7 +89,7 @@ export default function Teppich() {
 
   const handleStart = () => {
     if (findTeppich) {
-      startGame(uniqueStrings(findTeppich.strings).length);
+      startGame(findTeppich.strings.length);
     }
   };
 

@@ -14,11 +14,11 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import StopOutlinedIcon from '@mui/icons-material/StopOutlined';
 import WinSound from '../../../assets/sounds/Stage-Win_(Super-Mario).mp3';
 import ModalWin from '../../../components/Modals/ModalWin.tsx';
-import { toggleFullscreen, uniqueStrings } from '../../../helper-functions';
+import { toggleFullscreen } from '../../../helper-functions';
 import { useHighscore } from '../../../helper-functions/Hooks';
 import usePlayCount from '../../../helper-functions/Hooks/usePlayCount.tsx';
 import { Leseteppich } from '../../../models/interfaces.ts';
-import { generateOneLeseteppichArray, useGameStore, useTimerStore } from '../../../store/index.ts';
+import { generateOneLeseteppichArray, useGameStore, useTimerStore } from '../../../store';
 import { Timer } from '../Timer/Timer.tsx';
 
 
@@ -28,7 +28,6 @@ interface GameProps {
 }
 
 export const Game = ({leseTeppich, onStop}: GameProps) => {
-
   const theme = useTheme();
 
   const {saveHighscore} = useHighscore();
@@ -78,7 +77,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const isNextDisabled = !timerIsActive || isTimerFinished;
 
-  const teppichGameArray = gameArray.map((gameIndex) => uniqueStrings(leseTeppich.strings)[gameIndex]);
+  const teppichGameArray = gameArray.map((gameIndex) => leseTeppich.strings[gameIndex]);
 
   const handleNext = () => {
     if (!isTimerFinished && !!gameArray[count + 1]) {
@@ -90,6 +89,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   };
 
   const handleSlideChange = (swiper: SwiperType) => {
+    handleNext();
     setCount(swiper.activeIndex);
   };
 
@@ -177,7 +177,9 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                 navigation={{
                   prevEl: '.prev-button',
                   nextEl: '.next-button',
-                }}>
+                }}
+                allowSlidePrev={!isBackDisabled}
+                allowSlideNext={!isNextDisabled}>
           {teppichGameArray.map((teppichStrings, index) => {
             const isLongTeppich = teppichStrings.length > 44;
 
