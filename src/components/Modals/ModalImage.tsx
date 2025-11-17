@@ -4,9 +4,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { Box, IconButton, Modal } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import PrintIcon from '@mui/icons-material/Print';
-import { printImage } from '../../helper-functions/index.ts';
-import { useGameStore } from '../../store/game-store.ts';
-import { useJsonStore } from '../../store/json-store.ts';
+import { useGameStore, useJsonStore } from '../../store/index.ts';
 
 
 const boxStyle = {
@@ -33,9 +31,20 @@ const ModalImage = () => {
 
   const findTeppich = json?.find((tepp) => tepp.id === Number(id));
 
+  const handleShowImage = () => {
+    if (!findTeppich?.images.length) return;
+
+    const imageUrl = findTeppich.images[0];
+    window.open(imageUrl, '_blank', 'noopener,noreferrer');
+  };
+
+
   const handlePrintImage = () => {
     if (!findTeppich?.images.length) return;
-    printImage(findTeppich.images[0], id);
+    const oldTitle = document.title;
+    document.title = `www.schul-apps.de | Leseteppich ${id}`;
+    window.print();
+    document.title = oldTitle;
   };
 
 
@@ -51,9 +60,13 @@ const ModalImage = () => {
           </IconButton>
         </Box>
 
-        {findTeppich?.images && <img src={findTeppich.images[0]}
-                                     alt={`Leseteppich_${id}.jpg`}
-                                     style={{height: '100%', width: '100%', objectFit: 'contain'}}/>}
+        {findTeppich?.images && (
+          <img id="printable-image"
+               src={findTeppich.images[0]}
+               alt={`Leseteppich_${id}.jpg`}
+               onClick={handleShowImage}
+               className="printable-image"/>
+        )}
 
         <Box position={'absolute'} right={10} bottom={10}>
           <IconButton className="icon-button"

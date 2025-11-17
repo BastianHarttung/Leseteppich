@@ -111,3 +111,24 @@ button:focus-visible {
     display: block;
   }
 }
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-image,
+  #printable-image * {
+    visibility: visible;
+  }
+
+  #printable-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: 300px;
+    max-height: 100%;
+    margin: auto;
+  }
+}
