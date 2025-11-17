@@ -1,5 +1,4 @@
 import './ModalImage.scss';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useShallow } from 'zustand/react/shallow';
 import { Box, IconButton, Modal } from '@mui/material';
@@ -7,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import PrintIcon from '@mui/icons-material/Print';
 import { printImage } from '../../helper-functions/index.ts';
 import { useGameStore } from '../../store/game-store.ts';
+import { useJsonStore } from '../../store/json-store.ts';
 
 
 const boxStyle = {
@@ -24,30 +24,19 @@ const boxStyle = {
 const ModalImage = () => {
   const {id} = useParams();
 
-  const [teppichPic, setTeppichPic] = useState<string | null>(null);
-
   const {isImageModalOpen, closeImageModal} = useGameStore(
     useShallow((state) => (
       {isImageModalOpen: state.isImageModalOpen, closeImageModal: state.closeImageModal})),
   );
 
-  const handlePrintImage = () => {
-    if (!teppichPic) return;
-    printImage(teppichPic, id);
-  };
+  const {json} = useJsonStore();
 
-  useEffect(() => {
-    const importTeppichPic = async () => {
-      try {
-        const module = await import(`../../assets/lies-mit-piri/Lies-mit-Piri_${id}.jpg`);
-        setTeppichPic(module.default);
-      } catch (error) {
-        setTeppichPic(null);
-        console.error('Fehler beim Laden des Bildes:', error);
-      }
-    };
-    importTeppichPic();
-  }, [id]);
+  const findTeppich = json?.find((tepp) => tepp.id === Number(id));
+
+  const handlePrintImage = () => {
+    if (!findTeppich?.images) return;
+    printImage(findTeppich.images[0], id);
+  };
 
 
   return (
@@ -62,9 +51,9 @@ const ModalImage = () => {
           </IconButton>
         </Box>
 
-        {teppichPic && <img src={teppichPic}
-                            alt={`Leseteppich_${id}.jpg`}
-                            style={{height: '100%', width: '100%', objectFit: 'contain'}}/>}
+        {findTeppich?.images && <img src={findTeppich.images[0]}
+                                     alt={`Leseteppich_${id}.jpg`}
+                                     style={{height: '100%', width: '100%', objectFit: 'contain'}}/>}
 
         <Box position={'absolute'} right={10} bottom={10}>
           <IconButton className="icon-button"

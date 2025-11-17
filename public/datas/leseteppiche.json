@@ -1,0 +1,583 @@
+[
+  {
+    "id": 1,
+    "name": "Lies mit Piri 1",
+    "chars": ["M", "A", "L"],
+    "strings": [
+      "al", "la", "ma",
+      "la", "am", "mal", "lal",
+      "mam",
+      "Mal", "Alm", "Lala", "Lama", "Lamm",
+      "Mama", "Alma","Mama","Mama","Mama","Mama","Mama","Mama"
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_1.jpg"]
+  },
+  {
+    "id": 2,
+    "name": "Lies mit Piri 2",
+    "chars": ["M", "A", "L", "E"],
+    "strings": [
+      "al", "la", "le", "el", "me",
+      "ma", "am",
+      "Lela", "Lala", "Lale", "Lele", "Ele",
+      "Mama", "mal", "alle", "Emma", "Alma",
+      "Male", "Mel", "Lea", "Elma"
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_2.jpg"]
+  },
+  {
+    "id": 3,
+    "name": "Lies mit Piri 3",
+    "chars": ["M", "A", "L", "E", "O"],
+    "strings": [
+      "am", "ma", "me", "mo", "em",
+      "le", "om", "al", "lo",
+      "mal", "lom", "mem", "mam", "lem",
+      "Mal", "Alm", "Ole", "Leo", "Oma",
+      "Lamm", "Alma", "male", "Momo", "Mama"
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_3.jpg"]
+  },
+  {
+    "id": 4,
+    "name": "Lies mit Piri 4",
+    "chars": ["M", "A", "L", "E", "O", "R"],
+    "strings": [
+      "ra", "re", "ro", "ar", "er",
+      "rar", "mar", "lar", "ler", "mer",
+      "arm", "leer", "Meer", "Alarm", "Rama",
+      "Rollo", "Lore", "Lara", "Mara", "Lale",
+      "Lama", "Maler", "Lola", "Moor", "Arme"
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_4.jpg"]
+  },
+  {
+    "id": 5,
+    "name": "Lies mit Piri 5",
+    "chars": ["M", "A", "L", "E", "O", "R", "I"],
+    "strings": [
+      "mi", "li", "ri", "Mimi", "Miri",
+      "lari", "Lilli", "Lori", "Moor", "Irmi",
+      "Limo", "Mario", "Lara", "Ali", "Mila",
+      "Romi", "Lami", "Lora", "Mami", "Meli",
+      "Romi im Moor."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_4.jpg"]
+  },
+  {
+    "id": 6,
+    "name": "Lies mit Piri 6",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T"],
+    "strings": [
+      "ta", "te", "to", "ot", "at",
+      "toll", "Matti", "alt", "Talar", "Torte",
+      "Rot", "Rat", "Tom", "Teller", "Tami",
+      "Tom malt mit Merit.",
+      "Leo tritt Lotti."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_6.jpg"]
+  },
+  {
+    "id": 7,
+    "name": "Lies mit Piri 7",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U"],
+    "strings": [
+      "tu", "me", "lu", "um", "im",
+      "Turm", "Rute", "Mull", "Titu", "male",
+      "Rita rettet Tutu.",
+      "Tom malt mit Uli.",
+      "Tee mit Rum."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_7.jpg"]
+  },
+  {
+    "id": 8,
+    "name": "Lies mit Piri 8",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N"],
+    "strings": [
+      "Toni", "Leon", "Moni", "Mutti", "Nina",
+      "tun", "nun", "rennen", "null", "Nummer",
+      "Loni und Leni rennen.",
+      "Oma malt mit Onur.",
+      "Ali und Lia retten Nattern."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_8.jpg"]
+  },
+  {
+    "id": 9,
+    "name": "Lies mit Piri 9",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S"],
+    "strings": [
+      "summ", "Rast", "Muster", "Nuss", "Susi",
+      "Murmel", "Riss", "lesen", "Mast", "Suse",
+      "Suse muss immer murmeln.",
+      "Lasse ist am Turm.",
+      "Urmel ist alt.",
+      "Simon ist mit Mutter am Rummel."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_9.jpg"]
+  },
+  {
+    "id": 10,
+    "name": "Lies mit Piri 10",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI"],
+    "strings": [
+      "ein", "nein", "leise", "mein", "rein",
+      "Meise", "Reise", "allein", "seine", "Reime",
+      "Tom reimt leise seine Reime.",
+      "Leo malt eine alte Leiter.",
+      "Ein Reiter reitet alleine.",
+      "Meine Murmel muss alt sein."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_10.jpg"]
+  },
+  {
+    "id": 11,
+    "name": "Lies mit Piri 11",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H"],
+    "strings": [
+      "hallo", "Hai", "Husten", "Hose",
+      "Meine Hose ist nass.",
+      "Mein Huhn ist hell.",
+      "Hanno hat immer Husten.",
+      "Mein Hase hat helle Haare.",
+      "Heinis Hut ist rot mit lila."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_11.jpg"]
+  },
+  {
+    "id": 12,
+    "name": "Lies mit Piri 12",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B"],
+    "strings": [
+      "Ball", "bunt", "Blut", "Bein", "blau",
+      "bitter", "Banane", "treiben", "toben", "blasen",
+      "Beate blubbert Blubberblasen.",
+      "Ben muss Bananenbrei essen.",
+      "Torben bastelt tolle Blumen.",
+      "Bitte hol mir einen Besen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_12.jpg"]
+  },
+  {
+    "id": 13,
+    "name": "Lies mit Piri 13",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH"],
+    "strings": [
+      "Buch", "reich", "seicht", "Hecht", "Bach",
+      "ach", "Nacht", "Rache", "machen", "Tuch",
+      "Am Bach ist ein Hecht.",
+      "Bibi macht sich ein Tuch.",
+      "Solche Sachen machen alle.",
+      "In der Nacht lacht Rachel am Bach."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_13.jpg"]
+  },
+  {
+    "id": 14,
+    "name": "Lies mit Piri 14",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH", "F"],
+    "strings": [
+      "Foto", "fein", "Bein", "Film", "oft",
+      "Farm", "Elfen", "fitter", "Mist", "Fabio",
+      "Fabio macht ein Foto.",
+      "Fanni liest ein Buch mit mir.",
+      "Ole ist so furchtbar fit.",
+      "Im Fach ist noch Butter."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_14.jpg"]
+  },
+  {
+    "id": 15,
+    "name": "Lies mit Piri 15",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K"],
+    "strings": [
+      "klein", "Mark", "Korb", "Kurs", "Kabel",
+      "Kreis", "komm", "Lokal", "Kontakt", "knallen",
+      "Moni kommt mit dem Korb.",
+      "Im Lokal trinkt Merle Milch.",
+      "Karo rennt oft im Kreis.",
+      "Mit dem Kabel kann man knallen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_15.jpg"]
+  },
+  {
+    "id": 16,
+    "name": "Lies mit Piri 16",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K", "SCH"],
+    "strings": [
+      "Schaf", "Schal", "Schach", "scheinen",
+      "Schiff", "schick", "Schule", "Matsch",
+      "Mascha schreibt schön.",
+      "Das Schiff ist schon morsch.",
+      "In der Tasche ist Matsch.",
+      "Schafe schlafen nicht in der Schule."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_16.jpg"]
+  },
+  {
+    "id": 17,
+    "name": "Lies mit Piri 17",
+    "chars": ["M", "A", "L", "E", "O", "R", "I", "T", "U", "N", "S", "EI", "H", "B", "CH", "F", "SCH", "D"],
+    "strings": [
+      "das", "Rudi", "dein", "Dusche", "fade",
+      "drei", "Durst", "dumm", "doch", "Dunst",
+      "Im Bad ist die Dusche dicht.",
+      "Dieter ist im Bett.",
+      "Der rote Drache badet.",
+      "Dein Bruder macht dumme Sachen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_17.jpg"]
+  },
+  {
+    "id": 18,
+    "name": "Lies mit Piri 18",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU"],
+    "strings": [
+      "Schaum", "schlau", "Auto", "tauschen",
+      "Laus", "blau", "Baum", "Automaten",
+      "Klaus ist sehr schlau.",
+      "Aus dem Automaten kommt Schaum.",
+      "Trauben muss man auch kauen.",
+      "Im Traum sehe ich ein blaues Auto."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_18.jpg"]
+  },
+  {
+    "id": 19,
+    "name": "Lies mit Piri 19",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W"],
+    "strings": [
+      "Wolle", "Wolke", "Watte", "Wattenmeer",
+      "wollen", "wissen", "wachsen", "bewachen",
+      "Willi will Wolle waschen.",
+      "Wo ist der hellblaue Waschkorb.",
+      "Im Wattenmeer schwimmt ein Fisch.",
+      "Kein Wissenschaftler weiß alles."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_19.jpg"]
+  },
+  {
+    "id": 20,
+    "name": "Lies mit Piri 20",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü"],
+    "strings": [
+      "üben", "Rübe", "süß", "Überholverbot",
+      "Düse", "müde", "küssen", "Überraschung",
+      "Ümmü spricht türkisch.",
+      "Kirschen müssen süß sein.",
+      "Keiner hat Hüte an den Füßen.",
+      "Die Brüder düsen über die Hügel."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_20.jpg"]
+  },
+  {
+    "id": 21,
+    "name": "Lies mit Piri 21",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P"],
+    "strings": [
+      "Piri", "Papa", "Pia", "Paperlapapp",
+      "Popo", "prima", "super", "Paprikapüree",
+      "Peter kann prima klappern.",
+      "Der Popo vom Affen ist puderrot.",
+      "Der Papagei plappert auf der Palme.",
+      "Pepe hoppelt humpelnd durch die Wüste."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_21.jpg"]
+  },
+  {
+    "id": 22,
+    "name": "Lies mit Piri 22",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE"],
+    "strings": [
+      "Knie", "sie", "Biene", "Wiesel",
+      "Riese", "Tier", "die", "Riesenrad",
+      "Sieben Fliegen fliegen tief.",
+      "Miese Schienen liegen schief.",
+      "Diese Ziegen riechen mies.",
+      "Liebe Wiesel spielen lieber in den Wiesen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_22.jpg"]
+  },
+  {
+    "id": 23,
+    "name": "Lies mit Piri 23",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G"],
+    "strings": [
+      "Gabel", "gut", "Gabe", "Grabgabel",
+      "Glas", "Gras", "Gas", "Guggenmoser",
+      "Gabi gräbt gerne im Garten.",
+      "Große Geschenke machen glücklich.",
+      "Die Giraffen glotzen ungläubig die Gorillas an.",
+      "Gerald hat schon eine ganz glatte Glatze."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_23.jpg"]
+  },
+  {
+    "id": 24,
+    "name": "Lies mit Piri 24",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö"],
+    "strings": [
+      "Öl", "Möbel", "dösen", "Möbelösen",
+      "röter", "schön", "Fön", "Lösemittel",
+      "Könige mögen schöne Möbel.",
+      "Böse Buben lösen Ösen.",
+      "Schöne Söhne trösten öfter Königstöchter.",
+      "Der blöde Löffel ist ins Öl gefallen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_24.jpg"]
+  },
+  {
+    "id": 25,
+    "name": "Lies mit Piri 25",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU"],
+    "strings": [
+      "Eule", "Beule", "Euro", "Feuerwehr",
+      "Kreuz", "Feuer", "heulen", "Turnbeutel",
+      "Mein Freund freut sich.",
+      "Im Wald lebt eine scheue Eule und heult.",
+      "Heute mach ich ein Lagerfeuer in der Scheune.",
+      "Neun Euro ist ganz schön teuer."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_25.jpg"]
+  },
+  {
+    "id": 26,
+    "name": "Lies mit Piri 26",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß"],
+    "strings": [
+      "groß", "süß", "weiß", "Klöße",
+      "Füße", "Straße", "fleißig", "Fußball",
+      "Udo mag einen großen Kloß.",
+      "Den Fußball darf man nicht schmeißen.",
+      "Mona hat größere Füße als Mara.",
+      "Der weiße Schwan beißt in das große Floß."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_26.jpg"]
+  },
+  {
+    "id": 27,
+    "name": "Lies mit Piri 27",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J"],
+    "strings": [
+      "Jo-Jo", "jubeln", "ja", "Januar",
+      "jedoch", "jeder", "Juli", "jammern",
+      "Julia jubelt jeden Tag.",
+      "Jan jammert ja immer.",
+      "Im Juli schleicht der Jaguar zur Jagd.",
+      "Im Januar beginnt der Jahreskreis."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_27.jpg"]
+  },
+  {
+    "id": 28,
+    "name": "Lies mit Piri 28",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG"],
+    "strings": [
+      "Ring", "lang", "jung", "Anfang",
+      "eng", "Ding", "Junge", "schwingen",
+      "Die hungrigen Jungen fangen mit der Angel einen langen Fisch.",
+      "Junge Engel singen mit Engelszungen lange Dinge aus der Zeitung."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_28.jpg"]
+  },
+  {
+    "id": 29,
+    "name": "Lies mit Piri 29",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP"],
+    "strings": [
+      "Spaß", "Spiel", "später", "Spagat",
+      "Sport", "Spinne", "spinnen", "Spinat",
+      "Im Sportunterricht springen und sprinten die sportlichen Kinder.",
+      "Spinnen spinnen ihre Netze am Spaten. Später spielen Spinnenkinder spannende Spiele."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_29.jpg"]
+  },
+  {
+    "id": 30,
+    "name": "Lies mit Piri 30",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST"],
+    "strings": [
+      "Stift", "Stern", "Stopp", "Straßenbahn",
+      "Stuhl", "Stein", "steil", "Streichholz",
+      "Stefan steigt auf den Stuhl und streicht die Wand.",
+      "Auf der Straße ist es still. Starker Regen lässt alle Autos stehen. Die Straßenbahn stoppt im Stau."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_30.jpg"]
+  },
+  {
+    "id": 31,
+    "name": "Lies mit Piri 31",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z"],
+    "strings": [
+      "Zwerg", "Zorn", "Zug", "Zirkuszelt",
+      "Zelt", "Herz", "zählen", "Zauberzylinder",
+      "Zauberer Zwiebelzahn zwickt sich beim Zaubern in die Zehen.",
+      "Zwergenfrau Zenzi tanzt mit Zwerg Heinz zusammen um den Zwetschgenbaum."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_31.jpg"]
+  },
+  {
+    "id": 32,
+    "name": "Lies mit Piri 32",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF"],
+    "strings": [
+      "Pfand", "Apfel", "tropfen", "Pfannkuchen",
+      "Pfirsich", "pfeifen", "Pflaster", "Apfelkrapfen",
+      "Piri pfeift auf Pfannkuchen mit Pflanzenöl. Er mag lieber Apfelsaft und Pflaumenmus.",
+      "Ein Pferd hüpft tapfer über einen Futternapf mit blauen Tupfen. Darin liegt ein dampfender Apfelkrapfen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_32.jpg"]
+  },
+  {
+    "id": 33,
+    "name": "Lies mit Piri 33",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK"],
+    "strings": [
+      "Wecker", "Rock", "dick", "Schnecke",
+      "Jacke", "backen", "Block", "dreieckig",
+      "Dackel Jockel steht auf dem Sockel mit der dicken Jacke.",
+      "Der Bäcker bäckt dreieckige Zuckerschnecken mit Zimt und Zwetschgen. Das schmeckt lecker."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_33.jpg"]
+  },
+  {
+    "id": 34,
+    "name": "Lies mit Piri 34",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y"],
+    "strings": [
+      "Baby", "Yak", "Willy", "Pyramide",
+      "Teddy", "Yannik", "Pony", "Handykabel",
+      "In Ägypten gibt es Pyramiden.",
+      "Das Baby kuschelt den Teddy."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_34.jpg"]
+  },
+  {
+    "id": 35,
+    "name": "Lies mit Piri 35",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä"],
+    "strings": [
+      "Zähne", "zärtlich", "Äpfel", "Blätter",
+      "Hände", "Bälle", "kämmen", "gähnen",
+      "Müde Kinder gähnen. Böse Kinder ärgern. Liebe Kinder lächeln.",
+      "Du sollst nicht immer drängeln! Kämm lieber deine Haare."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_35.jpg"]
+  },
+  {
+    "id": 36,
+    "name": "Lies mit Piri 36",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä", "X"],
+    "strings": [
+      "Max", "Taxi", "Hexe", "Boxkampf",
+      "fix", "Axt", "Nixe", "Xylofon",
+      "Xenia mixt mit dem Mixer Teig für einen Kuchen für Xaver. Das geht ganz fix.",
+      "Das Taxi bringt die Hexe zur Nixe. Beide üben für einen Boxkampf."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_36.jpg"]
+  },
+  {
+    "id": 37,
+    "name": "Lies mit Piri 37",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä", "X", "QU"],
+    "strings": [
+      "Quark", "Quelle", "quaken", "Aquarium",
+      "quer", "Quiz", "quatschen", "Quadrat",
+      "An der Quelle sitzt die Qualle und sie quiekt in keinem Falle.",
+      "Quirin hat quirlige Kaulquappen im Aquarium. Später werden das quakende Frösche."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_37.jpg"]
+  },
+  {
+    "id": 38,
+    "name": "Lies mit Piri 38",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä", "X", "QU", "V"],
+    "strings": [
+      "viel", "voll", "vier", "Versteck",
+      "violett", "Klavier", "Vulkan", "Ventilator",
+      "Oliver versteht viel vom Klavier spielen. Er spielt seit er vier ist.",
+      "Vitali versucht seinem violetten Vogel beizubringen, auf das Vogelhaus zu fliegen."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_38.jpg"]
+  },
+  {
+    "id": 39,
+    "name": "Lies mit Piri 39",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä", "X", "QU", "V", "C"],
+    "strings": [
+      "cool", "Comic", "Clown", "Computer",
+      "Marco", "Cowboy", "Cent", "Popcorn",
+      "Claus und Curt campen auf dem Campingplatz.",
+      "Der Clown Marcus liest einen coolen Comic für zehn Cent."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_39.jpg"]
+  },
+  {
+    "id": 40,
+    "name": "Lies mit Piri 40",
+    "chars": ["M", "A", "L", "E", "O", "R", "S", "T", "N", "EI", "U", "B", "CH", "I", "F", "K",
+      "SCH", "AU", "W", "Ü", "P", "IE", "G", "Ö", "EU", "ß", "J", "NG", "SP", "ST", "Z", "PF", "CK", "Y",
+      "Ä", "X", "QU", "V", "C", "TZ"],
+    "strings": [
+      "Satz", "Witz", "sitzen", "Spielplatz",
+      "Katze", "Tatze", "putzen", "verschwitzt",
+      "Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.",
+      "Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz..."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_40.jpg"]
+  },
+  {
+    "id": 41,
+    "name": "Extra Teppich für Lese-Profis 1",
+    "chars": ["Alle Buchstaben"],
+    "strings": [
+      "Piri pfeift auf Pfannkuchen mit Pflanzenöl. Er mag lieber Apfelsaft und Pflaumenmus.",
+      "Ein Pferd hüpft tapfer über einen Futternapf mit blauen Tupfen. Darin liegt ein dampfender Apfelkrapfen.",
+      "Dackel Jockel steht auf dem Sockel mit der dicken Jacke.",
+      "Der Bäcker bäckt dreieckige Zuckerschnecken mit Zimt und Zwetschgen. Das schmeckt lecker.",
+      "In Ägypten gibt es Pyramiden.",
+      "Das Baby kuschelt den Teddy.",
+      "Müde Kinder gähnen. Böse Kinder ärgern. Liebe Kinder lächeln.",
+      "Du sollst nicht immer drängeln! Kämm lieber deine Haare.",
+      "Xenia mixt mit dem Mixer Teig für einen Kuchen für Xaver. Das geht ganz fix.",
+      "Das Taxi bringt die Hexe zur Nixe. Beide üben für einen Boxkampf.",
+      "An der Quelle sitzt die Qualle und sie quiekt in keinem Falle.",
+      "Quirin hat quirlige Kaulquappen im Aquarium. Später werden das quakende Frösche.",
+      "Oliver versteht viel vom Klavier spielen. Er spielt seit er vier ist.",
+      "Vitali versucht seinem violetten Vogel beizubringen, auf das Vogelhaus zu fliegen.",
+      "Claus und Curt campen auf dem Campingplatz.",
+      "Der Clown Marcus liest einen coolen Comic für zehn Cent.",
+      "Die Kinder sitzen auf dem Spielplatz und erzählen Witze bis sie vor Lachen schwitzen.",
+      "Der Spatz sitzt um Baum und putzt sich. Da kommt die Katze und macht einen Satz..."
+    ],
+    "images": ["/images/lies-mit-piri/Lies-mit-Piri_41.jpg"]
+  }
+]

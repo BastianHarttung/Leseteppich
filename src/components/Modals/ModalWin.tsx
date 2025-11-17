@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
-import { useShallow } from "zustand/react/shallow";
-import confetti from "canvas-confetti";
-import { Box, Fade, IconButton, Modal, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { useGameStore } from "../../store/game-store.ts";
-import LeseLogo from "../../assets/Leseteppich_Logo.svg";
+import { useEffect, useState } from 'react';
+import { useShallow } from 'zustand/react/shallow';
+import confetti from 'canvas-confetti';
+import { Box, Fade, IconButton, Modal, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import LeseLogo from '../../assets/Leseteppich_Logo.svg';
+import { useGameStore } from '../../store/game-store.ts';
 
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   minWidth: 300,
-  bgcolor: "background.paper",
+  bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
 };
@@ -81,7 +81,7 @@ const ModalWin = () => {
         const module = await import(`../../assets/piri/Piri_${randomNr}.png`);
         setPiriPic(module.default);
       } catch (error) {
-        console.error("Fehler beim Laden des Bildes:", error);
+        console.error('Fehler beim Laden des Bildes:', error);
       }
     };
 
@@ -90,20 +90,18 @@ const ModalWin = () => {
 
 
   return (
-    <Modal
-      open={isWinModalOpen}
-      onClose={closeWinModal}
-    >
+    <Modal open={isWinModalOpen}
+           onClose={closeWinModal}>
       <Fade in={isWinModalOpen}
             timeout={2000}>
         <Box sx={style}>
-          <Box position={"absolute"} right={8} top={8}>
+          <Box position={'absolute'} right={8} top={8}>
             <IconButton onClick={closeWinModal}>
               <CloseIcon/>
             </IconButton>
           </Box>
 
-          <Box display={"flex"} alignItems={"center"} gap={2}>
+          <Box display={'flex'} alignItems={'center'} gap={2}>
             {piriPic && <img src={piriPic} alt="Piri" height={160}/>}
 
             <Box>
@@ -116,9 +114,9 @@ const ModalWin = () => {
               <Typography variant="h6"
                           fontWeight={400}
                           sx={{mt: 2}}
-                          whiteSpace={"nowrap"}>
+                          whiteSpace={'nowrap'}>
                 Du hast <mark>{count}</mark> Wörter <br/>
-                in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? "Minuten" : "Minute"} gelesen.
+                in {initialTimeInSeconds / 60} {initialTimeInSeconds >= 120 ? 'Minuten' : 'Minute'} gelesen.
               </Typography>
             </Box>
           </Box>

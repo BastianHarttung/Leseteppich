@@ -2,7 +2,8 @@ export interface Leseteppich {
   id: number;
   name: string;
   chars: string[];
-  strings: string[]
+  strings: string[];
+  images?: string[];
 }
 
 export interface StorageHighscore {
@@ -14,5 +15,5 @@ export interface StorageHighscore {
 }
 
 export interface PlayCount {
-  [key: number]: number
+  [key: number]: number;
 }

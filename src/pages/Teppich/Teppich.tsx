@@ -1,46 +1,36 @@
-import "./Teppich.scss";
-import { ChangeEvent, useEffect, useState, MouseEvent } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
-import { useTour } from "@reactour/tour";
+import './Teppich.scss';
+import { ChangeEvent, useEffect, useState, MouseEvent } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useTour } from '@reactour/tour';
+import { useShallow } from 'zustand/react/shallow';
 import {
-  AppBar,
-  Box,
-  Button,
-  FormControlLabel,
-  Switch,
-  TextField,
-  Toolbar,
-  Typography,
-  Menu,
-  MenuItem, ListItemIcon, ListItemText, IconButton, Stack,
-} from "@mui/material";
-import { useShallow } from "zustand/react/shallow";
-import { Game } from "./Game/Game.tsx";
-import { liesMitPiri } from "../../data/leseteppich-data.ts";
-import { useGameStore } from "../../store/game-store.ts";
-import LeseLogo from "../../assets/Leseteppich_Logo.svg";
-import ModalImage from "../../components/Modals/ModalImage.tsx";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
-import { toggleFullscreen } from "../../helper-functions";
-import NoTeppich from "./NoTeppich/NoTeppich.tsx";
-import ModalHighscore from "../../components/Modals/ModalHighscore.tsx";
-import { useHelpTourStore } from "../../store/help-tour-store.ts";
+  AppBar, Box, Button, FormControlLabel, Switch, TextField, Toolbar, Typography,
+  Menu, MenuItem, ListItemIcon, ListItemText, IconButton, Stack,
+} from '@mui/material';
+import RemoveIcon from '@mui/icons-material/Remove';
+import AddIcon from '@mui/icons-material/Add';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import LeseLogo from '../../assets/Leseteppich_Logo.svg';
+import ModalHighscore from '../../components/Modals/ModalHighscore.tsx';
+import ModalImage from '../../components/Modals/ModalImage.tsx';
+import { Game } from './Game/Game.tsx';
+import { toggleFullscreen, uniqueStrings } from '../../helper-functions';
+import NoTeppich from './NoTeppich/NoTeppich.tsx';
+import { useGameStore } from '../../store/game-store.ts';
+import { useHelpTourStore } from '../../store/help-tour-store.ts';
+import { useJsonStore } from '../../store/json-store.ts';
 
 
 export default function Teppich() {
-  const [teppichPic, setTeppichPic] = useState<string | null>(null);
-
   const {id} = useParams();
 
-  const location = useLocation()
+  const location = useLocation();
 
-  const {setIsOpen, setCurrentStep} = useTour()
+  const {setIsOpen, setCurrentStep} = useTour();
 
   const windowHeight = window.innerHeight;
 
@@ -89,7 +79,9 @@ export default function Teppich() {
     )),
   );
 
-  const findTeppich = liesMitPiri.find((tepp) => tepp.id === Number(id));
+  const {json} = useJsonStore();
+
+  const findTeppich = json?.find((tepp) => tepp.id === Number(id));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (Number(event.target.value) > 0) {
@@ -99,7 +91,7 @@ export default function Teppich() {
 
   const handleStart = () => {
     if (findTeppich) {
-      startGame(findTeppich.strings.length);
+      startGame(uniqueStrings(findTeppich.strings).length);
     }
   };
 
@@ -123,31 +115,33 @@ export default function Teppich() {
   };
 
   const handleHelp = () => {
-    const url = location.pathname
-    setStartingHelpUrl(url)
-    setCurrentStep(0)
-    setIsOpen(true)
-  }
+    const url = location.pathname;
+    setStartingHelpUrl(url);
+    setCurrentStep(0);
+    setIsOpen(true);
+  };
 
-  useEffect(() => {
-    const importTeppichPic = async () => {
-      try {
-        const module = await import(`../../assets/lies-mit-piri/Lies-mit-Piri_${id}.jpg`);
-        setTeppichPic(module.default);
-      } catch (error) {
-        setTeppichPic(null)
-        console.error("Fehler beim Laden des Bildes:", error);
-      }
-    };
-
-    if (findTeppich) importTeppichPic();
-  }, [id, findTeppich]);
+  // useEffect(() => {
+  //   const importTeppichPic = async () => {
+  //     try {
+  //       if (findTeppich && findTeppich.images) {
+  //         const module = await import(findTeppich.images[0]);
+  //         setTeppichPic(module.default);
+  //       }
+  //     } catch (error) {
+  //       setTeppichPic(null);
+  //       console.error('Fehler beim Laden des Bildes oder keins vorhanden:', error);
+  //     }
+  //   };
+  //
+  //   if (findTeppich) importTeppichPic();
+  // }, [id, findTeppich]);
 
   useEffect(() => {
     checkFullscreen();
-    document.addEventListener("fullscreenchange", checkFullscreen);
+    document.addEventListener('fullscreenchange', checkFullscreen);
     return () => {
-      document.removeEventListener("fullscreenchange", checkFullscreen);
+      document.removeEventListener('fullscreenchange', checkFullscreen);
     };
   }, [checkFullscreen]);
 
@@ -168,7 +162,7 @@ export default function Teppich() {
   );
 
   return (
-    <main style={{justifyContent: windowHeight < 348 ? "flex-start" : "center"}}>
+    <main style={{justifyContent: windowHeight < 348 ? 'flex-start' : 'center'}}>
       {!isPlayGame ? (
           <Box paddingBottom={2}>
 
@@ -177,10 +171,10 @@ export default function Teppich() {
             <ModalHighscore/>
 
             <AppBar position="fixed">
-              <Toolbar sx={{justifyContent: "space-between"}}>
-                <Link to={"/"}>
-                  <Button variant={"contained"}
-                          size={"small"}
+              <Toolbar sx={{justifyContent: 'space-between'}}>
+                <Link to={'/'}>
+                  <Button variant={'contained'}
+                          size={'small'}
                           startIcon={<img src={LeseLogo}
                                           alt="Leseteppich-Logo"
                                           height={28}/>}>
@@ -188,45 +182,47 @@ export default function Teppich() {
                   </Button>
                 </Link>
 
-                <Stack direction={"row"} alignItems={"center"} gap={1}>
-                  <IconButton sx={{color: "white"}}
+                <Stack direction={'row'} alignItems={'center'} gap={1}>
+                  <IconButton sx={{color: 'white'}}
                               onClick={handleHelp}>
                     <HelpOutlineIcon/>
                   </IconButton>
 
-                  <Button variant={"contained"}
+                  <Button variant={'contained'}
                           onClick={toggleFullscreen}
                           startIcon={isFullscreen ? <FullscreenExitIcon/> : <FullscreenIcon/>}
                           data-tut="reactour_fullscreen">
-                    {isFullscreen ? "Verkleinern" : "Vollbild"}
+                    {isFullscreen ? 'Verkleinern' : 'Vollbild'}
                   </Button>
                 </Stack>
               </Toolbar>
             </AppBar>
 
             <Box sx={{mt: 10}}
-                 display={"flex"}
-                 flexDirection={"column"}
-                 alignItems={"center"}
+                 display={'flex'}
+                 flexDirection={'column'}
+                 alignItems={'center'}
                  gap={0.5}>
 
-              <Box className={"header-box"}>
-                {teppichPic && <Button data-tut="reactour_image"
-                                       sx={{minWidth: "128px"}}
-                                       onClick={handleImageClick}>
-                  <img src={teppichPic}
-                       alt={`Leseteppich_${id}.jpg`}
-                       height={75}/>
-                </Button>}
+              <Box className={'header-box'}>
+                {findTeppich.images && (
+                  <Button data-tut="reactour_image"
+                          sx={{minWidth: '128px'}}
+                          onClick={handleImageClick}>
+                    <img src={findTeppich.images[0]}
+                         alt={`Leseteppich_${id}.jpg`}
+                         height={75}/>
+                  </Button>
+                )}
 
                 <Box>
-                  <Typography variant={"h4"} textAlign={"left"}>
+                  <Typography variant={'h4'} textAlign={'left'}>
                     {findTeppich.name}
                   </Typography>
 
-                  <Typography variant={"body1"}
-                              sx={{fontSize: "1.1rem", textAlign: "left"}}>
-                    {findTeppich?.chars.join(", ")}
+                  <Typography variant={'body1'}
+                              sx={{fontSize: '1.1rem', textAlign: 'left'}}>
+                    {findTeppich?.chars.join(', ')}
                   </Typography>
                 </Box>
 
@@ -242,12 +238,12 @@ export default function Teppich() {
                       open={openMoreMenu}
                       onClose={handleCloseMore}
                       anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
+                        vertical: 'bottom',
+                        horizontal: 'left',
                       }}
                       transformOrigin={{
-                        vertical: "top",
-                        horizontal: "center",
+                        vertical: 'top',
+                        horizontal: 'center',
                       }}>
                   <MenuItem onClick={handleHighscoreClick}>
                     <ListItemIcon><FormatListNumberedIcon/></ListItemIcon>
@@ -257,26 +253,26 @@ export default function Teppich() {
 
               </Box>
 
-              <Box display={"flex"}
-                   alignItems={"flex-end"}
+              <Box display={'flex'}
+                   alignItems={'flex-end'}
                    data-tut="reactour_time">
-                <Button variant={"outlined"}
-                        size={"small"}
+                <Button variant={'outlined'}
+                        size={'small'}
                         onClick={removeMinute}
                         disabled={initialTimeInSeconds <= 60}>
                   <RemoveIcon/>
                 </Button>
 
-                <TextField type={"number"}
-                           size={"small"}
-                           label={"Zeit in Minuten"}
+                <TextField type={'number'}
+                           size={'small'}
+                           label={'Zeit in Minuten'}
                            value={(initialTimeInSeconds / 60).toString()}
                            onChange={handleChange}
-                           sx={{mt: 2, width: "110px"}}
-                           inputProps={{style: {textAlign: "center"}}}/>
+                           sx={{mt: 2, width: '110px'}}
+                           inputProps={{style: {textAlign: 'center'}}}/>
 
-                <Button variant={"outlined"}
-                        size={"small"}
+                <Button variant={'outlined'}
+                        size={'small'}
                         onClick={addMinute}>
                   <AddIcon/>
                 </Button>
@@ -289,9 +285,9 @@ export default function Teppich() {
                                 sx={{mr: 0}}
                                 data-tut="reactour_kings"/>
 
-              <Button variant={"contained"}
+              <Button variant={'contained'}
                       onClick={handleStart}
-                      size={"large"}
+                      size={'large'}
                       data-tut="reactour_start">Start</Button>
             </Box>
           </Box>)
