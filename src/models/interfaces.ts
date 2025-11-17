@@ -3,7 +3,7 @@ export interface Leseteppich {
   name: string;
   chars: string[];
   strings: string[];
-  images?: string[];
+  images: string[];
 }
 
 export interface StorageHighscore {

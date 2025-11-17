@@ -1,6 +1,6 @@
-import { ChangeEvent } from "react";
-import { create } from "zustand";
-import { calculateRandomIndex } from "../helper-functions";
+import { ChangeEvent } from 'react';
+import { create } from 'zustand';
+import { calculateRandomIndex } from '../helper-functions';
 
 
 export const generateOneLeseteppichArray = (teppichStringsLength: number) => {
@@ -90,12 +90,8 @@ export const useGameStore = create<GameState>((set) => ({
   isFullscreen: false,
 
   //Initial
-  setActiveTeppichId: (id: number) => set((state) => {
-    return {
-      ...state,
-      activeTeppichId: id,
-    };
-  }),
+  setActiveTeppichId: (id: number) => set(() => ({activeTeppichId: id})),
+
   // Game
   startGame: (teppichStringsLength: number) => set((state) => {
     let newGameArray: number[] = [];
@@ -131,7 +127,6 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: timeinSec,
     };
   }),
-
   addMinute: () => set((state) => {
     const newTime = state.initialTimeInSeconds + 60;
     return {
@@ -140,7 +135,6 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: newTime,
     };
   }),
-
   removeMinute: () => set((state) => {
     const newTime = state.initialTimeInSeconds > 60 ? state.initialTimeInSeconds - 60 : state.initialTimeInSeconds;
     return {
@@ -149,105 +143,32 @@ export const useGameStore = create<GameState>((set) => ({
       initialTimeInSeconds: newTime,
     };
   }),
-
-  activateTimer: () => set((state) => {
-    return {
-      ...state,
-      timerIsActive: true,
-    };
-  }),
-
-  pauseTimer: () => set((state) => {
-    return {
-      ...state,
-      timerIsActive: false,
-    };
-  }),
-
-  decreaseTimerSecond: () => set((state) => {
-    return {
-      ...state,
-      timerSeconds: state.timerSeconds - 1,
-    };
-  }),
+  activateTimer: () => set(() => ({timerIsActive: true})),
+  pauseTimer: () => set(() => ({timerIsActive: false})),
+  decreaseTimerSecond: () => set((state) => ({timerSeconds: state.timerSeconds - 1})),
 
   // Counter
-  increaseCount: () => set((state) => {
-    return {
-      ...state,
-      count: state.count + 1,
-    };
-  }),
-  decreaseCount: () => set((state) => {
-    return {
-      ...state,
-      count: state.count - 1,
-    };
-  }),
-  setCount: (newIndex: number) => set((state) => {
-    return {
-      ...state,
-      count: newIndex,
-    };
-  }),
+  increaseCount: () => set(state => ({count: state.count + 1})),
+  decreaseCount: () => set((state) => ({count: state.count - 1})),
+  setCount: (newIndex: number) => set(() => ({count: newIndex})),
 
   //Game Array
-  addToGameArray: (newTeppichArray: number[]) => set((state) => {
-    return {
-      ...state,
-      gameArray: [...state.gameArray, ...newTeppichArray],
-    };
-  }),
+  addToGameArray: (newTeppichArray: number[]) => set((state) => ({gameArray: [...state.gameArray, ...newTeppichArray]})),
 
   // Modal Win
-  openWinModal: () => set((state) => {
-    return {
-      ...state,
-      isWinModalOpen: true,
-    };
-  }),
-  closeWinModal: () => set((state) => {
-    return {
-      ...state,
-      isWinModalOpen: false,
-    };
-  }),
+  openWinModal: () => set(() => ({isWinModalOpen: true})),
+  closeWinModal: () => set(() => ({isWinModalOpen: false})),
 
   // Modal Image Teppich
-  openImageModal: () => set((state) => {
-    return {
-      ...state,
-      isImageModalOpen: true,
-    };
-  }),
-  closeImageModal: () => set((state) => {
-    return {
-      ...state,
-      isImageModalOpen: false,
-    };
-  }),
+  openImageModal: () => set(() => ({isImageModalOpen: true})),
+  closeImageModal: () => set(() => ({isImageModalOpen: false})),
 
   // Modal Highscore
-  openHighscoreModal: () => set(state => {
-    return {
-      ...state,
-      isHighscoreModalOpen: true
-    }
-  }),
-  closeHighscoreModal: () => set(state => {
-    return {
-      ...state,
-      isHighscoreModalOpen: false
-    }
-  }),
+  openHighscoreModal: () => set(() => ({isHighscoreModalOpen: true})),
+  closeHighscoreModal: () => set(() => ({isHighscoreModalOpen: false})),
 
   // Kings Marked
-  toggleKingsMarked: (event: ChangeEvent<HTMLInputElement>) => set((state) => {
-    return {
-      ...state,
-      isKingsMarked: event.target.checked
-    }
-  }),
+  toggleKingsMarked: (event: ChangeEvent<HTMLInputElement>) => set(() => ({isKingsMarked: event.target.checked})),
 
   // Fullscreen
   checkFullscreen: () => set((state) => {

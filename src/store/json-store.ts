@@ -14,8 +14,8 @@ export const useJsonStore = create<JsonState>((set, get) => ({
   isLoading: false,
   error: null,
 
-  loadJson: async() => {
-    // Wenn schon geladen, nicht nochmal fetchen (optional)
+  loadJson: async () => {
+    // Wenn schon geladen, nicht nochmal fetchen
     if (get().json || get().isLoading) return;
 
     set({isLoading: true, error: null});
@@ -25,8 +25,9 @@ export const useJsonStore = create<JsonState>((set, get) => ({
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const json: Leseteppich[] = await res.json();
       set({json: json, isLoading: false});
-    } catch (e: any) {
-      set({error: e.message ?? 'Fehler beim Laden des Json', isLoading: false});
+    } catch (e: unknown) {
+      const error = e as Error;
+      set({error: error.message ?? 'Fehler beim Laden des Json', isLoading: false});
     }
   },
 }));
