@@ -36,29 +36,16 @@
   }
 }
 
-.char {
-  display: inline-block;
-  font-family: "ABeeZee", "Roboto", sans-serif;
-  min-width: 20px;
-  text-align: center;
-
-  &.small{
-    min-width: 14px;
-  }
-}
-
-.koenig {
-  background-color: rgba(255, 234, 0, 0.3);
-}
-
 .fullscreen-btn {
   position: fixed;
   right: 16px;
   bottom: 16px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .swiper_container {
+  will-change: transform;
+  -webkit-overflow-scrolling: touch;
 
   .swiper-wrapper {
     //height: initial;
@@ -76,4 +63,19 @@
     box-shadow: 8px 8px 12px #eaeaea,
     -8px -8px 12px #dadada;
   }
+}
+
+.char {
+  display: inline-block;
+  font-family: "ABeeZee", "Roboto", sans-serif;
+  min-width: 20px;
+  text-align: center;
+
+  &.small {
+    min-width: 14px;
+  }
+}
+
+.koenig {
+  background-color: rgba(255, 234, 0, 0.3);
 }

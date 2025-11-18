@@ -1,7 +1,7 @@
 import './Game.scss';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import type { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -69,8 +69,6 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const isNextDisabled = !timerIsActive || timerIsFinished;
 
-  const teppichGameArray = gameArray.map((gameIndex) => leseTeppich.strings[gameIndex]);
-
   const handleNext = () => {
     if (!timerIsFinished && !!gameArray[count + 1]) {
       return;
@@ -80,10 +78,54 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
     }
   };
 
-  const handleSlideChange = (swiper: SwiperType) => {
-    handleNext();
-    setCount(swiper.activeIndex);
+  const handleSlideChangeEnd = (swiper: SwiperType) => {
+    const newIndex = swiper.activeIndex;
+
+    setCount(newIndex);
+    const isLastSlide = newIndex === gameArray.length - 1;
+    if (isLastSlide && !timerIsFinished) {
+      const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length);
+      addToGameArray(newTeppichArray);
+    }
   };
+
+  const slides = useMemo(() =>
+    gameArray.map((gameIndex) => {
+      const text = leseTeppich.strings[gameIndex];
+      const isLongTeppich = text.length > 44;
+
+      return (
+        <SwiperSlide className="swiper_slide">
+          <Typography variant="h3"
+                      sx={{
+                        fontSize: isLongTeppich ? '2.2em' : '3em',
+                        gap: isLongTeppich ? '6px 10px' : '4px 16px',
+                        padding: '12px',
+                      }}
+                      display="flex"
+                      justifyContent="center"
+                      flexWrap="wrap">
+            {text.split(' ')
+              .map((word, wordIndex) => {
+                return (
+                  <div key={wordIndex}>
+                    {word.split('').map((char, charIndex) => {
+                      const isVokabel = /^[aeiou]$/i.test(char);
+                      return (
+                        <span key={charIndex}
+                              className={`char ${isLongTeppich ? 'small' : ''} ${(isVokabel && isKingsMarked) ? 'koenig' : ''}`}>
+                                    {char}
+                        </span>
+                      );
+                    })}
+                  </div>
+                )
+              })
+            }
+          </Typography>
+        </SwiperSlide>
+      );
+    }), [gameArray, leseTeppich.strings, isKingsMarked])
 
   useEffect(() => {
     if (timerIsFinished) {
@@ -165,49 +207,15 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
                 style={{padding: '24px 70px'}}
                 spaceBetween={60}
                 slidesPerView={1}
-                onSlideChange={handleSlideChange}
+                onSlideChangeTransitionEnd={handleSlideChangeEnd}
                 navigation={{
                   prevEl: '.prev-button',
                   nextEl: '.next-button',
                 }}
                 allowSlidePrev={!isBackDisabled}
-                allowSlideNext={!isNextDisabled}>
-          {teppichGameArray.map((teppichStrings, index) => {
-            const isLongTeppich = teppichStrings.length > 44;
-
-            return <SwiperSlide key={index}
-                                className={'swiper_slide'}>
-              <Typography variant={'h3'}
-                          sx={{
-                            fontSize: isLongTeppich ? '2.2em' : '3em',
-                            gap: isLongTeppich ? '6px 10px' : '4px 16px',
-                            padding: '12px',
-                          }}
-                          display={'flex'}
-                          justifyContent={'center'}
-                          flexWrap={'wrap'}>
-                {teppichStrings.split(' ')
-                  .map((word, wordIndex) => {
-                      return (
-                        <div key={wordIndex}>
-                          {word.split('').map((char, charIndex) => {
-                              const vokabels = /^[aeiou]$/i;
-                              const isVokabel = vokabels.test(char);
-                              return (
-                                <span key={charIndex}
-                                      className={`char ${isLongTeppich ? 'small' : ''} ${(isVokabel && isKingsMarked) ? 'koenig' : ''}`}>
-                                  {char}
-                                </span>
-                              );
-                            },
-                          )}
-                        </div>
-                      );
-                    },
-                  )}
-              </Typography>
-            </SwiperSlide>;
-          })}
+                allowSlideNext={!isNextDisabled}
+                touchStartPreventDefault={false}>
+          {slides}
         </Swiper>
 
         <IconButton onClick={handleNext}

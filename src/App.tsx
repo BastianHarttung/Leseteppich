@@ -15,7 +15,7 @@ import Imprint from './pages/Imprint/Imprint.tsx';
 import { steps } from './help-tour-steps.tsx';
 import { useIpAddress } from './helper-functions/Hooks';
 import { updateBackendStats } from './helper-functions';
-import { useHelpTourStore, useJsonStore } from './store/index.ts';
+import { useHelpTourStore, useJsonStore } from './store';
 
 
 declare module '@mui/material/styles' {
