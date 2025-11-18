@@ -36,51 +36,43 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const {timerSeconds, timerIsActive, pauseTimer} = useTimerStore(
+  const {timerIsActive, timerIsFinished, pauseTimer} = useTimerStore(
     useShallow((state) => (
       {
-        timerSeconds: state.timerSeconds,
         timerIsActive: state.timerIsActive,
+        timerIsFinished: state.timerIsFinished,
         pauseTimer: state.pauseTimer,
       })),
   );
-  const isTimerFinished = timerSeconds <= 0;
 
-  const {gameArray, addToGameArray} = useGameStore(
-    useShallow((state) => (
-      {gameArray: state.gameArray, addToGameArray: state.addToGameArray})),
-  );
-  const {count, setCount} = useGameStore(
-    useShallow((state) => (
-      {
-        count: state.count,
-        setCount: state.setCount,
-      })),
-  );
-  const {isWinModalOpen, openWinModal} = useGameStore(
-    useShallow((state) => (
-      {isWinModalOpen: state.isWinModalOpen, openWinModal: state.openWinModal}
-    )),
-  );
-  const {isKingsMarked} = useGameStore(
-    useShallow((state) => (
-      {isKingsMarked: state.isKingsMarked}
-    )),
-  );
-  const {isFullscreen, checkFullscreen} = useGameStore(
-    useShallow((state) => (
-      {isFullscreen: state.isFullscreen, checkFullscreen: state.checkFullscreen}
-    )),
+  const {
+    gameArray, addToGameArray,
+    count, setCount,
+    isWinModalOpen, openWinModal,
+    isKingsMarked,
+    isFullscreen, checkFullscreen,
+  } = useGameStore(
+    useShallow((state) => ({
+      gameArray: state.gameArray,
+      addToGameArray: state.addToGameArray,
+      count: state.count,
+      setCount: state.setCount,
+      isWinModalOpen: state.isWinModalOpen,
+      openWinModal: state.openWinModal,
+      isKingsMarked: state.isKingsMarked,
+      isFullscreen: state.isFullscreen,
+      checkFullscreen: state.checkFullscreen,
+    })),
   );
 
-  const isBackDisabled = !timerIsActive || isTimerFinished || count <= 0;
+  const isBackDisabled = !timerIsActive || timerIsFinished || count <= 0;
 
-  const isNextDisabled = !timerIsActive || isTimerFinished;
+  const isNextDisabled = !timerIsActive || timerIsFinished;
 
   const teppichGameArray = gameArray.map((gameIndex) => leseTeppich.strings[gameIndex]);
 
   const handleNext = () => {
-    if (!isTimerFinished && !!gameArray[count + 1]) {
+    if (!timerIsFinished && !!gameArray[count + 1]) {
       return;
     } else {
       const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length);
@@ -94,7 +86,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   };
 
   useEffect(() => {
-    if (timerSeconds <= 0) {
+    if (timerIsFinished) {
       pauseTimer();
       openWinModal();
       saveHighscore();
@@ -104,7 +96,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
         audioRef.current.play();
       }
     }
-  }, [timerSeconds, openWinModal, pauseTimer, audioRef, saveHighscore, addPlayCount, leseTeppich.id]);
+  }, [timerIsFinished, openWinModal, pauseTimer, audioRef, saveHighscore, addPlayCount, leseTeppich.id]);
 
   useEffect(() => {
     if (!isWinModalOpen && audioRef.current) {

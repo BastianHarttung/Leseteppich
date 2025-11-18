@@ -5,6 +5,7 @@ interface TimerState {
   timerIsActive: boolean;
   initialTimeInSeconds: number;
   timerSeconds: number;
+  timerIsFinished: boolean;
 
   setTimeInSeconds: (minutes: string) => void;
   addMinute: () => void;
@@ -21,6 +22,7 @@ export const useTimerStore = create<TimerState>((set, get) => ({
   timerIsActive: false,
   initialTimeInSeconds: initialTime,
   timerSeconds: initialTime,
+  timerIsFinished: false,
 
   setTimeInSeconds: (timeInMinutes: string) => {
     const timeInSec = Number(timeInMinutes) * 60;
@@ -54,7 +56,9 @@ export const useTimerStore = create<TimerState>((set, get) => ({
 
   decreaseTimerSecond: () => {
     const {timerSeconds} = get();
-    set({timerSeconds: timerSeconds - 1});
+    const nextSecond = timerSeconds - 1;
+    set({timerSeconds: nextSecond});
+    if (nextSecond <= 0) set({timerIsFinished: true});
   },
 
   resetTimerToInitial: () => {
@@ -62,6 +66,7 @@ export const useTimerStore = create<TimerState>((set, get) => ({
     set({
       timerIsActive: false,
       timerSeconds: initialTimeInSeconds,
+      timerIsFinished: false,
     });
   },
 }));

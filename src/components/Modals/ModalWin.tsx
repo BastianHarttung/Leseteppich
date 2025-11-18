@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import confetti from 'canvas-confetti';
 import { Box, Fade, IconButton, Modal, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LeseLogo from '../../assets/Leseteppich_Logo.svg';
 import Funki1 from '../../assets/funki/Funki_Freude_01.svg';
-import Piri1 from '../../assets/piri/Piri_1.png'
-import Piri2 from '../../assets/piri/Piri_2.png'
-import Piri3 from '../../assets/piri/Piri_3.png'
+import Piri1 from '../../assets/piri/Piri_1.png';
+import Piri2 from '../../assets/piri/Piri_2.png';
+import Piri3 from '../../assets/piri/Piri_3.png';
 import { useGameStore, useTimerStore } from '../../store';
 
 
@@ -22,22 +22,35 @@ const style = {
   p: 4,
 };
 
-const ModalWin = () => {
-  const [piriPic, setPiriPic] = useState<string | null>(null);
+const images = [Funki1, Piri1, Piri2, Piri3];
 
-  const {isWinModalOpen, closeWinModal} = useGameStore(
+const getRandomImage = () => {
+  const randomNr = Math.floor(Math.random() * images.length);
+  return images[randomNr];
+};
+
+const ModalWin = () => {
+  const {
+    isWinModalOpen, closeWinModal,
+    count,
+  } = useGameStore(
     useShallow((state) => (
-      {isWinModalOpen: state.isWinModalOpen, closeWinModal: state.closeWinModal})),
-  );
-  const {count} = useGameStore(
-    useShallow((state) => (
-      {count: state.count})),
+      {
+        isWinModalOpen: state.isWinModalOpen,
+        closeWinModal: state.closeWinModal,
+        count: state.count,
+      })),
   );
   const {initialTimeInSeconds} = useTimerStore(
     useShallow((state) => (
       {initialTimeInSeconds: state.initialTimeInSeconds}
     )),
   );
+
+  const piriPic = useMemo(() => {
+    if (!isWinModalOpen) return null;
+    return getRandomImage();
+  }, [isWinModalOpen]);
 
   useEffect(() => {
     if (isWinModalOpen) {
@@ -77,19 +90,6 @@ const ModalWin = () => {
       }, 250);
     }
   }, [isWinModalOpen]);
-
-  useEffect(() => {
-    if (piriPic) return;
-    const images = [Funki1, Piri1, Piri2, Piri3];
-    const randomNr = Math.round(Math.random() * (images.length - 1));
-    try {
-      console.log("images", randomNr, images[randomNr])
-      setPiriPic(images[randomNr]);
-    } catch (error) {
-      console.error('Fehler beim Laden des Bildes:', error);
-      setPiriPic(null);
-    }
-  }, [piriPic]);
 
 
   return (
