@@ -18,21 +18,22 @@
   margin-top: 92px;
   margin-left: -12px;
   margin-right: -12px;
+  position: relative;
 
   .prev-button {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
-    left: 16px;
-    backdrop-filter: blur(10px);
+    left: 12px;
+    //backdrop-filter: blur(10px);
     z-index: 2;
   }
 
   .next-button {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
-    right: 16px;
-    backdrop-filter: blur(10px);
-    z-index: 1;
+    right: 12px;
+    //backdrop-filter: blur(10px);
+    z-index: 2;
   }
 }
 
@@ -43,31 +44,43 @@
   z-index: 2;
 }
 
-.swiper_container {
-  will-change: transform;
+.snap-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+}
 
-  .swiper-wrapper {
-    //height: initial;
-    align-items: center;
-  }
+.snap-container.disabled {
+  overflow-x: hidden;
+  touch-action: none;
+}
 
-  .swiper_slide {
-    min-height: 120px;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 24px;
+.snap-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  min-height: 120px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 24px 0;
+
+  .snap-card {
+    width: calc(100% - 132px);
+    border-radius: 20px;
     background: linear-gradient(135deg, #f1f1f1, #ffffff);
-    box-shadow: 8px 8px 12px #eaeaea,
-    -8px -8px 12px #dadada;
+    box-shadow: 8px 8px 12px #eaeaea, -8px -8px 12px #dadada;
+    padding: 12px;
   }
 }
 
 .char {
   display: inline-block;
-  font-family: "ABeeZee", "Roboto", sans-serif;
+  font-family: 'ABeeZee', 'Roboto', sans-serif;
   min-width: 20px;
   text-align: center;
 
