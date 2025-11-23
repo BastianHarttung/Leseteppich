@@ -24,16 +24,24 @@
     background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     left: 12px;
-    //backdrop-filter: blur(10px);
+    //backdrop-filter: blur(8px);
     z-index: 2;
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
   }
 
   .next-button {
     background-color: rgba(255, 255, 255, 0.8);
     position: absolute;
     right: 12px;
-    //backdrop-filter: blur(10px);
+    //backdrop-filter: blur(8px);
     z-index: 2;
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
   }
 }
 
@@ -52,16 +60,22 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-}
+  scrollbar-width: none;
 
-.snap-container.disabled {
-  overflow-x: hidden;
-  touch-action: none;
+  &.disabled {
+    overflow-x: hidden;
+    touch-action: none;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .snap-slide {
   flex: 0 0 100%;
   scroll-snap-align: center;
+  scroll-snap-stop: always;
   min-height: 120px;
   height: 100%;
   display: flex;

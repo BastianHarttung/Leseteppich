@@ -77,8 +77,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
     const slideWidth = container.clientWidth;
     container.scrollTo({
-      left: index * slideWidth,
-      behavior: 'smooth',
+      left: index * slideWidth
     });
   };
 
