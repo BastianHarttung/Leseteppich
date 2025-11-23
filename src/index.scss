@@ -103,7 +103,7 @@ button:focus-visible {
   }
 }
 
-@media screen and (orientation: portrait) {
+@media screen and (orientation: portrait) and (max-width: 650px) {
   #root {
     display: none; /* Verstecke die App im Portrait-Modus */
   }
