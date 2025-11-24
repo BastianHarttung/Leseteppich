@@ -1,3 +1,11 @@
+export interface LeseteppichJson {
+  id: number;
+  name: string;
+  chars: string[];
+  strings: string[][];
+  images: string[];
+}
+
 export interface Leseteppich {
   id: number;
   name: string;

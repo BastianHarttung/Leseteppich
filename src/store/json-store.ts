@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { Leseteppich } from '../models/interfaces.ts';
+import { Leseteppich, LeseteppichJson } from '../models/interfaces.ts';
 
 
 type JsonState = {
@@ -23,10 +23,10 @@ export const useJsonStore = create<JsonState>((set, get) => ({
     try {
       const res = await fetch('/datas/leseteppiche.json');
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data: Leseteppich[] = await res.json();
+      const data: LeseteppichJson[] = await res.json();
       const uniqueData = data.map((tepp) => ({
         ...tepp,
-        strings: Array.from(new Set(tepp.strings))
+        strings: Array.from(new Set(tepp.strings.flat()))
       }))
       set({json: uniqueData, isLoading: false});
     } catch (e: unknown) {
