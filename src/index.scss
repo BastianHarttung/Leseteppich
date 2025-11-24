@@ -33,7 +33,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  width: 100svw;
+  width: 100vw;
   min-height: 100dvh;
 }
 
@@ -90,25 +90,20 @@ button:focus-visible {
   }
 }
 
-#portrait-mode {
-  padding: 12px;
-}
-
-@media screen and (orientation: landscape) {
+@media screen and (orientation: portrait) and (max-width: 600px) {
   #root {
-    display: block;
+    display: none; /* Verstecke die App im Portrait-Modus bei unter 600px Weite */
   }
   #portrait-mode {
-    display: none;
-  }
-}
-
-@media screen and (orientation: portrait) and (max-width: 650px) {
-  #root {
-    display: none; /* Verstecke die App im Portrait-Modus */
-  }
-  #portrait-mode {
-    display: block;
+    width: 100vw;
+    height: 100dvh;
+    display: flex !important;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    margin: 0
   }
 }
 

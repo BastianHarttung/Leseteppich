@@ -22,7 +22,7 @@ export const steps: StepType[] = [
   },
   {
     selector: '[data-tut="reactour_image"]',
-    content: `Das Foto vom Leseteppich kannst du anklicken und es dir in groß anschauen.`,
+    content: `Das Foto vom Leseteppich kannst du anklicken, es dir in groß anschauen und sogar ausdrucken.`,
     // observe: '[data-tut="reactour_modal-image"]'
   },
   {
