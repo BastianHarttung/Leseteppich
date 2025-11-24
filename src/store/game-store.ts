@@ -80,7 +80,7 @@ export const useGameStore = create<GameState>((set) => ({
   startGame: (teppichStringsLength: number) => set((state) => {
     let newGameArray: number[] = [];
 
-    for (let j = 0; j < 10; j++) {
+    for (let j = 0; j < 5; j++) {
       const newInnerArray = generateOneLeseteppichArray(teppichStringsLength);
       newGameArray = [...newGameArray, ...newInnerArray];
     }

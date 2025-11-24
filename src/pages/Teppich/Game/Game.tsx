@@ -91,19 +91,9 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
   const handleNextClick = () => {
     if (isNextDisabled) return;
     const currentIndex = currentIndexRef.current;
-    const hasNextSlide = !!gameArray[currentIndex + 1];
-
-    if (!timerIsFinished && hasNextSlide) {
-      const newIndex = currentIndex + 1;
-      scrollToIndex(newIndex);
-      return;
-    }
-
-    const newTeppichArray = generateOneLeseteppichArray(leseTeppich.strings.length);
-    addToGameArray(newTeppichArray);
 
     const newIndex = currentIndex + 1;
-    requestAnimationFrame(() => scrollToIndex(newIndex));
+    scrollToIndex(newIndex);
   };
 
   useEffect(() => {
@@ -118,7 +108,7 @@ export const Game = ({leseTeppich, onStop}: GameProps) => {
 
       if (index !== currentIndexRef.current) {
         currentIndexRef.current = index;
-        setCount(index); // <-- nur hier!
+        setCount(index);
 
         const isLastSlide = index === gameArray.length - 1;
         if (isLastSlide && !timerIsFinished) {

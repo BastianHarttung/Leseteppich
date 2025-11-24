@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react';
+import { useEffect, useState } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import confetti from 'canvas-confetti';
 import { Box, Fade, IconButton, Modal, Typography } from '@mui/material';
@@ -30,6 +30,8 @@ const getRandomImage = () => {
 };
 
 const ModalWin = () => {
+  const [piriPic, setPiriPic] = useState<string | null>(null)
+
   const {
     isWinModalOpen, closeWinModal,
     count,
@@ -47,56 +49,64 @@ const ModalWin = () => {
     )),
   );
 
-  const piriPic = useMemo(() => {
-    if (!isWinModalOpen) return null;
-    return getRandomImage();
-  }, [isWinModalOpen]);
+  const handleEnter = () => {
+    setPiriPic(getRandomImage())
+  }
+
+  const handleExited = () => {
+    setPiriPic(null)
+  }
 
   useEffect(() => {
-    if (isWinModalOpen) {
+    if (!isWinModalOpen) return;
+
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: {y: 0.6},
+      zIndex: 9999,
+    });
+
+    const duration = 8 * 1000;
+    const animationEnd = Date.now() + duration;
+    const defaults = {startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999};
+
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    const interval = setInterval(function () {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
       confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: {y: 0.6},
-        zIndex: 9999,
+        ...defaults,
+        particleCount,
+        origin: {x: randomInRange(0.1, 0.3), y: Math.random() - 0.2},
       });
-      const duration = 8 * 1000;
-      const animationEnd = Date.now() + duration;
-      const defaults = {startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999};
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: {x: randomInRange(0.7, 0.9), y: Math.random() - 0.2},
+      });
+    }, 250);
 
-      const randomInRange = (min: number, max: number) => {
-        return Math.random() * (max - min) + min;
-      };
-
-      const interval = setInterval(function () {
-        const timeLeft = animationEnd - Date.now();
-
-        if (timeLeft <= 0) {
-          return clearInterval(interval);
-        }
-
-        const particleCount = 50 * (timeLeft / duration);
-        // since particles fall down, start a bit higher than random
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: {x: randomInRange(0.1, 0.3), y: Math.random() - 0.2},
-        });
-        confetti({
-          ...defaults,
-          particleCount,
-          origin: {x: randomInRange(0.7, 0.9), y: Math.random() - 0.2},
-        });
-      }, 250);
-    }
+    return () => clearInterval(interval);
   }, [isWinModalOpen]);
 
 
   return (
     <Modal open={isWinModalOpen}
-           onClose={closeWinModal}>
+           onClose={closeWinModal}
+           closeAfterTransition>
       <Fade in={isWinModalOpen}
-            timeout={2000}>
+            timeout={2000}
+            onEnter={handleEnter}
+            onExited={handleExited}>
         <Box sx={style}>
           <Box position={'absolute'} right={8} top={8}>
             <IconButton onClick={closeWinModal}>
