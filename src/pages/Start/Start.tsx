@@ -19,7 +19,7 @@ import { useJsonStore } from "../../store";
 
 
 export default function Start() {
-  const {json} = useJsonStore()
+  const {leseteppiche} = useJsonStore()
 
   const {getPlayCount} = usePlayCount();
 
@@ -34,7 +34,7 @@ export default function Start() {
       <LeseteppichAppBar/>
 
       <Timeline position={'alternate'} sx={{pt: 7, pb: 4}}>
-        {json && json.map((teppich: Leseteppich, index) => (
+        {leseteppiche && leseteppiche.map((teppich: Leseteppich, index) => (
             <TimelineItem key={teppich.id}>
               <TimelineSeparator>
                 <TimelineConnector sx={{opacity: index === 0 ? 0 : 1}}/>
@@ -47,7 +47,7 @@ export default function Start() {
                     {teppich.id}
                   </TimelineDot>
                 </Link>
-                <TimelineConnector sx={{opacity: index === (json.length - 1) ? 0 : 1}}/>
+                <TimelineConnector sx={{opacity: index === (leseteppiche.length - 1) ? 0 : 1}}/>
               </TimelineSeparator>
               <TimelineContent sx={{m: 'auto 0', width: '500px'}}>
                 <Link to={`/teppich/${teppich.id}`}

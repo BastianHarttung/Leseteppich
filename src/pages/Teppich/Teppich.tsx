@@ -21,6 +21,7 @@ import { Game } from './Game/Game.tsx';
 import { toggleFullscreen } from '../../helper-functions';
 import NoTeppich from './NoTeppich/NoTeppich.tsx';
 import { useGameStore, useHelpTourStore, useJsonStore, useTimerStore } from '../../store';
+import LeseteppichImage from '../../components/Leseteppich-Image/LeseteppichImage.tsx';
 
 
 export default function Teppich() {
@@ -77,9 +78,9 @@ export default function Teppich() {
     )),
   );
 
-  const {json} = useJsonStore();
+  const {leseteppiche} = useJsonStore();
 
-  const findTeppich = json?.find((tepp) => tepp.id === Number(id));
+  const findTeppich = leseteppiche?.find((tepp) => tepp.id === Number(id));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (Number(event.target.value) > 0) {
@@ -185,17 +186,11 @@ export default function Teppich() {
                  flexDirection={'column'}
                  alignItems={'center'}
                  gap={0.5}>
-
               <Box className={'header-box'}>
-                {findTeppich.images.length > 0 && (
-                  <Button data-tut="reactour_image"
-                          sx={{minWidth: '128px'}}
-                          onClick={handleImageClick}>
-                    <img src={findTeppich.images[0]}
-                         alt={`Leseteppich_${id}.jpg`}
-                         height={75}/>
-                  </Button>
-                )}
+                {id && <LeseteppichImage data-tut="reactour_image"
+                                         teppichId={id}
+                                         size={'preview'}
+                                         onClick={handleImageClick}/>}
 
                 <Box>
                   <Typography variant={'h4'} textAlign={'left'}>
@@ -232,7 +227,6 @@ export default function Teppich() {
                     <ListItemText><Typography>Höchste Punkte</Typography></ListItemText>
                   </MenuItem>
                 </Menu>
-
               </Box>
 
               <Box display={'flex'}
@@ -250,7 +244,7 @@ export default function Teppich() {
                            label={'Zeit in Minuten'}
                            value={(initialTimeInSeconds / 60).toString()}
                            onChange={handleChange}
-                           sx={{backgroundColor:"white",mt: 2, width: '110px'}}
+                           sx={{backgroundColor: 'white', mt: 2, width: '110px'}}
                            inputProps={{style: {textAlign: 'center'}}}/>
 
                 <Button variant={'outlined'}
