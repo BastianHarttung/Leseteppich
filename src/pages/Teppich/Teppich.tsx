@@ -250,7 +250,7 @@ export default function Teppich() {
                            label={'Zeit in Minuten'}
                            value={(initialTimeInSeconds / 60).toString()}
                            onChange={handleChange}
-                           sx={{mt: 2, width: '110px'}}
+                           sx={{backgroundColor:"white",mt: 2, width: '110px'}}
                            inputProps={{style: {textAlign: 'center'}}}/>
 
                 <Button variant={'outlined'}

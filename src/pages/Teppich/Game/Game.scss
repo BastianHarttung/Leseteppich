@@ -73,11 +73,11 @@
 }
 
 .snap-slide {
+  min-height: 120px;
+  height: 100%;
   flex: 0 0 100%;
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  min-height: 120px;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,10 +85,11 @@
 
   .snap-card {
     width: calc(100% - 132px);
+    max-width: 1000px;
     border-radius: 20px;
     background: linear-gradient(135deg, #f1f1f1, #ffffff);
-    box-shadow: 8px 8px 12px #eaeaea, -8px -8px 12px #dadada;
-    padding: 12px;
+    box-shadow: 8px 8px 12px #dadada, -8px -8px 12px #ffffff;
+    padding: 16px;
   }
 }
 
